@@ -71,7 +71,7 @@
 
 .sideScrollBar {
   overflow-y: auto;
-  padding-right: 4px;
+  max-height: calc(100vh - 350px);
 }
 
 .sideScrollBar::-webkit-scrollbar {
@@ -87,6 +87,18 @@
 }
 
 .teamNames {
-  width: 35px;
+  width: 40px;
   height: auto;
+  margin-top: 3px;
+}
+
+.first-leftSideBar {
+  font-family: "Circular", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.second-leftSideBar {
+  font-family: "Circular", sans-serif;
+  font-size: small;
 }

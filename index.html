@@ -20,7 +20,7 @@
           <!-- sidebar sinistra -->
           <section class="ms-2 sideBarTextColor">
             <a href="#"><i class="bi bi-three-dots d-inline-block my-2 mb-3 fs-4 sideBarTextColor"></i></a>
-            <div class="d-flex flex-column align-items-start gap-3 mb-5">
+            <div class="d-flex flex-column align-items-start gap-3 mb-5 first-leftSideBar small">
               <a href="" class="text-decoration-none d-flex align-items-center gap-3 text-light">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house sideBarTextColor" viewBox="0 0 16 16">
                   <path
@@ -46,22 +46,22 @@
                 La tua libreria
               </a>
             </div>
-            <div class="d-flex flex-column align-items-start gap-3">
+            <div class="d-flex flex-column align-items-start gap-3 first-leftSideBar small">
               <a href="#" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
-                <img src="./img/create.png" alt="" style="width: 25px" class="rounded-1" />
+                <img src="./img/create.png" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
                 Crea Playlist
               </a>
               <a href="" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
-                <img src="./img/like.jpg" alt="" style="width: 25px" class="rounded-1" />
+                <img src="./img/like.jpg" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
                 Brani che ti piacciono
               </a>
               <a href="" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
-                <img src="./img/saved.png" alt="" style="width: 25px" class="rounded-1" />
+                <img src="./img/saved.png" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
                 I tuoi episodi
               </a>
             </div>
             <hr class="border-1 bg-secondary my-4 me-4" />
-            <div class="flex-fill overflow-auto small pe-3 sideScrollBar" style="max-height: calc(100vh - 350px)">
+            <div class="flex-fill overflow-auto small pe-2 sideScrollBar second-leftSideBar">
               <p>early stage emily syndrome (sett-ott 2022)</p>
               <p>Be the young</p>
               <p>"..."cit Kimiko(lug-ago 2022)</p>
@@ -164,81 +164,83 @@
                 </svg>
               </button>
             </div>
-            <div class="d-flex justify-content-between align-items-center gap-2 mt-1 mb-3">
-              <h6 class="flex-grow-1 m-0 text-light">Attività amici</h6>
-              <button class="btn p-0 border-0 text-secondary"><i class="bi bi-person-plus fs-5"></i></button>
-              <button class="btn p-0 border-0 text-secondary"><i class="bi bi-x fs-3"></i></button>
+            <div class="d-md-flex flex-md-column text-md-center flex-lg-row d-flex text-lg-start justify-content-between align-items-center gap-2 mt-1 mb-4">
+              <h6 class="flex-grow-1 m-0 text-light fs-5 ps-2">Attività amici</h6>
+              <div class="d-lg-flex">
+                <button class="btn p-0 border-0 text-secondary"><i class="bi bi-person-plus fs-5"></i></button>
+                <button class="btn p-0 border-0 text-secondary"><i class="bi bi-x fs-3"></i></button>
+              </div>
             </div>
-            <div class="container p-3 small">
+            <div class="container small">
               <!-- ITEM -->
               <div class="row gap-3">
-                <div class="d-flex mb-3">
+                <div class="d-flex mb-3 p-0">
                   <div class="me-2 flex-shrink-0">
                     <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
                   </div>
-                  <div class="flex-grow-1 d-flex flex-column justify-content-center">
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
                     <div class="d-flex justify-content-between align-items-center">
                       <span class="fw-bold">Cristian Cicale</span>
-                      <span class="small">2 ore</span>
+                      <span class="small d-none d-lg-block">2 ore</span>
                     </div>
-                    <div><span>081</span> • Geolier</div>
-                    <div>◎ Tutto è possibile</div>
+                    <div class="small"><span>081</span> • Geolier</div>
+                    <div class="small">◎ Tutto è possibile</div>
                   </div>
                 </div>
 
-                <div class="d-flex mb-3">
+                <div class="d-flex mb-3 p-0">
                   <div class="me-2 flex-shrink-0">
                     <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
                   </div>
-                  <div class="flex-grow-1 d-flex flex-column justify-content-center">
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
                     <div class="d-flex justify-content-between align-items-center">
                       <span class="fw-bold">Elena Volpato</span>
-                      <span class="small">3 ore</span>
+                      <span class="small d-none d-lg-block">3 ore</span>
                     </div>
-                    <div><span>Levitating</span> • Dua Lipa</div>
-                    <div>◎ Future Nostalgia</div>
+                    <div class="small"><span>Levitating</span> • Dua Lipa</div>
+                    <div class="small">◎ Future Nostalgia</div>
                   </div>
                 </div>
 
-                <div class="d-flex mb-3">
+                <div class="d-flex mb-3 p-0">
                   <div class="me-2 flex-shrink-0">
                     <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
                   </div>
-                  <div class="flex-grow-1 d-flex flex-column justify-content-center">
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
                     <div class="d-flex justify-content-between align-items-center">
                       <span class="fw-bold">Faizan Shahzad Dar</span>
-                      <span class="small">5 ore</span>
+                      <span class="small d-none d-lg-block">5 ore</span>
                     </div>
-                    <div><span>Till I Collapse</span> • Eminem</div>
-                    <div>◎ The Eminem Show</div>
+                    <div class="small"><span>Till I Collapse</span> • Eminem</div>
+                    <div class="small">◎ The Eminem Show</div>
                   </div>
                 </div>
 
-                <div class="d-flex mb-3">
+                <div class="d-flex mb-3 p-0">
                   <div class="me-2 flex-shrink-0">
                     <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
                   </div>
-                  <div class="flex-grow-1 d-flex flex-column justify-content-center">
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
                     <div class="d-flex justify-content-between align-items-center">
                       <span class="fw-bold">Giulia Crepaldi</span>
-                      <span class="small">4 ore</span>
+                      <span class="small d-none d-lg-block">4 ore</span>
                     </div>
-                    <div><span>Bad Romance</span> • Lady Gaga</div>
-                    <div>◎ The Fame Monster</div>
+                    <div class="small"><span>Bad Romance</span> • Lady Gaga</div>
+                    <div class="small">◎ The Fame Monster</div>
                   </div>
                 </div>
 
-                <div class="d-flex mb-3">
+                <div class="d-flex mb-3 p-0">
                   <div class="me-2 flex-shrink-0">
                     <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
                   </div>
-                  <div class="flex-grow-1 d-flex flex-column justify-content-center">
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
                     <div class="d-flex justify-content-between align-items-center">
                       <span class="fw-bold">Emanuele Piemonte</span>
-                      <span class="small">1 ora</span>
+                      <span class="small d-none d-lg-block">1 ora</span>
                     </div>
-                    <div><span>Demons</span> • Imagine Dragons</div>
-                    <div>◎ Night Visions</div>
+                    <div class="small"><span>Demons</span> • Imagine Dragons</div>
+                    <div class="small">◎ Night Visions</div>
                   </div>
                 </div>
               </div>
@@ -247,7 +249,6 @@
         </div>
       </div>
     </div>
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
