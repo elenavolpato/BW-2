@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Artist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -11,63 +12,67 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./css/style.scss" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/artist.css" />
   </head>
-  <body>
-    <header>
-      <div class="container">
-        <div class="row hero">
-          <div class="d-flex">
-            <!-- freccine -->
+  <body class="bg-black container">
+    <div class="row">
+      <!-- side column left goes here -->
+      <aside></aside>
+    </div>
+    <header id="hero" class="hero-gradient">
+      <div class="container-fluid justify-content-between align-items-center p-3">
+        <div class="row">
+          <div class="col-10 d-flex">
+            <i class="fa-solid fa-angle-left"></i>
+            <i class="fa-solid fa-angle-right"></i>
           </div>
-          <div class="d-flex gap-1">
+          <div class="col-2 d-flex gap-2 justify-content-evenly align-items-center">
             <!-- when clicked opens the settings. buttons are fake -->
-            <img src="" alt="" />
-            <p>Giangiorgio Epicode</p>
-            <img src="" alt="" />
+            <img src="./imgs/baba.jpeg" alt="a dog" class="user-img rounded-circle" />
+            <p class="pt-2">Giangiorgio</p>
+            <i class="fa-solid fa-caret-down"></i>
           </div>
         </div>
         <div>
-          <span><img src="" alt="" /><!-- verified artist icon --></span>
-          <h1 class="artist-name">Artist name</h1>
+          <div class="d-flex align-content-center gap-1">
+            <i class="fa-solid fa-circle-check text-info"></i>
+            <p class="mb-0">Verified artist</p>
+          </div>
+          <h1 class="artist-name"></h1>
           <p id="number-listeners">Number ascoltatori mensile</p>
           <!-- put number via js -->
         </div>
       </div>
     </header>
     <main class="container">
-      <div class="row">
-        <!-- play button -->
-        <img src="" alt="" />
-        <!-- MAKE CONDITON TO CHANGE BUTTON -->
-        <button>FOLLOWING</button>
-        <button>FOLLOW</button>
-        <!-- 3 dots button -->
-        <img src="" alt="" />
+      <div class="row justify-content-start align-items-center py-4 gap-2">
+        <i class="col-1 fa-solid fa-circle-play spotify-green-text"></i>
+        <button class="col-2 btn text-white-50 btn-outline-dark mr-2" id="follow-btn">FOLLOWING</button>
+        <i class="col fa-solid fa-ellipsis text-white-50 fs-3"></i>
       </div>
       <div class="row">
         <h4>Popolari</h4>
-        <div class="row">
-          <p id="most-played-rank">1</p>
-          <!-- on hover show name of album -->
-          <img id="album-cover" src="" alt="" />
-          <p id="song-name">name</p>
-          <p id="number-listeners-album">5</p>
-          <p id="song-duration"></p>
-          <button id="see-more-btn">VISUALIZA ALTRO</button>
-        </div>
-        <h4>Brani che ti piacciono</h4>
-        <div class="row">
-          <!-- round image o banc -->
-          <span><img src="" alt="" /><!-- heart badge icon  --></span>
-          <h5 id="mi-piace-text">Hai messo mi piace a 11 brani</h5>
-          <p class="artist-name">di NameBand</p>
+        <div id="most-played-songs" class="row col-8"></div>
+
+        <div class="col-4">
+          <h4>Brani che ti piacciono</h4>
+
+          <div class="d-flex gap-2">
+            <span class="img-bands-liked"><img id="band-you-liked-img" class="rounded-circle" /><i class="fa-brands fa-gratipay spotify-green-text"></i></span>
+            <div class="align-self-center">
+              <h5 id="mi-piace-text">Hai messo mi piace a 11 brani</h5>
+              <p class="artist-name"></p>
+            </div>
+          </div>
         </div>
       </div>
     </main>
 
-    <!-- side columns go here -->
-    <aside></aside>
+    <div class="row">
+      <!-- side column left goes here -->
+      <aside></aside>
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

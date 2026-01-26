@@ -67,6 +67,18 @@
 
 body {
   font-family: "CircularStd", sans-serif;
+  color: white;
+}
+
+button {
+  font-family: "CircularStd", sans-serif;
+}
+.spotify-green-text {
+  color: #1ed760;
+}
+
+.spotify-green-bg {
+  background-color: #1ed760;
 }
 
 h1 {
