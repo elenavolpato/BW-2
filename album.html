@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="container p-2">
+          <!-- div per mobile -->
+          <div class="row justify-content-between d-md-none">
+            <div class="col col-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-left"
+                viewBox="0 0 16 16">
+                <path
+                  fill-rule="evenodd"
+                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+              </svg>
+            </div>
+          </div>
+          <div class="row justify-content-between d-none d-md-block">
+            <div class="col">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-left-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-right-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+              </svg>
+            </div>
+            <div class="col dropdown text-end d-none d-md-block">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                User
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">utente</a></li>
+                <li><a class="dropdown-item" href="#">utente</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">utente</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- div per mobile finish -->
+        </div>
+      </nav>
+      <!-- container per la parte del header in cui ci andrà l'immagine del album e la descrizione -->
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col col-12 col-md-6 border">
+            <img src="#" alt="#" />
+          </div>
+          <div class="col col-12 col-md-6">
+            <h1>Titolo</h1>
+            <h4><img src="#" alt="#" /> nome artista</h4>
+            <p>album . anno</p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <!-- questo container e per mettere all'interno le canzoni metto d-none su qlcuni div perchè in versione mobile non sono visibili -->
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col col-6 col-md-4 d-none d-md-block"><p>titolo</p></div>
+          <div class="col col-6 col-md-4 d-none d-md-block text-md-end">
+            <p>riproduzioni</p>
+          </div>
+          <div class="col col-6 col-md-4 d-none d-md-block text-md-end">
+            <p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-clock"
+                viewBox="0 0 16 16">
+                <path
+                  d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z" />
+                <path
+                  d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0" />
+              </svg>
+            </p>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col col-6 col-md-4 text-start flex-fill">
+            <h3>titolo canzone</h3>
+            <p>nome artista</p>
+          </div>
+          <!-- 3 puntini mobile -->
+          <div class="col col-6 d-md-none text-end flex-shrink-1">
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn dropdown-bs-toggle"
+                data-toggle="dropdown">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-three-dots-vertical"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                </svg>
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#"> Data Structure </a>
+                <a class="dropdown-item" href="#"> Algorithm </a>
+              </div>
+            </div>
+          </div>
+          <!-- 3 puntini mobile finish -->
+          <!-- versione computer -->
+          <div class="col col-md-4 d-none d-md-block text-end">
+            <p>92292</p>
+          </div>
+          <div class="col col-md-4 d-none d-md-block text-end">1.11</div>
+          <!-- verisione computer -->
+        </div>
+        <div class="row justify-content-center">
+          <div class="col col-6 col-md-4 text-start flex-fill">
+            <h3>titolo canzone</h3>
+            <p>nome artista</p>
+          </div>
+          <!-- 3 puntini mobile -->
+          <div class="col col-6 d-md-none text-end flex-shrink-1">
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn dropdown-bs-toggle"
+                data-toggle="dropdown">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-three-dots-vertical"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                </svg>
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#"> Data Structure </a>
+                <a class="dropdown-item" href="#"> Algorithm </a>
+              </div>
+            </div>
+          </div>
+          <!-- 3 puntini mobile finish -->
+          <!-- versione computer -->
+          <div class="col col-md-4 d-none d-md-block text-end">
+            <p>92292</p>
+          </div>
+          <div class="col col-md-4 d-none d-md-block text-end">1.11</div>
+          <!-- verisione computer -->
+        </div>
+        <div class="row justify-content-center">
+          <div class="col col-6 col-md-4 text-start flex-fill">
+            <h3>titolo canzone</h3>
+            <p>nome artista</p>
+          </div>
+          <!-- 3 puntini mobile -->
+          <div class="col col-6 d-md-none text-end flex-shrink-1">
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn dropdown-bs-toggle"
+                data-toggle="dropdown">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-three-dots-vertical"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                </svg>
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#"> Data Structure </a>
+                <a class="dropdown-item" href="#"> Algorithm </a>
+              </div>
+            </div>
+          </div>
+          <!-- 3 puntini mobile finish -->
+          <!-- versione computer -->
+          <div class="col col-md-4 d-none d-md-block text-end">
+            <p>92292</p>
+          </div>
+          <div class="col col-md-4 d-none d-md-block text-end">1.11</div>
+          <!-- verisione computer -->
+        </div>
+        <div class="row justify-content-center">
+          <div class="col col-6 col-md-4 text-start flex-fill">
+            <h3>titolo canzone</h3>
+            <p>nome artista</p>
+          </div>
+          <!-- 3 puntini mobile -->
+          <div class="col col-6 d-md-none text-end flex-shrink-1">
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn dropdown-bs-toggle"
+                data-toggle="dropdown">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-three-dots-vertical"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                </svg>
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#"> Data Structure </a>
+                <a class="dropdown-item" href="#"> Algorithm </a>
+              </div>
+            </div>
+          </div>
+          <!-- 3 puntini mobile finish -->
+          <!-- versione computer -->
+          <div class="col col-md-4 d-none d-md-block text-end">
+            <p>92292</p>
+          </div>
+          <div class="col col-md-4 d-none d-md-block text-end">1.11</div>
+          <!-- verisione computer -->
+        </div>
+        <div class="row justify-content-center">
+          <div class="col col-6 col-md-4 text-start flex-fill">
+            <h3>titolo canzone</h3>
+            <p>nome artista</p>
+          </div>
+          <!-- 3 puntini mobile -->
+          <div class="col col-6 d-md-none text-end flex-shrink-1">
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn dropdown-bs-toggle"
+                data-toggle="dropdown">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-three-dots-vertical"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                </svg>
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#"> Data Structure </a>
+                <a class="dropdown-item" href="#"> Algorithm </a>
+              </div>
+            </div>
+          </div>
+          <!-- 3 puntini mobile finish -->
+          <!-- versione computer -->
+          <div class="col col-md-4 d-none d-md-block text-end">
+            <p>92292</p>
+          </div>
+          <div class="col col-md-4 d-none d-md-block text-end">1.11</div>
+          <!-- verisione computer -->
+        </div>
+        <div class="row justify-content-center">
+          <div class="col col-6 col-md-4 text-start flex-fill">
+            <h3>titolo canzone</h3>
+            <p>nome artista</p>
+          </div>
+          <!-- 3 puntini mobile -->
+          <div class="col col-6 d-md-none text-end flex-shrink-1">
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn dropdown-bs-toggle"
+                data-toggle="dropdown">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-three-dots-vertical"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                </svg>
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#"> Data Structure </a>
+                <a class="dropdown-item" href="#"> Algorithm </a>
+              </div>
+            </div>
+          </div>
+          <!-- 3 puntini mobile finish -->
+          <!-- versione computer -->
+          <div class="col col-md-4 d-none d-md-block text-end">
+            <p>92292</p>
+          </div>
+          <div class="col col-md-4 d-none d-md-block text-end">1.11</div>
+          <!-- verisione computer -->
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="container-fluid fixed-bottom">
+        <div
+          class="row justify-content-center text-center justify-content-md-between">
+          <div class="col col-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-house-door"
+              viewBox="0 0 16 16">
+              <path
+                d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4z" />
+            </svg>
+            <p>home</p>
+          </div>
+          <div class="col col-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-search"
+              viewBox="0 0 16 16">
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+            <p>cerca</p>
+          </div>
+          <div class="col col-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-collection"
+              viewBox="0 0 16 16">
+              <path
+                d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z" />
+            </svg>
+            <p>La tua libreria</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"></script>
+  </body>
+</html>
