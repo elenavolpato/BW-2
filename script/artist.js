@@ -1,5 +1,11 @@
-const artistURL = "https://striveschool-api.herokuapp.com/api/deezer/artist/666";
+//when integrated with home page use this to replace the artist ID
+/* const url = location.search;
+const allTheParameters = new URLSearchParams(url);
+const artistID = allTheParameters.get("id"); */
 
+const artistID = "125";
+
+const artistURL = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistID}`;
 let numberOfSongs = 5;
 
 const renderArtistInfo = () => {
@@ -19,7 +25,7 @@ const renderArtistInfo = () => {
       console.log("artistdata", data);
       artistName.forEach((element) => (element.innerText = data.name));
       hero.style.backgroundImage = `url(${data.picture_xl})`;
-      likedBandImg.src = "https://cdn-images.dzcdn.net/images/artist/ace1cac32e6c087bdf6498189968e091/120x120-000000-80-0-0.jpg";
+      likedBandImg.src = data.picture_medium;
       likedBandImg.alt = `${data.name} picture`;
     })
     .catch((err) => {
@@ -66,7 +72,7 @@ const renderSongList = () => {
         .join("");
 
       mostPlayedSongs.innerHTML =
-        songsHTML + (numberOfSongs <= 5 ? `<button class="btn text-white-50 my-3 w-25 fw-bold" id="see-more">VISUALIZA ALTRO</button>` : "");
+        songsHTML + (numberOfSongs <= 5 ? `<button class="btn text-white-50 my-3  fw-bold text-start" id="see-more">VISUALIZA ALTRO</button>` : "");
 
       const seeMoreBtn = document.getElementById("see-more");
       seeMoreBtn.addEventListener("click", () => {
