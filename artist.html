@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artist</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.scss" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="row hero">
+          <div class="d-flex">
+            <!-- freccine -->
+          </div>
+          <div class="d-flex gap-1">
+            <!-- when clicked opens the settings. buttons are fake -->
+            <img src="" alt="" />
+            <p>Giangiorgio Epicode</p>
+            <img src="" alt="" />
+          </div>
+        </div>
+        <div>
+          <span><img src="" alt="" /><!-- verified artist icon --></span>
+          <h1 class="artist-name">Artist name</h1>
+          <p id="number-listeners">Number ascoltatori mensile</p>
+          <!-- put number via js -->
+        </div>
+      </div>
+    </header>
+    <main class="container">
+      <div class="row">
+        <!-- play button -->
+        <img src="" alt="" />
+        <!-- MAKE CONDITON TO CHANGE BUTTON -->
+        <button>FOLLOWING</button>
+        <button>FOLLOW</button>
+        <!-- 3 dots button -->
+        <img src="" alt="" />
+      </div>
+      <div class="row">
+        <h4>Popolari</h4>
+        <div class="row">
+          <p id="most-played-rank">1</p>
+          <!-- on hover show name of album -->
+          <img id="album-cover" src="" alt="" />
+          <p id="song-name">name</p>
+          <p id="number-listeners-album">5</p>
+          <p id="song-duration"></p>
+          <button id="see-more-btn">VISUALIZA ALTRO</button>
+        </div>
+        <h4>Brani che ti piacciono</h4>
+        <div class="row">
+          <!-- round image o banc -->
+          <span><img src="" alt="" /><!-- heart badge icon  --></span>
+          <h5 id="mi-piace-text">Hai messo mi piace a 11 brani</h5>
+          <p class="artist-name">di NameBand</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- side columns go here -->
+    <aside></aside>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./script/artist.js"></script>
+  </body>
+</html>
