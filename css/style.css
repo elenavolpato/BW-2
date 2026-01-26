@@ -64,18 +64,6 @@
   font-weight: 900;
   font-style: italic;
 }
-body {
-  font-family: "CircularStd", sans-serif;
-}
-
-h1 {
-  font-weight: 900;
-}
-
-p {
-  font-weight: 400;
-}
-
 .sideBarTextColor {
   color: #b3b3b3;
 }
