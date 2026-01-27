@@ -159,6 +159,10 @@ input[type="range"].form-range:focus {
   z-index: 1000;
 }
 
+.mobileBox {
+  box-sizing: border-box;
+}
+
 @media (min-width: 768px) {
   .firstRow {
     bottom: 0;
