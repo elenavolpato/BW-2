@@ -10,10 +10,17 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+    <style>
+      .modal-backdrop.show {
+        opacity: 0.8;
+        background-color: #000;
+        backdrop-filter: blur(9px);
+      }
+    </style>
   </head>
   <body class="bg-dark" data-bs-theme="dark">
     <!-- MODAL -->
-    <div class="modal fade" id="loginModal" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal fade modal-backdrop.show" id="loginModal" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-black">
           <div class="container mb-3">
@@ -89,185 +96,9 @@
       </div>
     </div>
 
-    <!-- NAVBAR -->
-
     <!-- MAIN -->
-    <div class="container-fluid position-relative text-center">
-      <div class="row">
-        <!-- barra laterale dx -->
-        <div class="col bg-black me-3">1 of 3</div>
-        <!-- SEZIONE CENTRALE -->
-        <div class="col-12 col-md-8">
-          2 of 3 (wider)
-          <!-- barra profilo + selettori di trascinamento-->
-          <div class="row">
-            <div class="d-flex mb-3">
-              <div class="p-2">Flex item</div>
-              <div class="ms-auto p-2">Flex item</div>
-            </div>
-          </div>
-          <!-- slider con immagine singola-->
-          <div class="row">
-            <div id="carouselExampleFade" class="carousel slide carousel-fade bg-black p-2">
-              <div class="carousel-inner">
-                <div class="carousel-item active container">
-                  <!--SCHEDA SINGOLA CAROUSEL-->
-                  <div class="row">
-                    <div class="col-4">
-                      <img src="./css/media/image-17.jpg" class="d-block w-100" alt="..." />
-                    </div>
-                    <div class="col-8 text-start">
-                      <!-- sezione album -->
-                      <p>ALBUM</p>
-                      <!-- sezione annunci nascosti -->
-                      <div class="d-flex mb-3">
-                        <div class="ms-auto p-2">NASCONDI ANNUNCI</div>
-                      </div>
-                      <!--h1-->
-                      <h1>VIOLA(feat. SALMO)</h1>
-                      <p>Fedez, Salmo</p>
-                      <p>Ascolta il nuovo singolo di Fedez e Salmo!</p>
-                      <!-- bottoni -->
-                      <div class="row">
-                        <div class="d-flex mb-3 ps-0">
-                          <div class="p-2">
-                            <button type="button" class="btn btn-success">Success</button>
-                          </div>
-                          <div class="p-2">
-                            <button type="button" class="btn btn-outline-light">Light</button>
-                          </div>
-                          <div class="p-2">Flex item</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--fine scheda singola carousel-->
-                </div>
-                <div class="carousel-item">
-                  <!--SCHEDA SINGOLA DA REPLICARE-->
-                </div>
-                <div class="carousel-item">
-                  <!--SCHEDA SINGOLA DA REPLICARE-->
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-            <!-- sezione con titolo h2-->
-            <div class="container-fluid text-start mt-5 mb-3">
-              <div class="row">
-                <div class="col">
-                  <h2 id="welcome">Buonasera</h2>
-                </div>
-              </div>
-            </div>
-            <!-- sezione con 6 card con i generi musicali -->
-            <div class="container-fluid text-center">
-              <div class="row d-flex flex-wrap">
-                <div class="col">
-                  <!--card orizzontale desktop-->
-                  <div class="card mb-3" style="max-width: 540px">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="./css/media/image-17.jpg" class="img-fluid rounded-start" alt="..." />
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Horizontal card content.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--fine card orizzontale-->
-                </div>
-                <div class="col">
-                  <!--card orizzontale desktop-->
-                  <div class="card mb-3" style="max-width: 540px">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="./css/media/image-17.jpg" class="img-fluid rounded-start" alt="..." />
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Horizontal card content.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--fine card orizzontale-->
-                </div>
-                <div class="col">
-                  <!--card orizzontale desktop-->
-                  <div class="card mb-3" style="max-width: 540px">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="./css/media/image-17.jpg" class="img-fluid rounded-start" alt="..." />
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Horizontal card content.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--fine card orizzontale-->
-                </div>
-                <!-- sezione con titolo h3-->
-                <div class="container-fluid text-start mt-5 mb-3">
-                  <div class="row">
-                    <div class="col">
-                      <h3>Altro di ciò che ti piace</h3>
-                    </div>
-                  </div>
-                </div>
-                <!-- CAROUSEL ARTISTI -->
-                <div class="container-fluid text-center">
-                  <div class="row">
-                    <div class="col">
-                      <div id="artistCard" class="card" style="width: 18rem">
-                        <img src="./css/media/image-17.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="card" style="width: 18rem">
-                        <img src="./css/media/image-17.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="card" style="width: 18rem">
-                        <img src="./css/media/image-17.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- barra laterale dx -->
-        <div class="col bg-black ms-3">3 of 3</div>
-      </div>
+    <div class="conteiner-fluid opacity-50">
+      <img src="./css/media/Sfondo_Spotify_Modal.png" />
     </div>
 
     <script
