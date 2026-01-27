@@ -1,6 +1,32 @@
 const albumsURL =
   "https://striveschool-api.herokuapp.com/api/deezer/album/75621062";
+//////////////
+const audio = document.getElementById("mioAudio");
 
+// funzione per stoppare e riavviare una canzone dal tasto play/stop
+const btnPlayPause = document.getElementById("btnPlayPause");
+function togglePlay() {
+  if (audio.paused) {
+    audio.play();
+    btnPlayPause.textContent = "Pausa";
+  } else {
+    audio.pause();
+    btnPlayPause.textContent = "Play";
+  }
+}
+
+//funzione che avvia la canzone in base a quale si clicca che si avvierà al click sul div
+const playSong = function (link) {
+  audio.pause();
+  audio.currentTime = 0;
+  audio.load();
+
+  if (audio.paused) {
+    console.log("if 1");
+    audio.innerHTML = ` <source src= '${link}' type="audio/mpeg" />`;
+    audio.play();
+  }
+};
 const getData = function () {
   fetch(albumsURL)
     .then((res) => {
@@ -13,14 +39,13 @@ const getData = function () {
     .then((album) => {
       //VARIABILI
       const cover = album.cover_medium;
-
       const albumTitle = album.title;
       const artistName = album.artist.name;
       const artistImg = album.artist.picture;
       const type = album.type;
       const year = album.release_date;
       const tracksArray = album.tracks.data;
-      console.log(album);
+      console.log(tracksArray);
 
       // PER INSERIRE LA COPERTINA PRINCIPALE AL SUO POSTO
       const copertinaPrincipale = document.getElementById(
@@ -34,19 +59,20 @@ const getData = function () {
       // PER INSERIRE LA DESCRIZIONE DEL ALBUM AL SUO POSTO
       const titoloPrincipale = document.getElementById("descrizioneAlbum");
       titoloPrincipale.innerHTML = `  
-      <h2>${albumTitle}</h2>   
+      <h4>${albumTitle}</h4>   
      <div class="d-flex"><img src=${artistImg} alt="profilePicture" class="rounded-circle me-2" style="width: 25px; height: 25px"/>  <h6>${artistName} </h6></div>
             <p>${type} . ${year}</p> `;
 
       // ORA FACCIO TUTTE LE CANZONI NEL ALBUM
       const container = document.getElementById("mainContainer");
-      console.log(tracksArray, "canzone");
+      console.log(tracksArray.preview, "canzone");
 
       tracksArray.forEach((track) => {
+        // console.log(track);
         container.innerHTML += ` 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center playSong" onclick="playSong('${track.preview}');">
           <div class="col col-6 col-md-4 text-start flex-fill">
-            <h3>${track.title}</h3>
+            <h5 class="mb-0">${track.title}</h5>
             <p>${artistName}</p>
           </div>
           <!-- 3 puntini mobile -->
@@ -83,6 +109,7 @@ const getData = function () {
         </div>
         `;
       });
+      // PER AUDIO
     })
     .catch((err) => {
       console.log("errore", err);
