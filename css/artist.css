@@ -53,3 +53,7 @@ main {
 button.hidden {
   display: none;
 }
+
+.player {
+  margin-left: -12px !important;
+}

@@ -65,15 +65,6 @@
   font-style: italic;
 }
 
-body {
-  font-family: "CircularStd", sans-serif;
-  color: white;
-}
-
-button {
-  font-family: "CircularStd", sans-serif;
-}
-
 .sideBarTextColor {
   color: #b3b3b3;
 }
@@ -112,21 +103,6 @@ button {
   font-size: small;
 }
 
-.spotify-green-text {
-  color: #1ed760;
-}
-
-.spotify-green-bg {
-  background-color: #1ed760;
-}
-
-h1 {
-  font-weight: 900;
-}
-
-p {
-  font-weight: 400;
-}
 input[type="range"].form-range::-webkit-slider-runnable-track {
   height: 4px;
   background: #555;
@@ -163,7 +139,7 @@ input[type="range"].form-range:focus {
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0) 0%,
-    rgb(0, 0, 0) 5%,
+    rgba(0, 0, 0, 1) 5%,
     rgba(0, 0, 0, 0.9) 15%,
     rgba(0, 0, 0, 0.8) 25%,
     rgba(0, 0, 0, 0.7) 35%,
@@ -191,8 +167,9 @@ input[type="range"].form-range:focus {
   .firstRow {
     bottom: 0;
   }
+
   #footerImg {
     width: 70px !important;
     border-radius: 0 !important;
   }
-} /*# sourceMappingURL=style.css.map */
+}
