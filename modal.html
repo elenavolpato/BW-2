@@ -1,0 +1,53 @@
+<div class="mb-3">
+  <h2>
+    Milioni di canzoni. <br />
+    Gratis solo con Spotify
+  </h2>
+  <div class="input-group flex-nowrap">
+    <label for="Username" class="form-label">Inserisci il tuo Username</label>
+    <span class="input-group-text" id="addon-wrapping">@</span>
+    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" />
+  </div>
+</div>
+
+<div class="card" style="width: 10rem">
+  <img src="./css/image-17.jpg" class="card-img-top rounded-circle" alt="..." />
+  <div class="card-body">
+    <p class="card-text">Artist</p>
+  </div>
+</div>
+
+<div class="container text-center d-flex flex-wrap">
+  <div class="row">
+    <div class="col">
+      <div class="card bg-black p-2" style="width: 10rem">
+        <img src="./css/image-17.jpg" class="card-img-top card-img-top rounded-circle p-3" alt="..." />
+        <div class="card-body">
+          <p class="card-text">Artist</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card bg-black p-2" style="width: 10rem">
+        <img src="./css/image-17.jpg" class="card-img-top card-img-top rounded-circle p-3" alt="..." />
+        <div class="card-body">
+          <p class="card-text">Artist</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card bg-black p-2" style="width: 10rem">
+        <img src="./css/image-17.jpg" class="card-img-top card-img-top rounded-circle p-3" alt="..." />
+        <div class="card-body">
+          <p class="card-text">Artist</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+const modalElement = document.getElementById("loginModal"); const myModal = new bootstrap.Modal(document.getElementById("loginModal"), { keyboard: false,
+backdrop: "static", }); const myModal2 = new bootstrap.Modal(document.getElementById("loginModal2"), { keyboard: false, backdrop: "static", }); const forms =
+document.querySelectorAll(".needs-validation"); Array.from(forms).forEach((form) => { form.addEventListener( "submit", (event) => { if (!form.checkValidity()) {
+event.preventDefault(); event.stopPropagation(); } else { event.preventDefault(); myModal.hide(); modalElement.addEventListener("hidden.bs.modal", () => {
+myModal2.show(); }, { once: true }); } form.classList.add("was-validated"); }, false, ); });
