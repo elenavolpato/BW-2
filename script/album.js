@@ -13,13 +13,14 @@ const getData = function () {
     .then((album) => {
       //VARIABILI
       const cover = album.cover_medium;
+
       const albumTitle = album.title;
       const artistName = album.artist.name;
       const artistImg = album.artist.picture;
       const type = album.type;
       const year = album.release_date;
       const tracksArray = album.tracks.data;
-      console.log(tracksArray);
+      console.log(album);
 
       // PER INSERIRE LA COPERTINA PRINCIPALE AL SUO POSTO
       const copertinaPrincipale = document.getElementById(
@@ -27,6 +28,7 @@ const getData = function () {
       );
       copertinaPrincipale.innerHTML = `
       <img src=${cover} alt="image" class="image-fluid"/>
+    
       `;
 
       // PER INSERIRE LA DESCRIZIONE DEL ALBUM AL SUO POSTO
@@ -38,14 +40,13 @@ const getData = function () {
 
       // ORA FACCIO TUTTE LE CANZONI NEL ALBUM
       const container = document.getElementById("mainContainer");
-      console.log(container, "canzone");
+      console.log(tracksArray, "canzone");
 
       tracksArray.forEach((track) => {
-        const container = "";
         container.innerHTML += ` 
         <div class="row justify-content-center">
           <div class="col col-6 col-md-4 text-start flex-fill">
-            <h3>${track.album.title}</h3>
+            <h3>${track.title}</h3>
             <p>${artistName}</p>
           </div>
           <!-- 3 puntini mobile -->
@@ -81,24 +82,6 @@ const getData = function () {
           <!-- verisione computer -->
         </div>
         `;
-      });
-
-      for (let i = 0; i < tracksArray.length; i++) {
-        console.log(tracksArray[i].title);
-        canzone.innerHTML = `
-             <h3>${tracksArray[i].title}</h3>
-              <p>${artistName}</p>
-
-          `;
-      }
-
-      console.log("album", album);
-      const rigaPerArtista = document.querySelectorAll(".nome-artista");
-      console.log(rigaPerArtista, "oaihduosa");
-      console.log(album.artist);
-      //CICLO FOR PER CICLARE LE RIGHE E I
-      rigaPerArtista.forEach((riga) => {
-        riga.innerHTML += album;
       });
     })
     .catch((err) => {
