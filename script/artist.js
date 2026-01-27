@@ -3,7 +3,7 @@
 const allTheParameters = new URLSearchParams(url);
 const artistID = allTheParameters.get("id"); */
 
-const artistID = "756";
+const artistID = "123";
 
 const artistURL = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistID}`;
 let numberOfSongs = 5;
