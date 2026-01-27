@@ -53,7 +53,7 @@
     </style>
   </head>
   <body>
-    <nav class="navbar bg-black border-bottom border-body navbar-expand-lg bg-body-tertiary sticky-top" data-bs-theme="dark">
+    <nav class="navbar bg-black border-bottom border-body navbar-expand-sm bg-body-tertiary sticky-top" data-bs-theme="dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#"><img src="./assets/imgs/logo.svg" alt="logo" width="100" height="50" /></a>
         <button
@@ -79,15 +79,6 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
             </li>
           </ul>
           <form class="d-flex" role="search" id="form-ricerca">
@@ -117,177 +108,199 @@
               </div>
             </article>
           </div>
+          <div class="row d-flex align-items-baseline">
+            <div class="col-12 col-lg-5">
+              <div id="artista-target">
+                <!-- QUI VERRA' MESSO IL CUSTOM TARGET (ARTISTA) -->
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-7">
+              <div id="brani-container" class="d-flex flex-column gap-2 mb-5">
+                <!-- QUI VERRANNO MESSI I BRANI -->
+              </div>
+            </div>
+          </div>
+
+          <div class="row" id="artisti-container">
+            <!-- QUI VERRANNO GLI ARTISTI -->
+          </div>
+
+          <div id="titolo-album"></div>
+          <div class="row" id="album-artisti-container">
+            <!-- QUI VERRANNO GLI ALBUM DEGLI ARTISTI -->
+          </div>
           <div class="row g-3" id="row">
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #e133aa">
                 <h3 class="text-white fw-bold fs-4">Musica</h3>
 
                 <img src="./assets/imgs/search/image-2.jpg" class="card-img-rotated object-fit-contain" alt="Musica" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #006450">
                 <h3 class="text-white fw-bold fs-4">Podcast</h3>
 
                 <img src="./assets/imgs/search/image-26.jpg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #8400e7">
                 <h3 class="text-white fw-bold fs-4">Eventi dal vivo</h3>
 
                 <img src="./assets/imgs/search/image-28.jpg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #1e3264">
                 <h3 class="text-white fw-bold fs-4">Realizzata per te</h3>
 
                 <img src="./assets/imgs/search/image-30.jpg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #608108">
                 <h3 class="text-white fw-bold fs-4">Nuove uscite</h3>
 
                 <img src="./assets/imgs/search/image-25.jpeg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #e61e32">
                 <h3 class="text-white fw-bold fs-4">Hip Hop</h3>
 
                 <img src="./assets/imgs/search/image-1.jpeg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #af2896">
                 <h3 class="text-white fw-bold fs-4">Pop</h3>
 
                 <img src="./assets/imgs/search/image-42.png" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #7d4b32">
                 <h3 class="text-white fw-bold fs-4">Indie</h3>
 
                 <img src="./assets/imgs/search/image-24.jpg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #0d73ec">
                 <h3 class="text-white fw-bold fs-4">Rock</h3>
 
                 <img src="./assets/imgs/search/image-50.jpg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #1e3264">
                 <h3 class="text-white fw-bold fs-4">Rap</h3>
 
                 <img src="./assets/imgs/search/image-49.jpg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #8d67ab">
                 <h3 class="text-white fw-bold fs-4">Classifiche</h3>
 
                 <img src="./assets/imgs/search/image-14.jpg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #0d73ec">
                 <h3 class="text-white fw-bold fs-4">Classifiche podcast</h3>
 
                 <img src="./assets/imgs/search/image-38.jpg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #8e66ac">
                 <h3 class="text-white fw-bold fs-4">Nuove uscite nei podcast</h3>
 
                 <img src="./assets/imgs/search/image-37.jpeg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #608108">
                 <h3 class="text-white fw-bold fs-4">Video podcast</h3>
 
                 <img src="./assets/imgs/search/image-46.jpeg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #1e3264">
                 <h3 class="text-white fw-bold fs-4">RADAR</h3>
 
                 <img src="./assets/imgs/search/image-43.png" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #148a08">
                 <h3 class="text-white fw-bold fs-4">Metal</h3>
 
                 <img src="./assets/imgs/search/image-31.jpg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #e13300">
                 <h3 class="text-white fw-bold fs-4">In auto</h3>
 
                 <img src="./assets/imgs/search/image-45.png" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #e133aa">
                 <h3 class="text-white fw-bold fs-4">Per dormire</h3>
 
                 <img src="./assets/imgs/search/image-18.jpg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #006450">
                 <h3 class="text-white fw-bold fs-4">Lo-Fi</h3>
 
                 <img src="./assets/imgs/search/image-10.jpg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #8d67ab">
                 <h3 class="text-white fw-bold fs-4">Classica</h3>
 
                 <img src="./assets/imgs/search/image-29.jpg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #2d46b9">
                 <h3 class="text-white fw-bold fs-4">Relax</h3>
 
                 <img src="./assets/imgs/search/image-17.jpg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #503750">
                 <h3 class="text-white fw-bold fs-4">Jazz</h3>
 
                 <img src="./assets/imgs/search/image-20.jpg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #b06239">
                 <h3 class="text-white fw-bold fs-4">K-Pop</h3>
 
                 <img src="./assets/imgs/search/image-35.jpg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-6 col-lg-4 col-xl-3">
               <div class="custom-card rounded p-3 position-relative overflow-hidden max" style="background-color: #777777">
                 <h3 class="text-white fw-bold fs-4">Allenamento</h3>
 
                 <img src="./assets/imgs/search/image-8.jpg" class="card-img-rotated object-fit-contain" alt="Podcast" />
               </div>
             </div>
-            <hr class="text-light my-5" />
           </div>
+          <hr class="text-light my-5" />
           <footer class="text-light">
             <div class="row g-3">
               <div class="col-12 col-md-6 col-lg-3">
@@ -355,6 +368,35 @@
               <p class="text-secondary">&copy; <span id="year">-</span> Spotify AB</p>
             </div>
           </footer>
+          <!-- <h4 class="text-light">Risultato più rilevante</h4>
+          <div class="col-12 col-md-6">
+            <div
+              class="custom-card rounded p-4 position-relative overflow-hidden d-flex flex-column justify-content-center shadow"
+              style="background-color: #181818; height: 220px; width: 350px; cursor: pointer"
+            >
+              <div class="mb-3">
+                <img
+                  src="./assets/imgs/main/image-1.jpg"
+                  alt="Artista"
+                  style="width: 100px; height: 100px; object-fit: cover"
+                  class="rounded-circle shadow-lg"
+                />
+              </div>
+
+              <h3 class="text-white fw-bold mb-1">Imagine Dragons</h3>
+              <p class="text-secondary fw-bold">Artista</p>
+            </div>
+            <h3 class="text-light mt-5">Brani</h3>
+            <div id="brani-container" class="d-flex flex-column gap-3 mb-5">
+              <div class="d-flex gap-2">
+                <img src="./assets/imgs/main/image-2.jpg" alt="" class="rounded shadow-lg" style="width: 50px; height: 50px" />
+                <div class="d-flex flex-column">
+                  <h6 class="text-light">Imagine - Remastered 2010</h6>
+                  <p class="text-light">John Lennon</p>
+                </div>
+              </div>
+            </div>
+          </div> -->
         </main>
       </div>
     </div>
