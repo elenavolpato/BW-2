@@ -51,15 +51,15 @@
             </div>
             <div class="d-flex flex-column align-items-start gap-3 first-leftSideBar small">
               <a href="#" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
-                <img src="./img/create.png" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
+                <img src="./assets/imgs/create.png" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
                 Crea Playlist
               </a>
               <a href="" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
-                <img src="./img/like.jpg" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
+                <img src="./assets/imgs/like.jpg" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
                 Brani che ti piacciono
               </a>
               <a href="" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
-                <img src="./img/saved.png" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
+                <img src="./assets/imgs/saved.png" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
                 I tuoi episodi
               </a>
             </div>
@@ -141,41 +141,40 @@
 
         <div class="col bg-black overflow-auto">
           <header id="hero" class="hero-gradient">
-            <div class="container-fluid justify-content-between align-items-center p-3">
+            <div class="container-fluid justify-content-between align-items-center p-3 h-100">
               <div class="row">
                 <div class="col-10 d-flex gap-3">
-                  <i class="fa-solid fa-angle-left text-white-50"></i>
-                  <i class="fa-solid fa-angle-right"></i>
+                  <!--   <i class="fa-solid fa-angle-left text-white-50"></i>
+                  <i class="fa-solid fa-angle-right"></i> -->
                 </div>
                 <div class="col-2 d-flex gap-2 justify-content-evenly align-items-center">
                   <!-- when clicked opens the settings. buttons are fake -->
-                  <img src="./img/baba.jpeg" alt="a dog" class="user-img rounded-circle" />
+                  <img src="./assets/imgs/baba.jpeg" alt="a dog" class="user-img rounded-circle d-block" />
                   <p class="pt-2">Giangiorgio</p>
                   <i class="fa-solid fa-caret-down"></i>
                 </div>
               </div>
-              <div>
+              <div class="d-flex flex-column justify-content-end h-75">
                 <div class="d-flex align-content-center gap-1">
                   <i class="fa-solid fa-circle-check text-info"></i>
                   <p class="mb-0">Verified artist</p>
                 </div>
                 <h1 class="artist-name"></h1>
-                <p id="number-listeners">Number ascoltatori mensile</p>
-                <!-- put number via js -->
+                <p id="number-listeners"></p>
               </div>
             </div>
           </header>
-          <main class="container">
+          <main class="container px-4 h-100">
             <div class="row justify-content-start align-items-center py-4 gap-2">
-              <i class="col-1 fa-solid fa-circle-play spotify-green-text"></i>
-              <button class="col-2 btn text-white-50 btn-outline-dark mr-2" id="follow-btn">FOLLOWING</button>
-              <i class="col fa-solid fa-ellipsis text-white-50 fs-3"></i>
+              <i class="col-2 col-lg-1 fa-solid fa-circle-play spotify-green-text"></i>
+              <button class="col-3 col-lg-2 btn text-white-50 btn-outline-dark mr-2" id="follow-btn">FOLLOWING</button>
+              <i class="col-2 col-lg-2 fa-solid fa-ellipsis text-white-50 fs-3"></i>
             </div>
             <div class="row">
               <h4>Popolari</h4>
-              <div id="most-played-songs" class="row col-8"></div>
+              <div id="most-played-songs" class="row col-12 col-lg-8"></div>
 
-              <div class="col-4">
+              <div class="d-none d-md-block py-md-4 col-12 col-lg-4">
                 <h4>Brani che ti piacciono</h4>
 
                 <div class="d-flex gap-2">
@@ -228,7 +227,7 @@
               <div class="row gap-3">
                 <div class="d-flex mb-3 p-0">
                   <div class="me-2 flex-shrink-0">
-                    <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                    <img src="./assets/imgs/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
                   </div>
                   <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
                     <div class="d-flex justify-content-between align-items-center">
@@ -242,7 +241,7 @@
 
                 <div class="d-flex mb-3 p-0">
                   <div class="me-2 flex-shrink-0">
-                    <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                    <img src="./assets/imgs/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
                   </div>
                   <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
                     <div class="d-flex justify-content-between align-items-center">
@@ -256,7 +255,7 @@
 
                 <div class="d-flex mb-3 p-0">
                   <div class="me-2 flex-shrink-0">
-                    <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                    <img src="./assets/imgs/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
                   </div>
                   <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
                     <div class="d-flex justify-content-between align-items-center">
@@ -270,7 +269,7 @@
 
                 <div class="d-flex mb-3 p-0">
                   <div class="me-2 flex-shrink-0">
-                    <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                    <img src="./assets/imgs/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
                   </div>
                   <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
                     <div class="d-flex justify-content-between align-items-center">
@@ -284,7 +283,7 @@
 
                 <div class="d-flex mb-3 p-0">
                   <div class="me-2 flex-shrink-0">
-                    <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                    <img src="./assets/imgs/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
                   </div>
                   <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
                     <div class="d-flex justify-content-between align-items-center">
@@ -301,6 +300,7 @@
         </aside>
       </div>
     </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

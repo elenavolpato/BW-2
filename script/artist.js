@@ -3,7 +3,7 @@
 const allTheParameters = new URLSearchParams(url);
 const artistID = allTheParameters.get("id"); */
 
-const artistID = "125";
+const artistID = "756";
 
 const artistURL = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistID}`;
 let numberOfSongs = 5;
@@ -12,6 +12,7 @@ const renderArtistInfo = () => {
   const artistName = document.querySelectorAll(".artist-name");
   const hero = document.getElementById("hero");
   const likedBandImg = document.getElementById("band-you-liked-img");
+  const numberOfListeners = document.getElementById("number-listeners");
 
   fetch(artistURL)
     .then((res) => {
@@ -27,6 +28,7 @@ const renderArtistInfo = () => {
       hero.style.backgroundImage = `url(${data.picture_xl})`;
       likedBandImg.src = data.picture_medium;
       likedBandImg.alt = `${data.name} picture`;
+      numberOfListeners.innerText = `${data.nb_fan.toLocaleString("de-DE")} ascoltatori mensile`;
     })
     .catch((err) => {
       console.error("error", err);
@@ -57,15 +59,15 @@ const renderSongList = () => {
       const songsHTML = data.data
         .map(
           (item) => `
-          <div class=" row song-list py-2 align-items-center">
-            <p class="col-1"> ${data.data.indexOf(item) + 1}</p>
+          <div class="row song-list my-2 align-items-center">
+            <p class="col-1 text-white-50 text-end mb-0"> ${data.data.indexOf(item) + 1}</p>
             <img 
                 class="col-auto" 
                 src="${item.album.cover}" 
                 alt="Album ${item.album.title} cover"/>
-            <p class="col">${item.title}</p>
-            <p class="col-2">${item.rank.toLocaleString("de-DE")}</p>
-            <p class="col-1">${songDuration(item.duration)}</p>
+            <p class="col fw-bold mb-0">${item.title}</p>
+            <p class="col-2 text-end text-white-50 mb-0">${item.rank.toLocaleString("de-DE")}</p>
+            <p class="col-1 text-white-50 mb-0">${songDuration(item.duration)}</p>
           </div>
             `,
         )

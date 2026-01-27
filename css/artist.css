@@ -10,7 +10,7 @@ header {
   background-size: cover;
   background-repeat: no-repeat;
   height: 400px;
-  background-position: center;
+  background-position: top;
 }
 
 main {
@@ -37,6 +37,7 @@ main {
 
 .img-bands-liked {
   position: relative;
+  height: 60px;
 }
 
 .img-bands-liked img {
@@ -45,8 +46,8 @@ main {
 
 .fa-gratipay {
   position: absolute;
-  bottom: 8px;
-  right: 2px;
+  bottom: 0px;
+  right: 0px;
 }
 
 button.hidden {
