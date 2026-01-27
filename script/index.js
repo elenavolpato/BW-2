@@ -1,3 +1,53 @@
+// creazione fetch per gli artisti sul modale
+const btnNext = document.getElementById("btnNext");
+const keyWords = [];
+
+const getArtists = function () {
+  fetch(" https://striveschool-api.herokuapp.com/api/deezer/search?q=artist")
+    .then((Response) => {
+      console.log("RESPONSE", Response);
+      if (Response.ok) {
+        return Response.json();
+      } else {
+        throw new Error("la response ha un problema");
+      }
+    })
+    .then((data) => {
+      console.log("EVENTI RICEVUTI", data);
+
+      const row = document.getElementById("cardCheck");
+      row.innerHTML = "";
+
+      for (let i = 0; i < Math.min(data.data.length, 9); i++) {
+        row.innerHTML += `<div class= "col-4 mt-2 mb-4"> 
+        <input type="checkbox" class="btn-check" value="${data.data[i].artist.id}" id="btn-check-${i}" autocomplete="off" />
+                    <label class="btn" for="btn-check-${i}"
+                      ><img src="${data.data[i].artist.picture_medium}" class="card-img-top card-img-top rounded-circle p-3" alt="${data.data[i].title_short}" />${data.data[i].artist.name}</label
+                    > </div>`;
+      }
+      const checkBox = document.querySelectorAll(".btn-check");
+      console.log(checkBox);
+      Array.from(checkBox)
+        .forEach((button) => {
+          button.addEventListener("click", () => {
+            if (button.checked) {
+              const valueModalCard = button.value;
+              keyWords.push(valueModalCard);
+              localStorage.setItem("selectedArtists", JSON.stringify(keyWords));
+            }
+            btnNext.addEventListener("click", () => {
+              if (keyWords.length === 0) {
+                localStorage.setItem("randomMode", "true");
+              }
+            });
+          });
+        })
+        .catch((Error) => {
+          console.log("ERRORE NELLA FETCH", Error);
+        });
+    });
+};
+
 // 1.apparizione del modale all'apertura dello schermo
 
 const myModal = new bootstrap.Modal(document.getElementById("loginModal"), {
@@ -36,6 +86,7 @@ Array.from(forms).forEach((form) => {
         modalElement.addEventListener(
           "hidden.bs.modal",
           () => {
+            getArtists();
             myModal2.show();
           },
           { once: true },
@@ -48,9 +99,53 @@ Array.from(forms).forEach((form) => {
 });
 
 // 3. prendo la proprietà di username da inserire nei template literals
-const userName = localStorage.getItem("username");
 
-// 3. accedere alla home una volta cliccato il tasto avanti
+btnNext.addEventListener("submit", (event) => {
+  event.preventDefault();
+  myModal2.hide();
+  modalElement.addEventListener("hidden.bs.modal", () => {
+    window.location.href = "index.html";
+  });
+  {
+    once: true;
+  }
+});
+
+//nella home page
+
+// 4. metto i check in un array
+/*const keyWords = [];
+const checkBox = document.querySelectorAll(".btn-check");
+console.log(checkBox);
+
+Array.from(checkBox).forEach((button) => {
+  button.addEventListener("click", () => {
+    if (button.checked) {
+      e;
+      const valueModalCard = document.getElementById("btn-check-${i}").value;
+      keyWords.push(valueModalCard);
+      localStorage.setItem("selectedGenres", JSON.stringify(keyWords));
+    } else if (keyWords.length === 0) {
+      localStorage.setItem("randomMode", "true");
+    }
+  });
+});*/
+
+console.log(keyWords);
+
+/*const btnNext = document.querySelectorAll("#loginModal2 .btn");
+console.log(btnNext);
+const keyWords = [];
+
+function validate() {
+  //btnNext.addEventListener("click", () => {
+  if (btnNext.checked) {
+    btnNext.push(keyWords);
+    console.log(keyWords);
+    localStorage.setItem("query di ricerca", keyWords);
+  } else {
+  }
+}*/
 
 /*const userName = document.getElementsByTagName(aria - label);
 console.log(aria - label);*/
@@ -75,8 +170,6 @@ buttonClicked.addEventListener("clicked", () => {
 
 //variabili
 
-const keyWords = [];
-
 //valori di ricerca
 /*const customMusic = function (value) {
   const keywordsSearch = document.getElementsByClass("form-check-input").value;
@@ -92,7 +185,7 @@ const keyWords = [];
 //personalizzazione delle card subito disponibili
 
 //scritte personalizzate in base all'orario
-const myDayTime = new Date();
+/*const myDayTime = new Date();
 let text = document.getElementById("greeting");
 text = "";
 if (myDayTime.getHours() < 12) {
@@ -103,6 +196,6 @@ if (myDayTime.getHours() < 12) {
   document.getElementById("greeting").innerHTML = "Good Evening! ${userName}";
 } else {
   document.getElementById("greeting").innerHTML = "I'm not sure what time it is!";
-}
+}*/
 
 //personalizzazione della musica in base a qualche criterio
