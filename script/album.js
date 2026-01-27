@@ -29,6 +29,7 @@ const playSong = function (link) {
 };
 
 // funzione per la durata
+
 // const songDuration = (seconds) => {
 //         const mins = Math.floor((seconds % 3600) / 60);
 //         const secs = Math.floor(seconds % 60);
@@ -70,7 +71,7 @@ const getData = function () {
       const titoloPrincipale = document.getElementById("descrizioneAlbum");
       titoloPrincipale.innerHTML = `  
       <h4>${albumTitle}</h4>   
-     <div class="d-flex"><img src=${artistImg} alt="profilePicture" class="rounded-circle me-2" style="width: 25px; height: 25px"/><a href="./artist.html" class="text-decoration-none text-dark"><h6>${artistName}</h6></a>  <h6> </h6></div>
+     <div class="d-flex"><img src=${artistImg} alt="profilePicture" class="rounded-circle me-2" style="width: 25px; height: 25px"/><a href="./artist.html" class="text-decoration-none text-white"><h6>${artistName}</h6></a>  <h6> </h6></div>
             <p>${type} . ${year}</p> `;
 
       // ORA FACCIO TUTTE LE CANZONI NEL ALBUM
@@ -83,7 +84,7 @@ const getData = function () {
         <div class="row justify-content-center playSong" onclick="playSong('${track.preview}');" role="button">
           <div class="col col-6 col-md-4 text-start flex-fill">
             <h5 class="mb-0">${track.title}</h5>
-            <a href="./artist.html" class="text-decoration-none text-dark"><p>${artistName}</p></a>
+            <a href="./artist.html" class="text-decoration-none text-white"><p>${artistName}</p></a>
           </div>
           <!-- 3 puntini mobile -->
           <div class="col col-6 d-md-none text-end flex-shrink-1">
