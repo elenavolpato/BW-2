@@ -84,7 +84,7 @@ const getData = function (parolaCercata) {
                <p class="text-secondary small">Artista</p>
             </div>
        `;
-        // }  ===>     ELSE IF SOPRA  -  FILTRO PER NON RIPETERE FOTO ARTISTA     <===
+        // }  <-- attenzione   ===>   ELSE IF SOPRA - FILTRO PER NON RIPETERE FOTO ARTISTA   <===
       }
 
       const albumContainer = document.getElementById("album-artisti-container");
