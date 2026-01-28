@@ -24,7 +24,6 @@ const playSong = function (link) {
   if (audio.paused) {
     console.log("if 1");
     audio.innerHTML = ` <source src= '${link}' type="audio/mpeg" />`;
-
     audio.play();
   }
 };
@@ -71,12 +70,12 @@ const getData = function () {
 
       // ORA FACCIO TUTTE LE CANZONI NEL ALBUM
       const container = document.getElementById("mainContainer");
-      console.log(tracksArray, "canzone");
+      console.log(tracksArray.preview, "canzone");
 
       tracksArray.forEach((track) => {
         // console.log(track);
         container.innerHTML += ` 
-      <div class="row justify-content-center playSong mb-3" onclick="playSong('${track.preview}');" role="button">
+        <div class="row justify-content-center playSong mb-3" onclick="playSong('${track.preview}');" role="button">
           <div class="col col-6 col-md-4 text-start flex-fill">
             <h5 class=" mb-0">${track.title}</h5>
             <a href="./artist.html" class="text-decoration-none text-white-50">${artistName}</a>
