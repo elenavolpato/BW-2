@@ -103,6 +103,15 @@
   font-size: small;
 }
 
+input[type="range"].form-range {
+  -webkit-appearance: none;
+  width: 50%;
+  height: 4px;
+  background: #555;
+  border-radius: 2px;
+  outline: none;
+}
+
 input[type="range"].form-range::-webkit-slider-runnable-track {
   height: 4px;
   background: #555;
@@ -113,7 +122,8 @@ input[type="range"].form-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 12px;
   height: 12px;
-  background: transparent;
+  background: #1db954;
+  border-radius: 50%;
   cursor: pointer;
   margin-top: -4px;
 }
@@ -121,12 +131,14 @@ input[type="range"].form-range::-webkit-slider-thumb {
 input[type="range"].form-range::-moz-range-track {
   height: 4px;
   background: #555;
+  border-radius: 2px;
 }
 
 input[type="range"].form-range::-moz-range-thumb {
   width: 12px;
   height: 12px;
-  background: transparent;
+  background: #1db954;
+  border-radius: 50%;
   border: none;
   cursor: pointer;
 }
@@ -157,10 +169,6 @@ input[type="range"].form-range:focus {
 .firstRow {
   bottom: 85px;
   z-index: 1000;
-}
-
-.mobileBox {
-  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {

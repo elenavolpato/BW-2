@@ -252,12 +252,13 @@
         <div class="position-fixed w-100 firstRow d-flex bg-dark py-3 px-2 text-light justify-content-md-between">
           <div class="col col-md-2 d-flex align-items-center gap-3">
             <div>
-              <img src="./img/like.jpg" alt="test" style="width: 40px" class="rounded-circle" id="footerImg" />
+              <img src="./assets/imgs/create.png" alt="img" style="width: 40px" class="rounded-circle" id="footerImg" />
             </div>
             <div class="d-flex flex-row flex-md-column">
-              <h6 class="mb-0 mb-md-1 me-1 me-md-0">Fat Funny Friend</h6>
-              <span class="small d-none d-md-block">Artista</span>
-              <h6 class="mb-0 d-md-none"><span>by </span>Artista</h6>
+              <h6 class="mb-0 mb-md-1 me-1 me-md-0" id="song-title">Canzone</h6>
+              <span class="small d-none d-md-block" id="song-artist1">Artista</span>
+              <span class="d-md-none me-1">by</span>
+              <h6 class="mb-0 d-md-none" id="song-artist2">Artista</h6>
             </div>
             <div class="ms-3">
               <button class="btn p-0 border-0 sideBarTextColor">
@@ -272,15 +273,17 @@
           <div class="col-auto d-none d-md-block text-center d-flex flex-column flex-grow-1">
             <div class="d-flex align-items-center gap-2 justify-content-center">
               <button class="btn p-0 border-0 text-success"><i class="bi bi-shuffle mx-2"></i></button>
-              <button class="btn p-0 border-0 sideBarTextColor"><i class="bi bi-skip-backward-fill fs-5 mx-2"></i></button>
-              <button class="btn p-0 border-0 text-light"><i class="bi bi-play-circle-fill fs-1 mx-2"></i></button>
-              <button class="btn p-0 border-0 sideBarTextColor"><i class="bi bi-skip-forward-fill fs-5 mx-2"></i></button>
+              <button class="btn p-0 border-0 sideBarTextColor" id="skipBackward"><i class="bi bi-skip-backward-fill fs-5 mx-2"></i></button>
+              <button class="btn p-0 border-0 text-light" id="playButton"><i class="bi bi-play-circle-fill fs-1 mx-2"></i></button>
+              <button class="btn p-0 border-0 sideBarTextColor" id="skipForward"><i class="bi bi-skip-forward-fill fs-5 mx-2"></i></button>
               <button class="btn p-0 border-0 text-success"><i class="bi bi-repeat mx-2"></i></button>
             </div>
             <div class="d-flex justify-content-center align-items-center">
-              <small class="me-2">0:00</small>
-              <input type="range" class="form-range" style="width: 50%" />
-              <small class="ms-2">3:00</small>
+              <small class="me-2" id="currentTime">0:00</small>
+              <div class="progress-container" style="width: 50%; height: 4px; background: #555; border-radius: 2px; position: relative">
+                <div class="progress-filled" style="width: 0%; height: 100%; background: #1db954; border-radius: 2px"></div>
+              </div>
+              <small class="ms-2" id="totalTime">00:00</small>
             </div>
           </div>
           <div class="col-2 d-flex justify-content-center align-items-center gap-3 sideBarTextColor">
@@ -288,7 +291,7 @@
             <i class="d-none d-md-block bi bi-collection-play"></i>
             <i class="bi bi-pc-display"></i>
             <i class="bi bi-heart d-md-none"></i>
-            <i class="bi bi-play-fill d-md-none fs-4"></i>
+            <button class="btn p-0 border-0 sideBarTextColor d-md-none" id="playButtonMobile"><i class="bi bi-play-fill d-md-none fs-4"></i></button>
             <i class="d-none d-md-block bi-volume-up"></i>
             <input type="range" class="form-range d-none d-md-block w-25" />
             <i class="d-none d-md-block bi bi-arrows-angle-expand small"></i>
@@ -329,6 +332,6 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
-    <script src="./script/index.js"></script>
+    <script src="./script/soundBar.js"></script>
   </body>
 </html>
