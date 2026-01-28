@@ -10,15 +10,133 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body class="bg-dark" data-bs-theme="dark">
+  <body class="bg-dar" data-bs-theme="dark">
     <!-- NAVBAR -->
 
     <!-- MAIN -->
-    <div class="container-fluid position-relative text-center">
-      <div class="row">
+    <div class="container-fluid overflow-auto">
+      <div class="row d-flex flex-nowrap">
         <!-- barra laterale dx -->
-        <div class="col bg-black me-3">1 of 3</div>
+        <div class="col bg-black d-none d-md-block me-3">
+          <section class="ms-2 sideBarTextColor">
+            <a href="#"><i class="bi bi-three-dots d-inline-block my-2 mb-3 fs-4 sideBarTextColor"></i></a>
+            <div class="d-flex flex-column align-items-start gap-3 mb-5 first-leftSideBar small">
+              <a href="" class="text-decoration-none d-flex align-items-center gap-3 text-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house sideBarTextColor" viewBox="0 0 16 16">
+                  <path
+                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"
+                  />
+                </svg>
+                Home
+              </a>
+              <a href="./index.html" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+                  />
+                </svg>
+                Cerca
+              </a>
+              <a href="#" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
+                  <path
+                    d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"
+                  />
+                </svg>
+                La tua libreria
+              </a>
+            </div>
+            <div class="d-flex flex-column align-items-start gap-3 first-leftSideBar small">
+              <a href="#" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
+                <img src="./img/create.png" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
+                Crea Playlist
+              </a>
+              <a href="" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
+                <img src="./img/like.jpg" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
+                Brani che ti piacciono
+              </a>
+              <a href="" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
+                <img src="./img/saved.png" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
+                I tuoi episodi
+              </a>
+            </div>
+            <hr class="border-1 bg-secondary my-4 me-4" />
+            <div class="flex-fill overflow-auto small pe-2 sideScrollBar second-leftSideBar">
+              <p>early stage emily syndrome (sett-ott 2022)</p>
+              <p>Be the young</p>
+              <p>"..."cit Kimiko(lug-ago 2022)</p>
+              <p>saggio vibes💃📒🩰</p>
+              <p>main character energy (mag-giu 2022)</p>
+              <p>that fucking mood 🔪</p>
+              <p>VEE, CARLOTTA E GIACOMO VANNO A BOSIO</p>
+              <p>An Emily Winchester kind of mood 🔪🖕</p>
+              <p class="d-flex justify-content-between align-items-center">
+                landing page (mar-apr 2022)
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708z"
+                  />
+                  <path
+                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"
+                  />
+                </svg>
+              </p>
+              <p>2021 lol</p>
+              <p class="d-flex justify-content-between align-items-center">
+                cosa cazzo vuol dire questa...
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708z"
+                  />
+                  <path
+                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"
+                  />
+                </svg>
+              </p>
+              <p>honey and glass (nov-dic 2021)</p>
+              <p>(Revenge) Training Arc 🦍</p>
+              <p>Lidia 🤝 Emily</p>
+              <p>minecraft e nintendo switch (sept-oct 2021)</p>
+              <p>silvano d'orba? I hardly know her (lug - ago 2021)</p>
+              <p>Culo 2021</p>
+              <p>Frah Quintale Mix</p>
+              <p>Francesco Guccini Mix</p>
+              <p class="d-flex justify-content-between align-items-center">
+                Geolier - Tutto è possibile
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708z"
+                  />
+                  <path
+                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"
+                  />
+                </svg>
+              </p>
+              <p>Old-School Hip-Hop</p>
+              <p>Harlem 1985</p>
+              <p>Movie Soundtracks</p>
+              <p>B DIFFERENT</p>
+              <p>Rhytim and Poetry</p>
+              <p class="d-flex justify-content-between align-items-center">
+                Kanye West Mix
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708z"
+                  />
+                  <path
+                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"
+                  />
+                </svg>
+              </p>
+            </div>
+          </section>
+        </div>
         <!-- SEZIONE CENTRALE -->
         <div class="col-12 col-md-8">
           2 of 3 (wider)
@@ -82,64 +200,109 @@
               </div>
             </div>
             <!-- sezione con 6 card con i generi musicali -->
-            <div class="container-fluid text-center">
-              <div class="row d-flex flex-wrap">
-                <div class="col">
-                  <!--card orizzontale desktop-->
-                  <div class="card mb-3" style="max-width: 540px">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="./css/media/image-17.jpg" class="img-fluid rounded-start" alt="..." />
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Horizontal card content.</p>
+            <div class="container-fluid">
+              <div class="row g-3">
+                <!--carosello 2 card mobile-->
+                <div class="container-fluid mt-4">
+                  <div id="rowCard" class="row g-3">
+                    <div class="col-6 col-md-4">
+                      <div class="card shadow-sm" style="height: 80px">
+                        <div class="row g-0 h-100">
+                          <div class="col-auto p-0">
+                            <img src="./css/media/image-17.jpg" style="width: 80px; height: 80px; object-fit: cover" alt="Immagine" />
+                          </div>
+                          <div class="col">
+                            <div class="card-body p-3 d-flex align-items-center h-100">
+                              <h5 class="card-text mb-0" style="font-size: 0.95rem; font-weight: 500">ciao menego</h5>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <!--fine card orizzontale-->
-                </div>
-                <div class="col">
-                  <!--card orizzontale desktop-->
-                  <div class="card mb-3" style="max-width: 540px">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="./css/media/image-17.jpg" class="img-fluid rounded-start" alt="..." />
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Horizontal card content.</p>
+                    <!--<div class="col-6 col-md-4">
+                      <div class="card shadow-sm" style="height: 80px">
+                        <div class="row g-0 h-100">
+                          <div class="col-auto p-0">
+                            <img src="./img/like.jpg" style="width: 80px; height: 80px; object-fit: cover" alt="Immagine" />
+                          </div>
+                          <div class="col">
+                            <div class="card-body p-3 d-flex align-items-center h-100">
+                              <h5 class="card-text mb-0" style="font-size: 0.95rem; font-weight: 500">Brani che ti piacciono</h5>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <!--fine card orizzontale-->
-                </div>
-                <div class="col">
-                  <!--card orizzontale desktop-->
-                  <div class="card mb-3" style="max-width: 540px">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="./css/media/image-17.jpg" class="img-fluid rounded-start" alt="..." />
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Horizontal card content.</p>
+                    <div class="col-6 col-md-4">
+                      <div class="card shadow-sm" style="height: 80px">
+                        <div class="row g-0 h-100">
+                          <div class="col-auto p-0">
+                            <img src="./css/media/image-17.jpg" style="width: 80px; height: 80px; object-fit: cover" alt="Immagine" />
+                          </div>
+                          <div class="col">
+                            <div class="card-body p-3 d-flex align-items-center h-100">
+                              <h5 class="card-text mb-0" style="font-size: 0.95rem; font-weight: 500">ciao menego</h5>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
+                    <div class="col-6 col-md-4">
+                      <div class="card shadow-sm" style="height: 80px">
+                        <div class="row g-0 h-100">
+                          <div class="col-auto p-0">
+                            <img src="./css/media/image-17.jpg" style="width: 80px; height: 80px; object-fit: cover" alt="Immagine" />
+                          </div>
+                          <div class="col">
+                            <div class="card-body p-3 d-flex align-items-center h-100">
+                              <h5 class="card-text mb-0" style="font-size: 0.95rem; font-weight: 500">ciao menego</h5>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <div class="card shadow-sm" style="height: 80px">
+                        <div class="row g-0 h-100">
+                          <div class="col-auto p-0">
+                            <img src="./css/media/image-17.jpg" style="width: 80px; height: 80px; object-fit: cover" alt="Immagine" />
+                          </div>
+                          <div class="col">
+                            <div class="card-body p-3 d-flex align-items-center h-100">
+                              <h5 class="card-text mb-0" style="font-size: 0.95rem; font-weight: 500">ciao menego</h5>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <div class="card shadow-sm" style="height: 80px">
+                        <div class="row g-0 h-100">
+                          <div class="col-auto p-0">
+                            <img src="./css/media/image-17.jpg" style="width: 80px; height: 80px; object-fit: cover" alt="Immagine" />
+                          </div>
+                          <div class="col">
+                            <div class="card-body p-3 d-flex align-items-center h-100">
+                              <h5 class="card-text mb-0" style="font-size: 0.95rem; font-weight: 500">ciao menego</h5>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>-->
                   </div>
-                  <!--fine card orizzontale-->
                 </div>
                 <!-- sezione con titolo h3-->
                 <div class="container-fluid text-start mt-5 mb-1">
                   <div class="row">
-                    <div class="col">
+                    <div class="col d-flex justify-content-between">
                       <h3>I tuoi artisti preferiti</h3>
+                      <a class="btn text-white" href="#input-ricerca" role="button"
+                        ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                          <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+                          />
+                        </svg>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -162,9 +325,115 @@
           </div>
         </div>
         <!-- barra laterale dx -->
-        <div class="col bg-black ms-3">3 of 3</div>
+        <div class="col bg-black d-none d-md-block ms-3">
+          <section>
+            <div class="d-flex justify-content-end align-items-center gap-4 mt-2">
+              <button class="btn p-0 border-0 text-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+                </svg>
+              </button>
+              <button class="btn p-0 border-0 text-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-fullscreen" viewBox="0 0 16 16">
+                  <path
+                    d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5M.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5"
+                  />
+                </svg>
+              </button>
+              <button class="btn p-0 border-0 text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                  <path
+                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="d-md-flex flex-md-column text-md-center flex-lg-row d-flex text-lg-start justify-content-between align-items-center gap-2 mt-1 mb-4">
+              <h6 class="flex-grow-1 m-0 text-light fs-5 ps-2">Attività amici</h6>
+              <div class="d-lg-flex">
+                <button class="btn p-0 border-0 text-secondary"><i class="bi bi-person-plus fs-5"></i></button>
+                <button class="btn p-0 border-0 text-secondary"><i class="bi bi-x fs-3"></i></button>
+              </div>
+            </div>
+            <div class="container small">
+              <!-- ITEM -->
+              <div class="row gap-3">
+                <div class="d-flex mb-3 p-0">
+                  <div class="me-2 flex-shrink-0">
+                    <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                  </div>
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold">Cristian Cicale</span>
+                      <span class="small d-none d-lg-block">2 ore</span>
+                    </div>
+                    <div class="small"><span>081</span> • Geolier</div>
+                    <div class="small">◎ Tutto è possibile</div>
+                  </div>
+                </div>
+
+                <div class="d-flex mb-3 p-0">
+                  <div class="me-2 flex-shrink-0">
+                    <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                  </div>
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold">Elena Volpato</span>
+                      <span class="small d-none d-lg-block">3 ore</span>
+                    </div>
+                    <div class="small"><span>Levitating</span> • Dua Lipa</div>
+                    <div class="small">◎ Future Nostalgia</div>
+                  </div>
+                </div>
+
+                <div class="d-flex mb-3 p-0">
+                  <div class="me-2 flex-shrink-0">
+                    <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                  </div>
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold">Faizan Shahzad Dar</span>
+                      <span class="small d-none d-lg-block">5 ore</span>
+                    </div>
+                    <div class="small"><span>Till I Collapse</span> • Eminem</div>
+                    <div class="small">◎ The Eminem Show</div>
+                  </div>
+                </div>
+
+                <div class="d-flex mb-3 p-0">
+                  <div class="me-2 flex-shrink-0">
+                    <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                  </div>
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold">Giulia Crepaldi</span>
+                      <span class="small d-none d-lg-block">4 ore</span>
+                    </div>
+                    <div class="small"><span>Bad Romance</span> • Lady Gaga</div>
+                    <div class="small">◎ The Fame Monster</div>
+                  </div>
+                </div>
+
+                <div class="d-flex mb-3 p-0">
+                  <div class="me-2 flex-shrink-0">
+                    <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                  </div>
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold">Emanuele Piemonte</span>
+                      <span class="small d-none d-lg-block">1 ora</span>
+                    </div>
+                    <div class="small"><span>Demons</span> • Imagine Dragons</div>
+                    <div class="small">◎ Night Visions</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
+
     <script src="./script/home.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

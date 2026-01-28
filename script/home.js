@@ -10,7 +10,7 @@ const getAlbums = function () {
       const crdAlbum = document.getElementById("cardAlbum");
       crdAlbum.innerHTML = ""; // Puliamo per evitare duplicati
 
-      const randomAlbums = data.data.sort(() => Math.random() - 0.5).slice(0, 6);
+      const randomAlbums = data.data.sort(() => Math.random() - 0.5).slice(0, 8);
       for (let i = 0; i < randomAlbums.length; i++) {
         const isActive = i === 0 ? "active" : "";
         crdAlbum.innerHTML += `
@@ -31,7 +31,9 @@ const getAlbums = function () {
                 <div class="d-flex gap-2 mt-4 mb-2">
                   <button type="button" class="btn btn-success rounded-pill px-4 py-2 fw-bold text-black">Play</button>
                   <button type="button" class="btn btn-outline-light rounded-pill px-4 py-2 fw-bold">Salva</button>
-                  <button type="button" class="btn text-white"><i class="bi bi-three-dots"></i></button>
+                  <a class="btn text-white" href="#input-ricerca" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+</svg></a >
                 </div>
               </div>
             </div>
@@ -68,6 +70,39 @@ const welcomeBack = function () {
 };
 
 welcomeBack();
+
+const myTrack = function () {
+  fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=album")
+    .then((Response) => {
+      if (Response.ok) return Response.json();
+      throw new Error("la response ha un problema");
+    })
+    .then((data) => {
+      const rowCrd = document.getElementById("rowCard");
+      // rowCrd.innerHTML = ""; // Puliamo per evitare duplicati
+
+      const randomTracks = data.data.sort(() => Math.random() - 0.5).slice(0, 5);
+      for (let i = 0; i < randomTracks.length; i++) {
+        rowCrd.innerHTML += `
+                    <div class="col-6 col-md-4">
+                      <div class="card shadow-sm" style="height: 80px">
+                        <div class="row g-0 h-100">
+                          <div class="col-auto p-0">
+                            <img src="${randomTracks[i].album.cover_small}" style="width: 80px; height: 80px; object-fit: cover" alt="Immagine" />
+                          </div>
+                          <div class="col">
+                            <div class="card-body p-3 d-flex align-items-center h-100">
+                              <h5 class="card-text mb-0" style="font-size: 0.95rem; font-weight: 500">${randomTracks[i].album.title}</h5>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>`;
+      }
+    })
+    .catch((Error) => console.log("ERRORE NELLA FETCH", Error));
+};
+myTrack();
 
 const myArtist = function () {
   const keyWords = JSON.parse(localStorage.getItem("selectedGenres"));
