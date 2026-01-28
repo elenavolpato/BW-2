@@ -56,7 +56,8 @@ const getData = function (parolaCercata) {
           </div>
       `;
       });
-      const primiSei = songs.slice(1, 8);
+      const uniqueByArtist = _.uniqBy(songs, (item) => item.artist.id);
+      const primiSei = uniqueByArtist.splice(0, 7);
       const artistiContainer = document.getElementById("artisti-container");
 
       artistiContainer.innerHTML = `
@@ -84,7 +85,7 @@ const getData = function (parolaCercata) {
                <p class="text-secondary small">Artista</p>
             </div>
        `;
-        // }  ===>     ELSE IF SOPRA  -  FILTRO PER NON RIPETERE FOTO ARTISTA     <===
+        // }  <-- attenzione   ===>   ELSE IF SOPRA - FILTRO PER NON RIPETERE FOTO ARTISTA   <===
       }
 
       const albumContainer = document.getElementById("album-artisti-container");

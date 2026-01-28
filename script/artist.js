@@ -1,201 +1,98 @@
-// creazione fetch per gli artisti sul modale
-const btnNext = document.getElementById("btnNext");
-const keyWords = [];
+//when integrated with home page use this to replace the artist ID
+/* const url = location.search;
+const allTheParameters = new URLSearchParams(url);
+const artistID = allTheParameters.get("id"); */
 
-const getArtists = function () {
-  fetch(" https://striveschool-api.herokuapp.com/api/deezer/search?q=artist")
-    .then((Response) => {
-      console.log("RESPONSE", Response);
-      if (Response.ok) {
-        return Response.json();
+const artistID = "126";
+
+const artistURL = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistID}`;
+let numberOfSongs = 5;
+
+const renderArtistInfo = () => {
+  const artistName = document.querySelectorAll(".artist-name");
+  const hero = document.getElementById("hero");
+  const likedBandImg = document.getElementById("band-you-liked-img");
+  const numberOfListeners = document.getElementById("number-listeners");
+
+  fetch(artistURL)
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
       } else {
-        throw new Error("la response ha un problema");
+        throw new Error("Error in retrieving data");
       }
     })
     .then((data) => {
-      console.log("EVENTI RICEVUTI", data);
-
-      const row = document.getElementById("cardCheck");
-      row.innerHTML = "";
-
-      for (let i = 0; i < Math.min(data.data.length, 9); i++) {
-        row.innerHTML += `<div class= "col-4 mt-2 mb-4"> 
-        <input type="checkbox" class="btn-check" value="${data.data[i].artist.id}" id="btn-check-${i}" autocomplete="off" />
-                    <label class="btn" for="btn-check-${i}"
-                      ><img src="${data.data[i].artist.picture_medium}" class="card-img-top card-img-top rounded-circle p-3" alt="${data.data[i].title_short}" />${data.data[i].artist.name}</label
-                    > </div>`;
-      }
-      const checkBox = document.querySelectorAll(".btn-check");
-      console.log(checkBox);
-      Array.from(checkBox)
-        .forEach((button) => {
-          button.addEventListener("click", () => {
-            if (button.checked) {
-              const valueModalCard = button.value;
-              keyWords.push(valueModalCard);
-              localStorage.setItem("selectedArtists", JSON.stringify(keyWords));
-            }
-            btnNext.addEventListener("click", () => {
-              if (keyWords.length === 0) {
-                localStorage.setItem("randomMode", "true");
-              }
-            });
-          });
-        })
-        .catch((Error) => {
-          console.log("ERRORE NELLA FETCH", Error);
-        });
+      console.log("artistdata", data);
+      artistName.forEach((element) => (element.innerText = data.name));
+      hero.style.backgroundImage = `url(${data.picture_xl})`;
+      likedBandImg.src = data.picture_medium;
+      likedBandImg.alt = `${data.name} picture`;
+      numberOfListeners.innerText = `${data.nb_fan.toLocaleString("de-DE")} ascoltatori mensile`;
+    })
+    .catch((err) => {
+      console.error("error", err);
     });
 };
 
-// 1.apparizione del modale all'apertura dello schermo
-
-const myModal = new bootstrap.Modal(document.getElementById("loginModal"), {
-  keyboard: false,
-  backdrop: "static",
-});
-
-window.addEventListener("DOMContentLoaded", (event) => {
-  console.log("page is fully loaded");
-  myModal.show();
-});
-
-// 2. se non viene copilato l'username non può andare avanti
-
-const modalElement = document.getElementById("loginModal");
-
-const myModal2 = new bootstrap.Modal(document.getElementById("loginModal2"), {
-  keyboard: false,
-  backdrop: "static",
-});
-
-const forms = document.querySelectorAll(".needs-validation");
-
-Array.from(forms).forEach((form) => {
-  form.addEventListener(
-    "submit",
-    (event) => {
-      if (!form.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
+const renderSongList = () => {
+  fetch(artistURL + `/top?limit=${numberOfSongs}`)
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
       } else {
-        const userName = document.getElementById("userName").value;
-        localStorage.setItem("username", userName);
-        event.preventDefault();
-        myModal.hide();
-        modalElement.addEventListener(
-          "hidden.bs.modal",
-          () => {
-            getArtists();
-            myModal2.show();
-          },
-          { once: true },
-        );
+        throw new Error("Error in retrieving data");
       }
-      form.classList.add("was-validated");
-    },
-    false,
-  );
+    })
+    .then((data) => {
+      //console.log("data", data);
+      const mostPlayedSongs = document.getElementById("most-played-songs");
+
+      //converts seconds into minutes and seconds
+      const songDuration = (seconds) => {
+        const mins = Math.floor((seconds % 3600) / 60);
+        const secs = Math.floor(seconds % 60);
+
+        return `${mins}:${secs.toString().padStart(2, "0")}`;
+      };
+
+      const songsHTML = data.data
+        .map(
+          (item) => `
+          <div class="row song-list my-2 align-items-center">
+            <p class="col-1 text-white-50 text-end mb-0"> ${data.data.indexOf(item) + 1}</p>
+            <img 
+                class="col-auto" 
+                src="${item.album.cover}" 
+                alt="Album ${item.album.title} cover"/>
+            <p class="col fw-bold mb-0">${item.title}</p>
+            <p class="col-2 text-end text-white-50 mb-0">${item.rank.toLocaleString("de-DE")}</p>
+            <p class="col-1 text-white-50 mb-0">${songDuration(item.duration)}</p>
+          </div>
+            `,
+        )
+        .join("");
+
+      mostPlayedSongs.innerHTML =
+        songsHTML + (numberOfSongs <= 5 ? `<button class="btn text-white-50 my-3  fw-bold text-start" id="see-more">VISUALIZA ALTRO</button>` : "");
+
+      const seeMoreBtn = document.getElementById("see-more");
+      seeMoreBtn.addEventListener("click", () => {
+        numberOfSongs = 15;
+        renderSongList();
+      });
+    })
+
+    .catch((err) => {
+      console.error("error", err);
+    });
+};
+renderSongList();
+
+renderArtistInfo();
+
+const followBtn = document.getElementById("follow-btn");
+
+followBtn.addEventListener("click", () => {
+  followBtn.innerText = followBtn.innerText === "FOLLOWING" ? "FOLLOW" : "FOLLOWING";
 });
-
-// 3. prendo la proprietà di username da inserire nei template literals
-
-btnNext.addEventListener("submit", (event) => {
-  event.preventDefault();
-  myModal2.hide();
-  modalElement.addEventListener("hidden.bs.modal", () => {
-    window.location.href = "index.html";
-  });
-  {
-    once: true;
-  }
-});
-
-//nella home page
-
-// 4. metto i check in un array
-/*const keyWords = [];
-const checkBox = document.querySelectorAll(".btn-check");
-console.log(checkBox);
-
-Array.from(checkBox).forEach((button) => {
-  button.addEventListener("click", () => {
-    if (button.checked) {
-      e;
-      const valueModalCard = document.getElementById("btn-check-${i}").value;
-      keyWords.push(valueModalCard);
-      localStorage.setItem("selectedGenres", JSON.stringify(keyWords));
-    } else if (keyWords.length === 0) {
-      localStorage.setItem("randomMode", "true");
-    }
-  });
-});*/
-
-console.log(keyWords);
-
-/*const btnNext = document.querySelectorAll("#loginModal2 .btn");
-console.log(btnNext);
-const keyWords = [];
-
-function validate() {
-  //btnNext.addEventListener("click", () => {
-  if (btnNext.checked) {
-    btnNext.push(keyWords);
-    console.log(keyWords);
-    localStorage.setItem("query di ricerca", keyWords);
-  } else {
-  }
-}*/
-
-/*const userName = document.getElementsByTagName(aria - label);
-console.log(aria - label);*/
-
-// 3. non appare più una volta completato
-
-//5. chiusura primo modale
-
-/*const myModal2 = new bootstrap.Modal(document.getElementById("loginModal2"), {
-  backdrop: "static",
-});
-const btnNext = document.getElementById("btnNext");*/
-
-4; /*btnNext.addEventListener("click", (event) => {
-  myModal.hide();
-});*/
-
-/*const buttonClicked = document.getElementById("buttonLogin");
-buttonClicked.addEventListener("clicked", () => {
-  loginModal.style.display = "none";
-});*/
-
-//variabili
-
-//valori di ricerca
-/*const customMusic = function (value) {
-  const keywordsSearch = document.getElementsByClass("form-check-input").value;
-  const checked = true;
-
-  if (checked === true) {
-    return keywordsSearch.push(keyWords);
-    console.log(keyWords);
-    console.log(customMusic);
-  }
-};*/
-
-//personalizzazione delle card subito disponibili
-
-//scritte personalizzate in base all'orario
-/*const myDayTime = new Date();
-let text = document.getElementById("greeting");
-text = "";
-if (myDayTime.getHours() < 12) {
-  document.getElementById("greeting").innerHtml = "Buongiorno ${userName}";
-} else if (myDate.getHours() >= 12 && myDate.getHours() <= 17) {
-  document.getElementById("greeting").innerHTML = "Good Afternoon, ${userName}!";
-} else if (myDate.getHours() > 17 && myDate.getHours() <= 24) {
-  document.getElementById("greeting").innerHTML = "Good Evening! ${userName}";
-} else {
-  document.getElementById("greeting").innerHTML = "I'm not sure what time it is!";
-}*/
-
-//personalizzazione della musica in base a qualche criterio

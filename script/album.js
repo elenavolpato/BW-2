@@ -1,5 +1,36 @@
 const albumsURL =
-  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062";
+  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"; //6605779
+//////////////
+const audio = document.getElementById("mioAudio");
+
+// funzione per stoppare e riavviare una canzone dal tasto play/stop
+const btnPlayPause = document.getElementById("btnPlayPause");
+function togglePlay() {
+  if (audio.paused) {
+    audio.play();
+    btnPlayPause.textContent = "Pausa";
+  } else {
+    audio.pause();
+    btnPlayPause.textContent = "Play";
+  }
+}
+
+//funzione che avvia la canzone in base a quale si clicca che si avvierà al click sul div
+const playSong = function (link) {
+  audio.pause();
+  audio.currentTime = 0;
+  audio.load();
+
+  if (audio.paused) {
+    console.log("if 1");
+    audio.innerHTML = ` <source src= '${link}' type="audio/mpeg" />`;
+    audio.play();
+  }
+};
+
+// funzione per la durata
+
+///////////////
 
 const getData = function () {
   fetch(albumsURL)
@@ -27,26 +58,27 @@ const getData = function () {
       );
       copertinaPrincipale.innerHTML = `
       <img src=${cover} alt="image" class="image-fluid"/>
+    
       `;
 
       // PER INSERIRE LA DESCRIZIONE DEL ALBUM AL SUO POSTO
       const titoloPrincipale = document.getElementById("descrizioneAlbum");
       titoloPrincipale.innerHTML = `  
-      <h2>${albumTitle}</h2>   
-     <div class="d-flex"><img src=${artistImg} alt="profilePicture" class="rounded-circle me-2" style="width: 25px; height: 25px"/>  <h6>${artistName} </h6></div>
-            <p>${type} . ${year}</p> `;
+      <h4>${albumTitle}</h4>   
+     <div class="d-flex"><img src=${artistImg} alt="profilePicture" class="rounded-circle me-2" style="width: 25px; height: 25px"/><a href="./artist.html" class="text-decoration-none text-white"><h6>${artistName}</h6></a>  <h6> </h6></div>
+            <p class="text-white-50">${type} . ${year}</p> `;
 
       // ORA FACCIO TUTTE LE CANZONI NEL ALBUM
       const container = document.getElementById("mainContainer");
-      console.log(container, "canzone");
+      console.log(tracksArray.preview, "canzone");
 
       tracksArray.forEach((track) => {
-        const container = "";
+        // console.log(track);
         container.innerHTML += ` 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center playSong mb-3" onclick="playSong('${track.preview}');" role="button">
           <div class="col col-6 col-md-4 text-start flex-fill">
-            <h3>${track.album.title}</h3>
-            <p>${artistName}</p>
+            <h5 class=" mb-0">${track.title}</h5>
+            <a href="./artist.html" class="text-decoration-none text-white-50">${artistName}</a>
           </div>
           <!-- 3 puntini mobile -->
           <div class="col col-6 d-md-none text-end flex-shrink-1">
@@ -60,7 +92,7 @@ const getData = function () {
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-three-dots-vertical"
+                  class="bi bi-three-dots-vertical text-white-50"
                   viewBox="0 0 16 16">
                   <path
                     d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
@@ -82,24 +114,7 @@ const getData = function () {
         </div>
         `;
       });
-
-      for (let i = 0; i < tracksArray.length; i++) {
-        console.log(tracksArray[i].title);
-        canzone.innerHTML = `
-             <h3>${tracksArray[i].title}</h3>
-              <p>${artistName}</p>
-
-          `;
-      }
-
-      console.log("album", album);
-      const rigaPerArtista = document.querySelectorAll(".nome-artista");
-      console.log(rigaPerArtista, "oaihduosa");
-      console.log(album.artist);
-      //CICLO FOR PER CICLARE LE RIGHE E I
-      rigaPerArtista.forEach((riga) => {
-        riga.innerHTML += album;
-      });
+      // PER AUDIO
     })
     .catch((err) => {
       console.log("errore", err);

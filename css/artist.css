@@ -1,1 +1,59 @@
-/*# sourceMappingURL=artist.css.map */
+img.user-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  display: block;
+}
+
+header {
+  background-image: URL("https://placedog.net/800x300");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 400px;
+  background-position: top;
+}
+
+main {
+  background: #111111;
+  background: linear-gradient(2deg, rgba(17, 17, 17, 1) 0%, rgba(32, 32, 32, 1) 100%);
+}
+
+.fa-circle-check {
+  height: 16px;
+  margin-top: 5px;
+}
+
+.fa-circle-play {
+  font-size: 65px;
+}
+
+.song-list img {
+  height: 50px;
+  width: 75px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.img-bands-liked {
+  position: relative;
+  height: 60px;
+}
+
+.img-bands-liked img {
+  width: 60px;
+}
+
+.fa-gratipay {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+button.hidden {
+  display: none;
+}
+
+.player {
+  margin-left: -12px !important;
+}
