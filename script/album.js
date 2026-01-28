@@ -64,29 +64,31 @@ const getData = function () {
         "copertinaPrincipale",
       );
       copertinaPrincipale.innerHTML = `
-      <img src=${cover} alt="image" class=""/>
+      <img src=${cover} alt="image" class="img-fluid"/>
     
       `;
 
       // PER INSERIRE LA DESCRIZIONE DEL ALBUM AL SUO POSTO
       const titoloPrincipale = document.getElementById("descrizioneAlbum");
       titoloPrincipale.innerHTML = `  
-      <h4>${albumTitle}</h4>   
+      <h1>${albumTitle}</h1>   
      <div class="d-flex"><img src=${artistImg} alt="profilePicture" class="rounded-circle me-2" style="width: 25px; height: 25px"/><a href="./artist.html" class="text-decoration-none text-white"><h6>${artistName}</h6></a>  <h6> </h6></div>
-            <p class="text-white-50">${type} . ${year}</p> `;
+            <p class="sideBarTextColor">${type} . ${year}</p> `;
 
       // ORA FACCIO TUTTE LE CANZONI NEL ALBUM
       const container = document.getElementById("mainContainer");
       console.log(tracksArray.preview, "canzone");
 
-      tracksArray.forEach((track) => {
+      tracksArray.forEach((track, i) => {
         const timing = songDuration(track.duration);
+        i = i + 1;
         console.log(timing);
         container.innerHTML += ` 
         <div class="row justify-content-center playSong mb-3" onclick="playSong('${track.preview}');" role="button">
-          <div class="col col-6 col-md-4 text-start flex-fill">
-            <h5 class=" mb-0">${track.title}</h5>
-            <a href="./artist.html" class="text-decoration-none text-white-50">${artistName}</a>
+          <div class="col col-6 col-md-4 text-start flex-fill pe-0">
+         
+         <h5 class=" mb-0 d-flex">  ${track.title}</h5>
+            <a href="./artist.html" class="text-decoration-none sideBarTextColor">${artistName}</a>
           </div>
           <!-- 3 puntini mobile -->
           <div class="col col-6 d-md-none text-end flex-shrink-1">
@@ -100,7 +102,7 @@ const getData = function () {
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-three-dots-vertical text-white-50"
+                  class="bi bi-three-dots-vertical sideBarTextColor"
                   viewBox="0 0 16 16">
                   <path
                     d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
@@ -115,9 +117,9 @@ const getData = function () {
           <!-- 3 puntini mobile finish -->
           <!-- versione computer -->
           <div class="col col-md-4 d-none d-md-block text-end">
-            <p>${track.rank}</p>
+            <p class="sideBarTextColor">${track.rank}</p>
           </div>
-          <div class="col col-md-4 d-none d-md-block text-end">${timing}</div>
+          <div class="col col-md-4 d-none d-md-block text-end sideBarTextColor">${timing}</div>
           <!-- verisione computer -->
         </div>
         `;
