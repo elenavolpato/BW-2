@@ -1,101 +1,169 @@
-// creazione fetch per gli artisti sul modale
-const btnNext = document.getElementById("btnNext");
-let keyWords = []; // Usiamo let per poterlo gestire meglio
+// creazione fetch per album
 
-const getArtists = function () {
-  fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=artist")
+const getAlbums = function () {
+  fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=album")
     .then((Response) => {
       if (Response.ok) return Response.json();
       throw new Error("la response ha un problema");
     })
     .then((data) => {
-      const row = document.getElementById("cardCheck");
-      row.innerHTML = ""; // Puliamo per evitare duplicati
+      const crdAlbum = document.getElementById("cardAlbum");
+      crdAlbum.innerHTML = ""; // Puliamo per evitare duplicati
 
-      for (let i = 0; i < Math.min(data.data.length, 9); i++) {
-        row.innerHTML += `
-          <div class="col-4 mt-2 mb-4"> 
-            <input type="checkbox" class="btn-check" value="${data.data[i].artist.id}" id="btn-check-${i}" autocomplete="off" />
-            <label class="btn" for="btn-check-${i}">
-              <img src="${data.data[i].artist.picture_medium}" class="card-img-top rounded-circle p-3" />
-              <span class="text-white small">${data.data[i].artist.name}</span>
-            </label>
+      const randomAlbums = data.data.sort(() => Math.random() - 0.5).slice(0, 6);
+      for (let i = 0; i < randomAlbums.length; i++) {
+        const isActive = i === 0 ? "active" : "";
+        crdAlbum.innerHTML += `
+                 <div class="carousel-item ${isActive}">
+            <div class="row align-items-center">
+              <div class="col-4">
+                <img src="${randomAlbums[i].album.cover_big}" class="d-block w-100 shadow" alt="${randomAlbums[i].album.title}" />
+              </div>
+              <div class="col-8 text-start text-white">
+                <p class="small mb-1">ALBUM</p>
+                <div class="d-flex mb-3">
+                  <div class="ms-auto p-2 opacity-50 small">NASCONDI ANNUNCI</div>
+                </div>
+                <h1 class="display-4 fw-bold">${randomAlbums[i].album.title}</h1>
+                <p class="fs-5">${randomAlbums[i].artist.name}</p>
+                <p>Ascolta il nuovo album di ${randomAlbums[i].artist.name}!</p>
+               
+                <div class="d-flex gap-2 mt-4 mb-2">
+                  <button type="button" class="btn btn-success rounded-pill px-4 py-2 fw-bold text-black">Play</button>
+                  <button type="button" class="btn btn-outline-light rounded-pill px-4 py-2 fw-bold">Salva</button>
+                  <button type="button" class="btn text-white"><i class="bi bi-three-dots"></i></button>
+                </div>
+              </div>
+            </div>
           </div>`;
       }
-
-      // NOTA: Abbiamo tolto i listener dai singoli checkbox e dal btnNext qui dentro
-      // perché li gestiremo globalmente in modo più pulito.
     })
     .catch((Error) => console.log("ERRORE NELLA FETCH", Error));
 };
 
-// 1. Apparizione modale (Il tuo codice originale)
-const myModal = new bootstrap.Modal(document.getElementById("loginModal"), {
-  keyboard: false,
-  backdrop: "static",
-});
+getAlbums();
 
-window.addEventListener("DOMContentLoaded", () => {
-  myModal.show();
-});
+const welcomeBack = function () {
+  let user = localStorage.getItem("username");
 
-// 2. Validazione Username (Il tuo codice originale)
-const modalElement = document.getElementById("loginModal");
-const myModal2 = new bootstrap.Modal(document.getElementById("loginModal2"), {
-  keyboard: false,
-  backdrop: "static",
-});
+  const greeting = document.getElementById("welcome");
+  greeting.innerHTML = "";
 
-const forms = document.querySelectorAll(".needs-validation");
-Array.from(forms).forEach((form) => {
-  form.addEventListener(
-    "submit",
-    (event) => {
-      event.preventDefault();
-      if (!form.checkValidity()) {
-        event.stopPropagation();
-      } else {
-        const userName = document.getElementById("userName").value;
-        localStorage.setItem("username", userName);
-        myModal.hide();
-        modalElement.addEventListener(
-          "hidden.bs.modal",
-          () => {
-            getArtists();
-            myModal2.show();
-          },
-          { once: true },
-        );
-      }
-      form.classList.add("was-validated");
-    },
-    false,
-  );
-});
+  const myDate = new Date();
 
-// 3. SISTEMAZIONE SUBMIT (Il pezzo mancante)
-// Usiamo il click sul bottone e raccogliamo i dati alla fine
-btnNext.addEventListener("click", (event) => {
-  event.preventDefault();
+  const hour = myDate.getHours();
+  console.log("Ora attuale:", hour);
 
-  // Troviamo tutti i checkbox che l'utente ha spuntato al momento del click
-  const checkedBoxes = document.querySelectorAll(".btn-check:checked");
-  keyWords = Array.from(checkedBoxes).map((cb) => cb.value);
-
-  if (keyWords.length === 0) {
-    localStorage.setItem("randomMode", "true");
+  if (hour >= 5 && hour < 12) {
+    greeting.innerHTML = `Buongiorno, ${user}!`;
+  } else if (hour >= 12 && hour <= 17) {
+    greeting.innerHTML = `Studiamo insieme, ${user}?`;
+  } else if (hour > 17 && hour <= 23) {
+    greeting.innerHTML = `Rilassati con un po' di musica, ${user}`;
   } else {
-    localStorage.setItem("selectedArtists", JSON.stringify(keyWords));
-    localStorage.removeItem("randomMode"); // Puliamo il random se ci sono scelte
+    greeting.innerHTML = `L'ultima prima di dormire, ${user}?`;
   }
 
-  // Chiudiamo il modale e cambiamo pagina
-  myModal2.hide();
-  document.getElementById("loginModal2").addEventListener(
-    "hidden.bs.modal",
-    () => {
-      window.location.href = "home.html"; // Ti consiglio home.html per non tornare al login
-    },
-    { once: true },
-  );
-});
+  //greeting.innerHTML = `<h2>${message}</h2>`;
+};
+
+welcomeBack();
+
+const myArtist = function () {
+  const keyWords = JSON.parse(localStorage.getItem("selectedGenres"));
+
+  if (keyWords && keyWords.length > 0) {
+    const fetchPromises = [];
+
+    for (let i = 0; i < keyWords.length; i++) {
+      const singolaFetch = fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${keyWords[i]}`).then((response) => {
+        if (response.ok) return response.json();
+        throw new Error("Errore nella response");
+      });
+      fetchPromises.push(singolaFetch);
+    }
+
+    Promise.all(fetchPromises)
+      .then((tuttiIRisultati) => {
+        console.log("TUTTI I RISULTATI:", tuttiIRisultati);
+        const tuttiGliArtisti = [];
+        for (let i = 0; i < tuttiIRisultati.length; i++) {
+          const artistiDiQuestaRicerca = tuttiIRisultati[i].data;
+
+          for (let j = 0; j < artistiDiQuestaRicerca.length; j++) {
+            tuttiGliArtisti.push(artistiDiQuestaRicerca[j]);
+          }
+          console.log("TUTTI GLI ARTISTI COMBINATI:", tuttiGliArtisti);
+        }
+
+        const randomArtists = tuttiGliArtisti.sort(() => Math.random() - 0.5).slice(0, 4);
+        console.log("RANDOM ARTISTS (4):", randomArtists);
+        const carouselArtists = document.getElementById("carouselDesktop");
+        console.log("ELEMENTO CAROUSEL:", carouselArtists);
+        carouselArtists.innerHTML = "";
+
+        for (let i = 0; i < randomArtists.length; i++) {
+          const isActive = i === 0 ? "active" : "";
+          carouselArtists.innerHTML += `<div class="carousel-item ${isActive}">
+                        <div class="row gx-2 flex-nowrap">
+                          <div class="col-md-3 g-2">
+                            <img src="${randomArtists[0].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+                            <h5 class="text-white text-center">${randomArtists[0].artist.name}</h5>
+                          </div>
+                          <div class="col-md-3 g-2">
+                            <img src="${randomArtists[1].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+                            <h5 class="text-white text-center">${randomArtists[1].artist.name}</h5>
+                          </div>
+                          <div class="col-md-3 g-2">
+                            <img src="${randomArtists[2].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+                            <h5 class="text-white text-center">${randomArtists[2].artist.name}</h5>
+                          </div>
+                          <div class="col-md-3 g-2">
+                            <img src="${randomArtists[3].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+                            <h5 class="text-white text-center">${randomArtists[3].artist.name}</h5>
+                          </div>
+                        </div>
+                      </div>`;
+        }
+      })
+      .catch((errore) => console.log("ERRORE", errore));
+  } else {
+    fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=artist")
+      .then((Response) => {
+        if (Response.ok) return Response.json();
+        throw new Error("la response ha un problema");
+      })
+      .then((data) => {
+        const carouselArtists = document.getElementById("carouselDesktop");
+        carouselArtists.innerHTML = ""; // Puliamo per evitare duplicati
+
+        const randomArtists = data.data.sort(() => Math.random() - 0.5).slice(0, 8);
+        for (let i = 0; i < randomArtists.length; i++) {
+          const isActive = i === 0 ? "active" : "";
+          carouselArtists.innerHTML += `<div class="carousel-item ${isActive}">
+                        <div class="row gx-2 flex-nowrap">
+                          <div class="col-md-3 g-2">
+                            <img src="${randomArtists[i].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+                            <h5 class="text-white text-center">${randomArtists[i].artist.name}</h5>
+                          </div>
+                          <div class="col-md-3 g-2">
+                            <img src="${randomArtists[i].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+                            <h5 class="text-white text-center">${randomArtists[i].artist.name}</h5>
+                          </div>
+                          <div class="col-md-3 g-2">
+                            <img src="${randomArtists[i].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+                            <h5 class="text-white text-center">${randomArtists[i].artist.name}</h5>
+                          </div>
+                          <div class="col-md-3 g-2">
+                            <img src="${randomArtists[i].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+                            <h5 class="text-white text-center">${randomArtists[i].artist.name}</h5>
+                          </div>
+                        </div>
+                      </div>`;
+        }
+      })
+      .catch((Error) => console.log("ERRORE NELLA FETCH", Error));
+  }
+};
+
+myArtist();
