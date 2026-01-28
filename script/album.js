@@ -37,6 +37,12 @@ const songDuration = (seconds) => {
   return `${mins}:${secs.toString().padStart(2, "0")}`;
 };
 
+// PER ANNO
+
+const getYear = function (year) {
+  return year.slice(0, 4);
+};
+
 ///////////////
 
 const getData = function () {
@@ -55,9 +61,10 @@ const getData = function () {
       const artistName = album.artist.name;
       const artistImg = album.artist.picture;
       const type = album.type;
-      const year = album.release_date;
+      const releaseDate = album.release_date;
+      const year = getYear(releaseDate);
       const tracksArray = album.tracks.data;
-      console.log(tracksArray);
+      console.log(album);
 
       // PER INSERIRE LA COPERTINA PRINCIPALE AL SUO POSTO
       const copertinaPrincipale = document.getElementById(
