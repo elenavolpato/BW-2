@@ -30,6 +30,13 @@ const playSong = function (link) {
 
 // funzione per la durata
 
+const songDuration = (seconds) => {
+  const mins = Math.floor((seconds % 3600) / 60);
+  const secs = Math.floor(seconds % 60);
+
+  return `${mins}:${secs.toString().padStart(2, "0")}`;
+};
+
 ///////////////
 
 const getData = function () {
@@ -57,7 +64,7 @@ const getData = function () {
         "copertinaPrincipale",
       );
       copertinaPrincipale.innerHTML = `
-      <img src=${cover} alt="image" class="image-fluid"/>
+      <img src=${cover} alt="image" class=""/>
     
       `;
 
@@ -73,7 +80,8 @@ const getData = function () {
       console.log(tracksArray.preview, "canzone");
 
       tracksArray.forEach((track) => {
-        // console.log(track);
+        const timing = songDuration(track.duration);
+        console.log(timing);
         container.innerHTML += ` 
         <div class="row justify-content-center playSong mb-3" onclick="playSong('${track.preview}');" role="button">
           <div class="col col-6 col-md-4 text-start flex-fill">
@@ -109,7 +117,7 @@ const getData = function () {
           <div class="col col-md-4 d-none d-md-block text-end">
             <p>${track.rank}</p>
           </div>
-          <div class="col col-md-4 d-none d-md-block text-end">${track.duration}</div>
+          <div class="col col-md-4 d-none d-md-block text-end">${timing}</div>
           <!-- verisione computer -->
         </div>
         `;
