@@ -79,20 +79,19 @@ const myTrack = function () {
     })
     .then((data) => {
       const rowCrd = document.getElementById("rowCard");
-      // rowCrd.innerHTML = ""; // Puliamo per evitare duplicati
 
       const randomTracks = data.data.sort(() => Math.random() - 0.5).slice(0, 5);
       for (let i = 0; i < randomTracks.length; i++) {
         rowCrd.innerHTML += `
                     <div class="col-6 col-md-4">
-                      <div class="card shadow-sm" style="height: 80px">
-                        <div class="row g-0 h-100">
+                      <div class="card shadow-sm rounded-0" style="height: 80px">
+                        <div class="row g-0 h-100 d-flex flex-nowrap">
                           <div class="col-auto p-0">
                             <img src="${randomTracks[i].album.cover_small}" style="width: 80px; height: 80px; object-fit: cover" alt="Immagine" />
                           </div>
                           <div class="col">
                             <div class="card-body p-3 d-flex align-items-center h-100">
-                              <h5 class="card-text mb-0" style="font-size: 0.95rem; font-weight: 500">${randomTracks[i].album.title}</h5>
+                              <h5 class="card-text mb-0" style="font-size: 0.8rem; font-weight: 500">${randomTracks[i].album.title}</h5>
                             </div>
                           </div>
                         </div>
