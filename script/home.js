@@ -38,6 +38,52 @@ const getAlbums = function () {
               </div>
             </div>
           </div>`;
+
+        //Creazione sezioni da smartphone
+        const crdAlbumSm = document.getElementById("cardAlbumSmartphone");
+        crdAlbumSm.innerHTML = ""; // Puliamo per evitare duplicati
+
+        const randomAlbums1 = data.data.sort(() => Math.random() - 0.5).slice(0, 8);
+        for (let i = 0; i < randomAlbums1.length; i++) {
+          const isActive = i === 0 ? "active" : "";
+          crdAlbumSm.innerHTML += `
+                 <div class="carousel-item ${isActive}">
+            <div class="row">
+              <div class="col-12">
+                <img src="${randomAlbums1[i].album.cover_big}" class="d-block w-100 shadow" alt="${randomAlbums1[i].album.title}" />
+              <div class="position-absolute top-0 end-0">
+                        <span class="badge rounded-pill bg-primary">
+                          ALBUM
+                          <span class="visually-hidden">unread messages</span>
+                        </span>
+                      </div>
+                    </div>
+
+<div class="col-12 text-start">
+                      <!--h1-->
+                      <h1 class="display-4 fw-bold mt-2">${randomAlbums1[i].album.title}</h1>
+                      <p class="fs-5">${randomAlbums1[i].artist.name}</p>
+                      <!-- bottoni -->
+                      <div class="row">
+                        <div class="d-flex mb-3 ms-2 ps-0">
+                          <div class="p-2">
+                            <button type="button" class="btn btn-success rounded-pill px-4 py-2 fw-bold text-black">Play</button>
+                          </div>
+                          <div class="p-2">
+                            <button type="button" class="btn btn-outline-light rounded-pill px-4 py-2 fw-bold">Salva</button>
+                          </div>
+                          <div class="p-2"> <a class="btn text-white" href="./search.html" role="button"
+                        ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                          <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+                          />
+                        </svg>
+                      </a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>`;
+        }
       }
     })
     .catch((Error) => console.log("ERRORE NELLA FETCH", Error));

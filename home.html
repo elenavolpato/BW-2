@@ -228,7 +228,7 @@
           </div>
           <!-- slider con immagine singola-->
           <div class="row">
-            <div id="carouselExampleFade" class="carousel slide bg-black p-2">
+            <div id="carouselExampleFade" class="carousel slide bg-black p-2 d-none d-md-block">
               <div id="cardAlbum" class="carousel-inner">
                 <div class="carousel-item active container">
                   <!--SCHEDA SINGOLA CAROUSEL-->
@@ -254,12 +254,7 @@
                   </div>
                   <!--fine scheda singola carousel-->
                 </div>
-                <div class="carousel-item">
-                  <!--SCHEDA SINGOLA DA REPLICARE-->
-                </div>
-                <div class="carousel-item">
-                  <!--SCHEDA SINGOLA DA REPLICARE-->
-                </div>
+                <!--realizzazione delle schede con js-->
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon visually-hidden" aria-hidden="true"></span>
@@ -270,6 +265,59 @@
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
+
+            <!--slider solo smarphone -->
+            <div id="carouselUniqueSmartphone" class="carousel slide carousel-fade bg-black p-2 d-block d-md-none">
+              <div id="cardAlbumSmartphone" class="carousel-inner">
+                <div class="carousel-item active container">
+                  <!--SCHEDA SINGOLA CAROUSEL-->
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="./css/media/image-17.jpg" class="d-block w-100" alt="..." />
+                      <div class="position-absolute top-0 end-0">
+                        <span class="badge rounded-pill bg-primary">
+                          ALBUM
+                          <span class="visually-hidden">unread messages</span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-12 text-start">
+                      <!--h1-->
+                      <h1>VIOLA(feat. SALMO)</h1>
+                      <p>Fedez, Salmo</p>
+                      <!-- bottoni -->
+                      <div class="row">
+                        <div class="d-flex mb-3 ps-0">
+                          <div class="p-2">
+                            <button type="button" class="btn btn-success">Success</button>
+                          </div>
+                          <div class="p-2">
+                            <button type="button" class="btn btn-outline-light">Light</button>
+                          </div>
+                          <div class="p-2">Flex item</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--fine scheda singola carousel-->
+                </div>
+                <div class="carousel-item">
+                  <!--SCHEDA SINGOLA DA REPLICARE-->
+                </div>
+                <div class="carousel-item">
+                  <!--SCHEDA SINGOLA DA REPLICARE-->
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselUniqueSmartphone" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon visually-hidden" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselUniqueSmartphone" data-bs-slide="next">
+                <span class="carousel-control-next-icon visually-hidden" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+
             <!-- sezione con titolo h2-->
             <div class="container-fluid text-start mt-5 mb-3">
               <div class="row">
