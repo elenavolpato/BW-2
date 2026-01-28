@@ -104,13 +104,16 @@ const myTrack = function () {
 myTrack();
 
 const myArtist = function () {
-  const keyWords = JSON.parse(localStorage.getItem("selectedGenres"));
+  const selectedArtists = JSON.parse(localStorage.getItem("selectedArtists"));
 
-  if (keyWords && keyWords.length > 0) {
+  if (selectedArtists && selectedArtists.length > 0) {
     const fetchPromises = [];
 
-    for (let i = 0; i < keyWords.length; i++) {
-      const singolaFetch = fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${keyWords[i]}`).then((response) => {
+    // Prendiamo max 4 artisti dalle preferenze
+    const artistiDaFetchare = selectedArtists.slice(0, 4);
+
+    for (let i = 0; i < artistiDaFetchare.length; i++) {
+      const singolaFetch = fetch(`https://striveschool-api.herokuapp.com/api/deezer/artist/${artistiDaFetchare[i]}`).then((response) => {
         if (response.ok) return response.json();
         throw new Error("Errore nella response");
       });
@@ -118,86 +121,108 @@ const myArtist = function () {
     }
 
     Promise.all(fetchPromises)
-      .then((tuttiIRisultati) => {
-        console.log("TUTTI I RISULTATI:", tuttiIRisultati);
-        const tuttiGliArtisti = [];
-        for (let i = 0; i < tuttiIRisultati.length; i++) {
-          const artistiDiQuestaRicerca = tuttiIRisultati[i].data;
+      .then((artistiPreferiti) => {
+        console.log("ARTISTI PREFERITI:", artistiPreferiti);
 
-          for (let j = 0; j < artistiDiQuestaRicerca.length; j++) {
-            tuttiGliArtisti.push(artistiDiQuestaRicerca[j]);
-          }
-          console.log("TUTTI GLI ARTISTI COMBINATI:", tuttiGliArtisti);
-        }
+        // Fetch per artisti random (gli altri 4)
+        return fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=music")
+          .then((response) => {
+            if (response.ok) return response.json();
+            throw new Error("Errore nella fetch random");
+          })
+          .then((dataRandom) => {
+            const artistiRandom = dataRandom.data.slice(0, 4);
 
-        const randomArtists = tuttiGliArtisti.sort(() => Math.random() - 0.5).slice(0, 4);
-        console.log("RANDOM ARTISTS (4):", randomArtists);
-        const carouselArtists = document.getElementById("carouselDesktop");
-        console.log("ELEMENTO CAROUSEL:", carouselArtists);
-        carouselArtists.innerHTML = "";
+            const artistiPreferentiFormattati = artistiPreferiti.map((artist) => ({
+              artist: {
+                id: artist.id,
+                name: artist.name,
+                picture_big: artist.picture_big,
+              },
+            }));
 
-        for (let i = 0; i < randomArtists.length; i++) {
-          const isActive = i === 0 ? "active" : "";
-          carouselArtists.innerHTML += `<div class="carousel-item ${isActive}">
-                        <div class="row gx-2 flex-nowrap">
-                          <div class="col-md-3 g-2">
-                            <img src="${randomArtists[0].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-                            <h5 class="text-white text-center">${randomArtists[0].artist.name}</h5>
-                          </div>
-                          <div class="col-md-3 g-2">
-                            <img src="${randomArtists[1].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-                            <h5 class="text-white text-center">${randomArtists[1].artist.name}</h5>
-                          </div>
-                          <div class="col-md-3 g-2">
-                            <img src="${randomArtists[2].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-                            <h5 class="text-white text-center">${randomArtists[2].artist.name}</h5>
-                          </div>
-                          <div class="col-md-3 g-2">
-                            <img src="${randomArtists[3].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-                            <h5 class="text-white text-center">${randomArtists[3].artist.name}</h5>
-                          </div>
-                        </div>
-                      </div>`;
-        }
+            const tuttiGli8Artisti = [...artistiPreferentiFormattati, ...artistiRandom];
+            console.log("TUTTI GLI 8 ARTISTI:", tuttiGli8Artisti);
+            renderCarousel(tuttiGli8Artisti);
+          });
       })
       .catch((errore) => console.log("ERRORE", errore));
   } else {
-    fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=artist")
+    // Caso 2: L'utente non ha selezionato nulla - tutti random
+    console.log("Nessun artista preferito, mostro tutti random");
+    fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=music")
       .then((Response) => {
         if (Response.ok) return Response.json();
         throw new Error("la response ha un problema");
       })
       .then((data) => {
-        const carouselArtists = document.getElementById("carouselDesktop");
-        carouselArtists.innerHTML = ""; // Puliamo per evitare duplicati
-
         const randomArtists = data.data.sort(() => Math.random() - 0.5).slice(0, 8);
-        for (let i = 0; i < randomArtists.length; i++) {
-          const isActive = i === 0 ? "active" : "";
-          carouselArtists.innerHTML += `<div class="carousel-item ${isActive}">
-                        <div class="row gx-2 flex-nowrap">
-                          <div class="col-md-3 g-2">
-                            <img src="${randomArtists[i].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-                            <h5 class="text-white text-center">${randomArtists[i].artist.name}</h5>
-                          </div>
-                          <div class="col-md-3 g-2">
-                            <img src="${randomArtists[i].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-                            <h5 class="text-white text-center">${randomArtists[i].artist.name}</h5>
-                          </div>
-                          <div class="col-md-3 g-2">
-                            <img src="${randomArtists[i].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-                            <h5 class="text-white text-center">${randomArtists[i].artist.name}</h5>
-                          </div>
-                          <div class="col-md-3 g-2">
-                            <img src="${randomArtists[i].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-                            <h5 class="text-white text-center">${randomArtists[i].artist.name}</h5>
-                          </div>
-                        </div>
-                      </div>`;
-        }
+        renderCarousel(randomArtists);
       })
       .catch((Error) => console.log("ERRORE NELLA FETCH", Error));
   }
 };
+
+// Funzione separata per renderizzare il carousel
+function renderCarousel(artists) {
+  console.log("Rendering carousel con", artists.length, "artisti");
+
+  // DESKTOP CAROUSEL
+  const carouselArtists = document.getElementById("carouselDesktop");
+  carouselArtists.innerHTML = "";
+
+  // Creiamo 2 slide, ognuna con 4 artisti
+  for (let slide = 0; slide < 2; slide++) {
+    const isActive = slide === 0 ? "active" : "";
+    const startIndex = slide * 4;
+
+    carouselArtists.innerHTML += `
+      <div class="carousel-item ${isActive}">
+        <div class="row gx-2 flex-nowrap">
+          <div class="col-md-3 g-2">
+            <img src="${artists[startIndex].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+            <h5 class="text-white text-center">${artists[startIndex].artist.name}</h5>
+          </div>
+          <div class="col-md-3 g-2">
+            <img src="${artists[startIndex + 1].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+            <h5 class="text-white text-center">${artists[startIndex + 1].artist.name}</h5>
+          </div>
+          <div class="col-md-3 g-2">
+            <img src="${artists[startIndex + 2].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+            <h5 class="text-white text-center">${artists[startIndex + 2].artist.name}</h5>
+          </div>
+          <div class="col-md-3 g-2">
+            <img src="${artists[startIndex + 3].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+            <h5 class="text-white text-center">${artists[startIndex + 3].artist.name}</h5>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  // SMARTPHONE CAROUSEL
+  const carouselArtistsSmarphone = document.getElementById("carouselSmartphone");
+  carouselArtistsSmarphone.innerHTML = "";
+
+  // Creiamo 4 slide, ognuna con 2 artisti
+  for (let slide = 0; slide < 4; slide++) {
+    const isActive2 = slide === 0 ? "active" : "";
+    const startIndex2 = slide * 2;
+    carouselArtistsSmarphone.innerHTML += `
+      <div class="carousel-item ${isActive2}">
+        <div class="container-fluid px-4">
+          <div class="row justify-content-center gx-3">
+            <div class="col-6">
+              <img src="${artists[startIndex2].artist.picture_big}" class="w-100 rounded-circle p-2" alt="${artists[startIndex2].artist.name}" />
+              <h5 class="text-white text-center">${artists[startIndex2].artist.name}</h5>
+            </div>
+            <div class="col-6">
+              <img src="${artists[startIndex2 + 1].artist.picture_big}" class="w-100 rounded-circle p-2" alt="${artists[startIndex2 + 1].artist.name}" />
+              <h5 class="text-white text-center">${artists[startIndex2 + 1].artist.name}</h5>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }
+}
 
 myArtist();
