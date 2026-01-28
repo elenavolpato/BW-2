@@ -56,7 +56,8 @@ const getData = function (parolaCercata) {
           </div>
       `;
       });
-      const primiSei = songs.slice(1, 8);
+      const uniqueByArtist = _.uniqBy(songs, (item) => item.artist.id);
+      const primiSei = uniqueByArtist.splice(0, 7);
       const artistiContainer = document.getElementById("artisti-container");
 
       artistiContainer.innerHTML = `
