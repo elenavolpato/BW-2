@@ -1,9 +1,8 @@
 //when integrated with home page use this to replace the artist ID
-/* const url = location.search;
+const url = location.search;
 const allTheParameters = new URLSearchParams(url);
-const artistID = allTheParameters.get("id"); */
-
-const artistID = "126";
+const artistID = allTheParameters.get("_id");
+console.log("id", artistID);
 
 const artistURL = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistID}`;
 let numberOfSongs = 5;

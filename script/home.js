@@ -168,7 +168,7 @@ const myArtist = function () {
 
     Promise.all(fetchPromises)
       .then((artistiPreferiti) => {
-        console.log("ARTISTI PREFERITI:", artistiPreferiti);
+        //console.log("ARTISTI PREFERITI:", artistiPreferiti);
 
         // Fetch per artisti random (gli altri 4)
         return fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=music")
@@ -224,24 +224,34 @@ function renderCarousel(artists) {
 
     carouselArtists.innerHTML += `
       <div class="carousel-item ${isActive}">
-        <div class="row gx-2 flex-nowrap">
-          <div class="col-md-3 g-2">
-            <img src="${artists[startIndex].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-            <h5 class="text-white text-center">${artists[startIndex].artist.name}</h5>
+          <div class="row gx-2 flex-nowrap">
+              <div class="col-md-3 g-2">
+              <a href="./artist.html?_id=${artists[startIndex].artist.id}">
+                <img src="${artists[startIndex].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+                <h5 class="text-white text-center">${artists[startIndex].artist.name}</h5>
+                </a>
+              </div>
+            </a>
+            <div class="col-md-3 g-2">
+             <a href="./artist.html?_id=${artists[startIndex + 1].artist.id}">
+              <img src="${artists[startIndex + 1].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+              <h5 class="text-white text-center">${artists[startIndex + 1].artist.name}</h5>
+              </a>
+            </div>
+            <div class="col-md-3 g-2">
+             <a href="./artist.html?_id=${artists[startIndex + 2].artist.id}">
+              <img src="${artists[startIndex + 2].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+              <h5 class="text-white text-center">${artists[startIndex + 2].artist.name}</h5>
+              </a>
+            </div>
+            <div class="col-md-3 g-2">
+             <a href="./artist.html?_id=${artists[startIndex + 3].artist.id}">
+              <img src="${artists[startIndex + 3].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+              <h5 class="text-white text-center">${artists[startIndex + 3].artist.name}</h5>
+              </a>
+            </div>
           </div>
-          <div class="col-md-3 g-2">
-            <img src="${artists[startIndex + 1].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-            <h5 class="text-white text-center">${artists[startIndex + 1].artist.name}</h5>
-          </div>
-          <div class="col-md-3 g-2">
-            <img src="${artists[startIndex + 2].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-            <h5 class="text-white text-center">${artists[startIndex + 2].artist.name}</h5>
-          </div>
-          <div class="col-md-3 g-2">
-            <img src="${artists[startIndex + 3].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-            <h5 class="text-white text-center">${artists[startIndex + 3].artist.name}</h5>
-          </div>
-        </div>
+        
       </div>`;
   }
 
@@ -258,12 +268,16 @@ function renderCarousel(artists) {
         <div class="container-fluid px-4">
           <div class="row justify-content-center gx-3">
             <div class="col-6">
+            <a href="./artist.html?_id=${artists[startIndex2].artist.id}">
               <img src="${artists[startIndex2].artist.picture_big}" class="w-100 rounded-circle p-2" alt="${artists[startIndex2].artist.name}" />
               <h5 class="text-white text-center">${artists[startIndex2].artist.name}</h5>
+              </a>
             </div>
             <div class="col-6">
+            <a href="./artist.html?_id=${artists[startIndex2 + 1].artist.id}">
               <img src="${artists[startIndex2 + 1].artist.picture_big}" class="w-100 rounded-circle p-2" alt="${artists[startIndex2 + 1].artist.name}" />
               <h5 class="text-white text-center">${artists[startIndex2 + 1].artist.name}</h5>
+              </a>
             </div>
           </div>
         </div>
