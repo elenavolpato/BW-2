@@ -28,6 +28,18 @@ const playSong = function (link) {
   }
 };
 
+// per colori sfondo
+function getDominantColor(imgEl) {
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = 1;
+  canvas.height = 1;
+  // Disegna l'intera immagine in 1x1 pixel
+  ctx.drawImage(imgEl, 0, 0, 1, 1);
+  const data = ctx.getImageData(0, 0, 1, 1).data;
+  return `rgb(${data[0]}, ${data[1]}, ${data[2]})`;
+}
+
 // funzione per la durata
 
 const songDuration = (seconds) => {
