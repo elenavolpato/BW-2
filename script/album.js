@@ -1,5 +1,11 @@
-const albumsURL =
-  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"; //6605779
+const url = location.search;
+const allTheParameters = new URLSearchParams(url);
+const albumID = allTheParameters.get("id");
+
+const albumsURL = `https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`;
+
+/*const albumsURL =
+  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062";*/ //6605779
 //////////////
 const audio = document.getElementById("mioAudio");
 
@@ -79,9 +85,7 @@ const getData = function () {
       console.log(album);
 
       // PER INSERIRE LA COPERTINA PRINCIPALE AL SUO POSTO
-      const copertinaPrincipale = document.getElementById(
-        "copertinaPrincipale",
-      );
+      const copertinaPrincipale = document.getElementById("copertinaPrincipale");
       copertinaPrincipale.innerHTML = `
       <img src=${cover} alt="image" class="img-fluid"/>
     
