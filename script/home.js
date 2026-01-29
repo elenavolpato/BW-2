@@ -419,3 +419,11 @@ myArtist();
 
 buttonFunction("playButton");
 buttonFunction("playButtonMobile");
+
+const searchForm = document.getElementById("form-ricerca");
+const searchInput = document.getElementById("input-ricerca");
+
+searchForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  window.location.href = `search.html?value=${searchInput.value}`;
+});
