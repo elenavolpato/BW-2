@@ -141,11 +141,15 @@ const myTrack = function () {
                       <div class="card shadow-sm rounded-0" style="height: 80px">
                         <div class="row g-0 h-100 d-flex flex-nowrap">
                           <div class="col-auto p-0">
+                          <a href="album.html?id=${randomTracks[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
                             <img src="${randomTracks[i].album.cover_small}" style="width: 80px; height: 80px; object-fit: cover" alt="Immagine" />
+                            </a>
                           </div>
                           <div class="col">
                             <div class="card-body p-3 d-flex align-items-center h-100">
-                              <h5 class="card-text mb-0" style="font-size: 0.8rem; font-weight: 500">${randomTracks[i].album.title}</h5>
+                            <a href="album.html?id=${randomTracks[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
+                              <h5 class="card-text mb-0 text-white" style="font-size: 0.8rem; font-weight: 500">${randomTracks[i].album.title}</h5>
+                              </a>
                             </div>
                           </div>
                         </div>
