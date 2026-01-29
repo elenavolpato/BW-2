@@ -2,7 +2,7 @@ const albumsURL =
   "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"; //6605779
 //////////////
 const audio = document.getElementById("mioAudio");
-
+const body = document.getElementsByTagName("body");
 // funzione per stoppare e riavviare una canzone dal tasto play/stop
 const btnPlayPause = document.getElementById("btnPlayPause");
 function togglePlay() {
@@ -27,18 +27,6 @@ const playSong = function (link) {
     audio.play();
   }
 };
-
-// per colori sfondo
-function getDominantColor(imgEl) {
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
-  canvas.width = 1;
-  canvas.height = 1;
-  // Disegna l'intera immagine in 1x1 pixel
-  ctx.drawImage(imgEl, 0, 0, 1, 1);
-  const data = ctx.getImageData(0, 0, 1, 1).data;
-  return `rgb(${data[0]}, ${data[1]}, ${data[2]})`;
-}
 
 // funzione per la durata
 
@@ -76,7 +64,7 @@ const getData = function () {
       const releaseDate = album.release_date;
       const year = getYear(releaseDate);
       const tracksArray = album.tracks.data;
-      console.log(album);
+      console.log(cover);
 
       // PER INSERIRE LA COPERTINA PRINCIPALE AL SUO POSTO
       const copertinaPrincipale = document.getElementById(
@@ -106,7 +94,7 @@ const getData = function () {
         <div class="row justify-content-center playSong mb-3" onclick="playSong('${track.preview}');" role="button">
           <div class="col col-6 col-md-4 text-start flex-fill pe-0">
          
-         <h5 class=" mb-0 d-flex">  ${track.title}</h5>
+         <p class=" mb-0 d-flex fw-bold">  ${track.title}</p>
             <a href="./artist.html" class="text-decoration-none sideBarTextColor">${artistName}</a>
           </div>
           <!-- 3 puntini mobile -->
