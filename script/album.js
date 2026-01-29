@@ -43,6 +43,8 @@ const getYear = function (year) {
   return year.slice(0, 4);
 };
 
+// funzioni per il footer
+
 ///////////////
 
 const getData = function () {
@@ -131,7 +133,7 @@ const getData = function () {
         </div>
         `;
       });
-      // PER AUDIO
+      // FOOTER
     })
     .catch((err) => {
       console.log("errore", err);
