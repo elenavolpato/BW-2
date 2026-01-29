@@ -27,7 +27,6 @@ const getAlbums = function () {
                 <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
                 <h1 class="display-4 fw-bold text-white">${randomAlbums[i].album.title}</h1>
                 </a>
-                <h1 class="display-4 fw-bold">${randomAlbums[i].album.title}</h1>
                 <p class="fs-5">${randomAlbums[i].artist.name}</p>
                 <p>Ascolta il nuovo album di ${randomAlbums[i].artist.name}!</p>
                
