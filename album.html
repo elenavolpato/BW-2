@@ -27,7 +27,7 @@
             <div
               class="d-flex flex-column align-items-start gap-3 mb-5 first-leftSideBar small">
               <a
-                href=""
+                href="./home.html"
                 class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@
                 Home
               </a>
               <a
-                href="./index.html"
+                href="./search.html"
                 class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@
                 Cerca
               </a>
               <a
-                href="#"
+                href="search.html"
                 class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -198,7 +198,7 @@
           </section>
         </div>
 
-        <div class="col bg-secondary overflow-auto h-100">
+        <div class="col bg-black.bg-gradient overflow-auto h-100">
           <!-- centro (scroll) -->
           <header class="container-fluid">
             <nav>
@@ -306,11 +306,11 @@
             </nav>
             <!-- container per la parte del header in cui ci andrà l'immagine del album e la descrizione -->
             <div class="container">
-              <div class="row justify-content-center">
+              <div class="row justify-content-center align-items-center">
                 <div
-                  class="col col-12 col-md-4 text-center text-md-start mb-3 ps-0"
+                  class="col col-12 col-md-4 text-center text-md-start mb-3 p-0"
                   id="copertinaPrincipale"></div>
-                <div class="col col-12 col-md-8" id="descrizioneAlbum">
+                <div class="col col-12 col-md-8 p-0" id="descrizioneAlbum">
                   <h4 class="nome-artista">
                     <img src="#" alt="#" /> nome artista
                   </h4>
@@ -319,22 +319,24 @@
               </div>
             </div>
           </header>
-          <main>
+          <main class="pb-3">
             <!-- questo container e per mettere all'interno le canzoni metto d-none su qlcuni div perchè in versione mobile non sono visibili -->
             <div class="container" id="mainContainer">
               <div
                 class="d-flex mb-3 mt-2 align-items-center d-none d-md-block">
-                <!-- play schermi lg -->
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="45"
-                  height="45"
-                  fill="currentColor"
-                  class="bi bi-play-circle-fill me-4 text-success"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z" />
-                </svg>
+                <!-- play schermi lg playbtn -->
+                <button class="btn p-0 border-0 sideBarTextColor">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="45"
+                    height="45"
+                    fill="currentColor"
+                    class="bi bi-play-circle-fill me-4 text-success"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z" />
+                  </svg>
+                </button>
                 <!-- svg del cuore -->
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -440,7 +442,10 @@
               </div>
               <div class="row justify-content-center mb-2">
                 <div class="col col-6 col-md-4 d-none d-md-block">
-                  <p class="mb-2 sideBarTextColor">TITOLO</p>
+                  <span class="sideBarTextColor">#</span>
+                  <p class="mb-0 sideBarTextColor d-inline-block ms-2">
+                    TITOLO
+                  </p>
                 </div>
                 <div class="col col-6 col-md-4 d-none d-md-block text-md-end">
                   <p class="mb-2 sideBarTextColor">RIPRODUZIONI</p>
@@ -449,8 +454,8 @@
                   <p class="mb-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
+                      width="20"
+                      height="20"
                       fill="currentColor"
                       class="bi bi-clock sideBarTextColor"
                       viewBox="0 0 16 16">
@@ -462,18 +467,130 @@
                   </p>
                 </div>
               </div>
+              <hr class="d-none d-md-block mt-0" />
             </div>
           </main>
-          <footer class="sticky-bottom">
-            <div class="container-fluid">
-              <div class="row justify-content-center text-center">
-                <!-- audio -->
-                <audio id="mioAudio"></audio>
-                <!-- controlli personalizzati -->
-                <div>
-                  <button id="btnPlayPause" onclick="togglePlay()">play</button>
+          <footer class="mt-3">
+            <div class="divFooter"></div>
+            <div class="row g-3">
+              <div class="col-12 col-md-6 col-lg-3">
+                <ul class="list-unstyled">
+                  <li class="fw-bold">Azienda</li>
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">Chi siamo</li></a
+                  >
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">Opportunità di lavoro</li></a
+                  >
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">For the Record</li></a
+                  >
+                </ul>
+              </div>
+              <div class="col-12 col-md-6 col-lg-3">
+                <ul class="list-unstyled">
+                  <li class="fw-bold">Community</li>
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">Per artisti</li></a
+                  >
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">Sviluppatori</li></a
+                  >
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">Pubblicità</li></a
+                  >
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">Investitori</li></a
+                  >
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">Venditori</li></a
+                  >
+                </ul>
+              </div>
+              <div class="col-12 col-md-6 col-lg-3">
+                <ul class="list-unstyled">
+                  <li class="fw-bold">Link utili</li>
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">Assistenza</li></a
+                  >
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">
+                      App per cellulare gratuita
+                    </li></a
+                  >
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">Diritti del consumatore</li></a
+                  >
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">Popolare per Paese</li></a
+                  >
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">Importa la tua musica</li></a
+                  >
+                </ul>
+              </div>
+              <div class="col-12 col-md-6 col-lg-3">
+                <ul class="list-unstyled">
+                  <li class="fw-bold">Piani Spotify</li>
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">Premium Individual</li></a
+                  >
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">Premium Duo</li></a
+                  >
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">Premium Family</li></a
+                  >
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">Premium Studente</li></a
+                  >
+                  <a class="text-decoration-none" href="#"
+                    ><li class="text-secondary">Spotify Free</li></a
+                  >
+                </ul>
+              </div>
+              <div class="col-6 gap-3 d-flex">
+                <div class="border border-dark rounded-circle p-2 bg-black">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-instagram"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+                  </svg>
+                </div>
+                <div class="border border-dark rounded-circle p-2 bg-black">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-twitter"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15" />
+                  </svg>
+                </div>
+                <div class="border border-dark rounded-circle p-2 bg-black">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-facebook"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
+                  </svg>
                 </div>
               </div>
+              <hr class="text-light" />
+              <p class="text-secondary">
+                &copy; <span id="year">-</span> Spotify AB
+              </p>
             </div>
           </footer>
         </div>
@@ -648,16 +765,19 @@
           <div class="col col-md-2 d-flex align-items-center gap-3">
             <div>
               <img
-                src="./img/like.jpg"
-                alt="test"
+                src="./assets/imgs/create.png"
+                alt="img"
                 style="width: 40px"
                 class="rounded-circle"
                 id="footerImg" />
             </div>
             <div class="d-flex flex-row flex-md-column">
-              <h6 class="mb-0 mb-md-1 me-1 me-md-0">Fat Funny Friend</h6>
-              <span class="small d-none d-md-block">Artista</span>
-              <h6 class="mb-0 d-md-none"><span>by </span>Artista</h6>
+              <h6 class="mb-0 mb-md-1 me-1 me-md-0" id="song-title">Canzone</h6>
+              <span class="small d-none d-md-block" id="song-artist1"
+                >Artista</span
+              >
+              <span class="d-md-none me-1">by</span>
+              <h6 class="mb-0 d-md-none" id="song-artist2">Artista</h6>
             </div>
             <div class="ms-3">
               <button class="btn p-0 border-0 sideBarTextColor">
@@ -680,13 +800,17 @@
               <button class="btn p-0 border-0 text-success">
                 <i class="bi bi-shuffle mx-2"></i>
               </button>
-              <button class="btn p-0 border-0 sideBarTextColor">
+              <button
+                class="btn p-0 border-0 sideBarTextColor"
+                id="skipBackward">
                 <i class="bi bi-skip-backward-fill fs-5 mx-2"></i>
               </button>
-              <button class="btn p-0 border-0 text-light">
+              <button class="btn p-0 border-0 text-light" id="playButton">
                 <i class="bi bi-play-circle-fill fs-1 mx-2"></i>
               </button>
-              <button class="btn p-0 border-0 sideBarTextColor">
+              <button
+                class="btn p-0 border-0 sideBarTextColor"
+                id="skipForward">
                 <i class="bi bi-skip-forward-fill fs-5 mx-2"></i>
               </button>
               <button class="btn p-0 border-0 text-success">
@@ -694,9 +818,26 @@
               </button>
             </div>
             <div class="d-flex justify-content-center align-items-center">
-              <small class="me-2">0:00</small>
-              <input type="range" class="form-range" style="width: 50%" />
-              <small class="ms-2">3:00</small>
+              <small class="me-2" id="currentTime">0:00</small>
+              <div
+                class="progress-container"
+                style="
+                  width: 50%;
+                  height: 4px;
+                  background: #555;
+                  border-radius: 2px;
+                  position: relative;
+                ">
+                <div
+                  class="progress-filled"
+                  style="
+                    width: 0%;
+                    height: 100%;
+                    background: #1db954;
+                    border-radius: 2px;
+                  "></div>
+              </div>
+              <small class="ms-2" id="totalTime">00:00</small>
             </div>
           </div>
           <div
@@ -705,7 +846,11 @@
             <i class="d-none d-md-block bi bi-collection-play"></i>
             <i class="bi bi-pc-display"></i>
             <i class="bi bi-heart d-md-none"></i>
-            <i class="bi bi-play-fill d-md-none fs-4"></i>
+            <button
+              class="btn p-0 border-0 sideBarTextColor d-md-none"
+              id="playButtonMobile">
+              <i class="bi bi-play-fill d-md-none fs-4"></i>
+            </button>
             <i class="d-none d-md-block bi-volume-up"></i>
             <input type="range" class="form-range d-none d-md-block w-25" />
             <i class="d-none d-md-block bi bi-arrows-angle-expand small"></i>
