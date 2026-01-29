@@ -17,7 +17,9 @@ const getAlbums = function () {
                  <div class="carousel-item ${isActive}">
             <div class="row align-items-center">
               <div class="col-4">
+              <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
                 <img src="${randomAlbums[i].album.cover_big}" class="d-block w-100 shadow" alt="${randomAlbums[i].album.title}" />
+                </a>
               </div>
               <div class="col-8 text-start text-white">
                 <p class="small mb-1">ALBUM</p>
