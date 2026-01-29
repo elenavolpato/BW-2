@@ -225,22 +225,30 @@ function renderCarousel(artists) {
     carouselArtists.innerHTML += `
       <div class="carousel-item ${isActive}">
         <div class="row gx-2 flex-nowrap">
+        <a href= "https://striveschool-api.herokuapp.com/api/deezer/search?q=${artists[startIndex].artist.id}">
           <div class="col-md-3 g-2">
             <img src="${artists[startIndex].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
             <h5 class="text-white text-center">${artists[startIndex].artist.name}</h5>
           </div>
+          </a>
+          <a href= "https://striveschool-api.herokuapp.com/api/deezer/search?q=${artists[startIndex + 1].artist.id}">
           <div class="col-md-3 g-2">
             <img src="${artists[startIndex + 1].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
             <h5 class="text-white text-center">${artists[startIndex + 1].artist.name}</h5>
           </div>
+          </a>
+          <a href= "https://striveschool-api.herokuapp.com/api/deezer/search?q=${artists[startIndex + 2].artist.id}">
           <div class="col-md-3 g-2">
             <img src="${artists[startIndex + 2].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
             <h5 class="text-white text-center">${artists[startIndex + 2].artist.name}</h5>
           </div>
+          </a>
+          <a href= "https://striveschool-api.herokuapp.com/api/deezer/search?q=${artists[startIndex + 3].artist.id}">
           <div class="col-md-3 g-2">
             <img src="${artists[startIndex + 3].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
             <h5 class="text-white text-center">${artists[startIndex + 3].artist.name}</h5>
           </div>
+          </a>
         </div>
       </div>`;
   }
@@ -257,14 +265,18 @@ function renderCarousel(artists) {
       <div class="carousel-item ${isActive2}">
         <div class="container-fluid px-4">
           <div class="row justify-content-center gx-3">
+          <a href= "https://striveschool-api.herokuapp.com/api/deezer/search?q=${artists[startIndex2].artist.id}">
             <div class="col-6">
               <img src="${artists[startIndex2].artist.picture_big}" class="w-100 rounded-circle p-2" alt="${artists[startIndex2].artist.name}" />
               <h5 class="text-white text-center">${artists[startIndex2].artist.name}</h5>
             </div>
+            </a>
+               <a href= "https://striveschool-api.herokuapp.com/api/deezer/search?q=${artists[startIndex2 + 1].artist.id}">
             <div class="col-6">
               <img src="${artists[startIndex2 + 1].artist.picture_big}" class="w-100 rounded-circle p-2" alt="${artists[startIndex2 + 1].artist.name}" />
               <h5 class="text-white text-center">${artists[startIndex2 + 1].artist.name}</h5>
             </div>
+            </a>
           </div>
         </div>
       </div>`;
