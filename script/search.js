@@ -1,4 +1,7 @@
 document.getElementById("year").textContent = new Date().getFullYear();
+const url = location.search;
+const allTheParameters = new URLSearchParams(url);
+const searchedWord = allTheParameters.get("value");
 
 const getData = function (parolaCercata) {
   fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${parolaCercata}`)
@@ -127,6 +130,9 @@ formRicerca.addEventListener("submit", function (event) {
 console.log("script caricato");
 getData("");
 
+if (searchedWord != undefined) {
+  getData(searchedWord);
+}
 // songs.[0].artist.picture
 // songs.[0].artist.name
 

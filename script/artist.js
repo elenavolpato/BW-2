@@ -97,17 +97,14 @@ followBtn.addEventListener("click", () => {
 });
 
 // search function
-const formRicerca = document.getElementById("form-ricerca");
-const inputRicerca = document.getElementById("input-ricerca");
+const searchForm = document.getElementById("form-ricerca");
+const searchInput = document.getElementById("input-ricerca");
 
-formRicerca.addEventListener("submit", function (e) {
+searchForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  getData(parolaCercata);
+  console.log(searchInput.value);
+  window.location.href = `search.html?value=${searchInput.value}`;
 });
-
-function search() {
-  window.location.href = "search.html?value=" + encodeURIComponent(inputRicerca);
-}
 
 /* PLAYER FUNCTIONS */
 
