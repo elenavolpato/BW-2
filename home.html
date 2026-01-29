@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Spotify BW2</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <style>
+      .custom-card img {
+        cursor: pointer;
+        transform: scale(1);
+        object-position: top;
+      }
+      img:hover {
+        transform: scale(1.1);
+        transition: all 0.2s ease-in-out;
+      }
+
+      nav {
+        z-index: 1000 !important;
+      }
+      section {
+        top: 8% !important;
+        z-index: 10 !important;
+      }
+
+      footer a li:hover {
+        text-decoration: underline;
+        cursor: pointer;
+        color: white !important;
+      }
+      hr {
+        opacity: 0.1;
+      }
+      .custom-card {
+        height: 190px; /* Altezza fissa per i rettangoli */
+        cursor: pointer;
+      }
+      .card-img-rotated {
+        position: absolute;
+        width: 130px; /* Immagine più grande (era 80px) */
+        height: 130px;
+        bottom: -5px; /* Posizionamento millimetrico nell'angolo */
+        right: -15px;
+        transform: rotate(25deg) !important;
+        object-fit: cover;
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class="bg-dar" data-bs-theme="dark">
+    <!-- NAVBAR -->
+
+    <nav class="navbar navbar-expand-lg bg-black sticky-top py-2 border-bottom" data-bs-theme="dark">
+      <div class="container-fluid d-flex align-items-center">
+        <a class="navbar-brand" href="#">
+          <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png" alt="logo" width="35" height="35" />
+        </a>
+
+        <div class="d-flex align-items-center flex-grow-1 justify-content-center mx-2">
+          <div
+            class="bg-secondary bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center me-3 d-none d-md-flex"
+            style="width: 45px; height: 45px; cursor: pointer"
+          >
+            <i class="bi bi-house-door fs-4"></i>
+          </div>
+
+          <form class="d-flex position-relative flex-grow-1" style="max-width: 500px" role="search" id="form-ricerca">
+            <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+            <input
+              class="form-control bg-dark border-0 rounded-pill ps-5 py-2 text-white"
+              type="search"
+              placeholder="Cosa vuoi ascoltare?"
+              id="input-ricerca"
+              style="background-color: #242424"
+            />
+            <button class="btn d-none" type="submit">Cerca</button>
+          </form>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <div class="nav-item d-none d-lg-block">
+            <a class="nav-link text-secondary fw-bold small" href="#"> <i class="bi bi-arrow-down-circle me-1"></i>Installa app </a>
+          </div>
+          <i class="bi bi-bell text-secondary fs-5 d-none d-sm-block" style="cursor: pointer"></i>
+          <i class="bi bi-people text-secondary fs-5 d-none d-sm-block" style="cursor: pointer"></i>
+          <div class="me-2 flex-shrink-0">
+            <img src="./assets/imgs/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <div class="container-fluid overflow-auto">
+      <div class="row d-flex flex-nowrap">
+        <!-- barra laterale dx -->
+        <div class="col bg-black d-none d-md-block me-3">
+          <section class="ms-2 sideBarTextColor">
+            <a href="#"><i class="bi bi-three-dots d-inline-block my-2 mb-3 fs-4 sideBarTextColor"></i></a>
+            <div class="d-flex flex-column align-items-start gap-3 mb-5 first-leftSideBar small">
+              <a href="" class="text-decoration-none d-flex align-items-center gap-3 text-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house sideBarTextColor" viewBox="0 0 16 16">
+                  <path
+                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"
+                  />
+                </svg>
+                Home
+              </a>
+              <a href="./search.html" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+                  />
+                </svg>
+                Cerca
+              </a>
+              <a href="#" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
+                  <path
+                    d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"
+                  />
+                </svg>
+                La tua libreria
+              </a>
+            </div>
+            <div class="d-flex flex-column align-items-start gap-3 first-leftSideBar small">
+              <a href="#" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
+                <img src="./img/create.png" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
+                Crea Playlist
+              </a>
+              <a href="" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
+                <img src="./img/like.jpg" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
+                Brani che ti piacciono
+              </a>
+              <a href="" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
+                <img src="./img/saved.png" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
+                I tuoi episodi
+              </a>
+            </div>
+            <hr class="border-1 bg-secondary my-4 me-4" />
+            <div class="flex-fill overflow-auto small pe-2 sideScrollBar second-leftSideBar">
+              <p>early stage emily syndrome (sett-ott 2022)</p>
+              <p>Be the young</p>
+              <p>"..."cit Kimiko(lug-ago 2022)</p>
+              <p>saggio vibes💃📒🩰</p>
+              <p>main character energy (mag-giu 2022)</p>
+              <p>that fucking mood 🔪</p>
+              <p>VEE, CARLOTTA E GIACOMO VANNO A BOSIO</p>
+              <p>An Emily Winchester kind of mood 🔪🖕</p>
+              <p class="d-flex justify-content-between align-items-center">
+                landing page (mar-apr 2022)
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708z"
+                  />
+                  <path
+                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"
+                  />
+                </svg>
+              </p>
+              <p>2021 lol</p>
+              <p class="d-flex justify-content-between align-items-center">
+                cosa cazzo vuol dire questa...
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708z"
+                  />
+                  <path
+                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"
+                  />
+                </svg>
+              </p>
+              <p>honey and glass (nov-dic 2021)</p>
+              <p>(Revenge) Training Arc 🦍</p>
+              <p>Lidia 🤝 Emily</p>
+              <p>minecraft e nintendo switch (sept-oct 2021)</p>
+              <p>silvano d'orba? I hardly know her (lug - ago 2021)</p>
+              <p>Culo 2021</p>
+              <p>Frah Quintale Mix</p>
+              <p>Francesco Guccini Mix</p>
+              <p class="d-flex justify-content-between align-items-center">
+                Geolier - Tutto è possibile
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708z"
+                  />
+                  <path
+                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"
+                  />
+                </svg>
+              </p>
+              <p>Old-School Hip-Hop</p>
+              <p>Harlem 1985</p>
+              <p>Movie Soundtracks</p>
+              <p>B DIFFERENT</p>
+              <p>Rhytim and Poetry</p>
+              <p class="d-flex justify-content-between align-items-center">
+                Kanye West Mix
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708z"
+                  />
+                  <path
+                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"
+                  />
+                </svg>
+              </p>
+            </div>
+          </section>
+        </div>
+        <!-- SEZIONE CENTRALE -->
+        <div class="col-12 col-md-8" style="height: 150vh; overflow-y: auto">
+          <!-- barra profilo + selettori di trascinamento-->
+          <div class="row">
+            <div class="d-flex mb-3"></div>
+          </div>
+          <!-- slider con immagine singola-->
+          <div class="row">
+            <div id="carouselExampleFade" class="carousel slide bg-black p-2 d-none d-md-block">
+              <div id="cardAlbum" class="carousel-inner">
+                <div class="carousel-item active container">
+                  <!--SCHEDA SINGOLA CAROUSEL-->
+                  <div class="row align-items-center">
+                    <div class="col-4 shadow">
+                      <img src="./css/media/image-17.jpg" class="d-block w-100 shadow" alt="..." />
+                    </div>
+                    <div class="col-8 text-start text-white">
+                      <p class="small mb-1">ALBUM</p>
+                      <div class="d-flex mb-2">
+                        <div class="ms-auto p-2 opacity-50 small">NASCONDI ANNUNCI</div>
+                      </div>
+                      <h1 class="display-4 fw-bold">VIOLA (feat. Salmo)</h1>
+                      <p class="fs-5">Fedez, Salmo</p>
+                      <p>Ascolta il nuovo album di Fedez, Salmo!</p>
+
+                      <div class="d-flex gap-2 mt-4">
+                        <button type="button" class="btn btn-success rounded-pill px-4 py-2 fw-bold text-black">Play</button>
+                        <button type="button" class="btn btn-outline-light rounded-pill px-4 py-2 fw-bold">Salva</button>
+                        <button type="button" class="btn text-white"><i class="bi bi-three-dots"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                  <!--fine scheda singola carousel-->
+                </div>
+                <!--realizzazione delle schede con js-->
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon visually-hidden" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                <span class="carousel-control-next-icon visually-hidden" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+
+            <!--slider solo smarphone -->
+            <div id="carouselUniqueSmartphone" class="carousel slide carousel-fade bg-black p-2 d-block d-md-none">
+              <div id="cardAlbumSmartphone" class="carousel-inner">
+                <div class="carousel-item active container">
+                  <!--SCHEDA SINGOLA CAROUSEL-->
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="./css/media/image-17.jpg" class="d-block w-100" alt="..." />
+                      <div class="position-absolute top-0 end-0">
+                        <span class="badge rounded-pill bg-primary">
+                          ALBUM
+                          <span class="visually-hidden">unread messages</span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-12 text-start">
+                      <!--h1-->
+                      <h1>VIOLA(feat. SALMO)</h1>
+                      <p>Fedez, Salmo</p>
+                      <!-- bottoni -->
+                      <div class="row">
+                        <div class="d-flex mb-3 ps-0">
+                          <div class="p-2">
+                            <button type="button" class="btn btn-success">Success</button>
+                          </div>
+                          <div class="p-2">
+                            <button type="button" class="btn btn-outline-light">Light</button>
+                          </div>
+                          <div class="p-2">Flex item</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--fine scheda singola carousel-->
+                </div>
+                <div class="carousel-item">
+                  <!--SCHEDA SINGOLA DA REPLICARE-->
+                </div>
+                <div class="carousel-item">
+                  <!--SCHEDA SINGOLA DA REPLICARE-->
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselUniqueSmartphone" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon visually-hidden" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselUniqueSmartphone" data-bs-slide="next">
+                <span class="carousel-control-next-icon visually-hidden" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+
+            <!-- sezione con titolo h2-->
+            <div class="container-fluid text-start mt-5 mb-3">
+              <div class="row">
+                <div class="col">
+                  <h2 id="welcome">Buonasera</h2>
+                </div>
+              </div>
+            </div>
+            <!-- sezione con 6 card con i generi musicali -->
+            <div class="container-fluid">
+              <div class="row g-3">
+                <!--carosello 2 card mobile-->
+                <div class="container-fluid mt-4">
+                  <div id="rowCard" class="row g-3">
+                    <div class="col-6 col-md-4">
+                      <div class="card shadow-sm rounded-0" style="height: 80px">
+                        <div class="row g-0 h-100 d-flex flex-nowrap">
+                          <div class="col-auto p-0">
+                            <img src="./img/like.jpg" style="width: 80px; height: 80px; object-fit: cover" alt="Immagine" />
+                          </div>
+                          <div class="col">
+                            <div class="card-body p-3 d-flex align-items-center h-100">
+                              <h5 class="card-text mb-0" style="font-size: 0.8rem; font-weight: 500">Brani che ti piacciono</h5>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--card replicate in js-->
+                  </div>
+                </div>
+                <!-- sezione con titolo h3-->
+                <div class="container-fluid text-start mt-5 mb-1">
+                  <div class="row">
+                    <div class="col d-flex justify-content-between">
+                      <h3>I tuoi artisti preferiti</h3>
+                      <a class="btn text-white" href="./search.html" role="button"
+                        ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                          <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <!-- CAROUSEL ARTISTI -->
+                <section class="my-5 d-none d-md-block">
+                  <div id="prev1" class="carousel slide ms-4" data-bs-ride="false">
+                    <div id="carouselDesktop" class="carousel-inner">
+                      <!-- Vuoto - verrà riempito da JavaScript -->
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#prev1" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon bg-dark rounded-2 p-3"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#prev1" data-bs-slide="next">
+                      <span class="carousel-control-next-icon bg-dark rounded-2 p-3"></span>
+                    </button>
+                  </div>
+                </section>
+
+                <!-- CAROUSEL ARTISTI SMARTPHONE -->
+                <section class="my-5 d-block d-md-none">
+                  <div id="prev2" class="carousel slide" data-bs-ride="false">
+                    <div id="carouselSmartphone" class="carousel-inner">
+                      <!-- Vuoto - verrà riempito da JavaScript -->
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#prev2" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon bg-dark rounded-2 p-3" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#prev2" data-bs-slide="next">
+                      <span class="carousel-control-next-icon bg-dark rounded-2 p-3" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- barra laterale dx -->
+        <div class="col bg-black d-none d-md-block ms-3">
+          <section>
+            <div class="d-flex justify-content-end align-items-center gap-4 mt-2">
+              <button class="btn p-0 border-0 text-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+                </svg>
+              </button>
+              <button class="btn p-0 border-0 text-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-fullscreen" viewBox="0 0 16 16">
+                  <path
+                    d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5M.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5"
+                  />
+                </svg>
+              </button>
+              <button class="btn p-0 border-0 text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                  <path
+                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="d-md-flex flex-md-column text-md-center flex-lg-row d-flex text-lg-start justify-content-between align-items-center gap-2 mt-1 mb-4">
+              <h6 class="flex-grow-1 m-0 text-light fs-5 ps-2">Attività amici</h6>
+              <div class="d-lg-flex">
+                <button class="btn p-0 border-0 text-secondary"><i class="bi bi-person-plus fs-5"></i></button>
+                <button class="btn p-0 border-0 text-secondary"><i class="bi bi-x fs-3"></i></button>
+              </div>
+            </div>
+            <div class="container small">
+              <!-- ITEM -->
+              <div class="row gap-3">
+                <div class="d-flex mb-3 p-0">
+                  <div class="me-2 flex-shrink-0">
+                    <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                  </div>
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold">Cristian Cicale</span>
+                      <span class="small d-none d-lg-block">2 ore</span>
+                    </div>
+                    <div class="small"><span>081</span> • Geolier</div>
+                    <div class="small">◎ Tutto è possibile</div>
+                  </div>
+                </div>
+
+                <div class="d-flex mb-3 p-0">
+                  <div class="me-2 flex-shrink-0">
+                    <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                  </div>
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold">Elena Volpato</span>
+                      <span class="small d-none d-lg-block">3 ore</span>
+                    </div>
+                    <div class="small"><span>Levitating</span> • Dua Lipa</div>
+                    <div class="small">◎ Future Nostalgia</div>
+                  </div>
+                </div>
+
+                <div class="d-flex mb-3 p-0">
+                  <div class="me-2 flex-shrink-0">
+                    <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                  </div>
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold">Faizan Shahzad Dar</span>
+                      <span class="small d-none d-lg-block">5 ore</span>
+                    </div>
+                    <div class="small"><span>Till I Collapse</span> • Eminem</div>
+                    <div class="small">◎ The Eminem Show</div>
+                  </div>
+                </div>
+
+                <div class="d-flex mb-3 p-0">
+                  <div class="me-2 flex-shrink-0">
+                    <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                  </div>
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold">Giulia Crepaldi</span>
+                      <span class="small d-none d-lg-block">4 ore</span>
+                    </div>
+                    <div class="small"><span>Bad Romance</span> • Lady Gaga</div>
+                    <div class="small">◎ The Fame Monster</div>
+                  </div>
+                </div>
+
+                <div class="d-flex mb-3 p-0">
+                  <div class="me-2 flex-shrink-0">
+                    <img src="./img/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                  </div>
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold">Emanuele Piemonte</span>
+                      <span class="small d-none d-lg-block">1 ora</span>
+                    </div>
+                    <div class="small"><span>Demons</span> • Imagine Dragons</div>
+                    <div class="small">◎ Night Visions</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script src="./script/home.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
