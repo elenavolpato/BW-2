@@ -27,7 +27,7 @@ const getAlbums = function () {
                   <div class="ms-auto p-2 opacity-50 small">NASCONDI ANNUNCI</div>
                 </div>
                 <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
-                <h1 class="display-4 fw-bold">${randomAlbums[i].album.title}</h1>
+                <h1 class="display-4 fw-bold text-white">${randomAlbums[i].album.title}</h1>
                 </a>
                 <p class="fs-5">${randomAlbums[i].artist.name}</p>
                 <p>Ascolta il nuovo album di ${randomAlbums[i].artist.name}!</p>
@@ -68,7 +68,7 @@ const getAlbums = function () {
 <div class="col-12 text-start">
                       <!--h1-->
                        <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
-                      <h1 class="display-4 fw-bold mt-2">${randomAlbums1[i].album.title}</h1>
+                      <h1 class="display-4 fw-bold mt-2 text-white">${randomAlbums1[i].album.title}</h1>
                       </a>
                       <p class="fs-5">${randomAlbums1[i].artist.name}</p>
                       <!-- bottoni -->
@@ -236,28 +236,28 @@ function renderCarousel(artists) {
       <div class="col-md-3 g-2">
         <a href="artist.html?id=${artists[startIndex].artist.id}" class="link-offset-2 link-underline link-underline-opacity-0">
           <img src="${artists[startIndex].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-          <h5 class="text-white text-center">${artists[startIndex].artist.name}</h5>
+          <h5 class="text-white text-center link-offset-2 link-underline link-underline-opacity-0">${artists[startIndex].artist.name}</h5>
         </a>
       </div>
       
       <div class="col-md-3 g-2">
         <a href="artist.html?id=${artists[startIndex + 1].artist.id}" class="link-offset-2 link-underline link-underline-opacity-0">
           <img src="${artists[startIndex + 1].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-          <h5 class="text-white text-center">${artists[startIndex + 1].artist.name}</h5>
+          <h5 class="text-white text-center link-offset-2 link-underline link-underline-opacity-0">${artists[startIndex + 1].artist.name}</h5>
         </a>
       </div>
       
       <div class="col-md-3 g-2">
         <a href="artist.html?id=${artists[startIndex + 2].artist.id}" class="link-offset-2 link-underline link-underline-opacity-0">
           <img src="${artists[startIndex + 2].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-          <h5 class="text-white text-center">${artists[startIndex + 2].artist.name}</h5>
+          <h5 class="text-white text-center link-offset-2 link-underline link-underline-opacity-0">${artists[startIndex + 2].artist.name}</h5>
         </a>
       </div>
       
       <div class="col-md-3 g-2">
         <a href="artist.html?id=${artists[startIndex + 3].artist.id}" class="link-offset-2 link-underline link-underline-opacity-0">
           <img src="${artists[startIndex + 3].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-          <h5 class="text-white text-center">${artists[startIndex + 3].artist.name}</h5>
+          <h5 class="text-white text-center link-offset-2 link-underline link-underline-opacity-0">${artists[startIndex + 3].artist.name}</h5>
         </a>
       </div>
     </div>
