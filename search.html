@@ -55,19 +55,20 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-black sticky-top py-2" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-black sticky-top py-2 border-bottom" data-bs-theme="dark">
       <div class="container-fluid d-flex align-items-center">
         <a class="navbar-brand" href="#">
-          <img src="https://img.icons8.com/?size=100&id=11116&format=png&color=FFFFFF" alt="logo" width="35" height="35" />
+          <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png" alt="logo" width="35" height="35" />
         </a>
 
         <div class="d-flex align-items-center flex-grow-1 justify-content-center mx-2">
-          <div
-            class="bg-secondary bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center me-3 d-none d-md-flex"
-            style="width: 45px; height: 45px; cursor: pointer"
-          >
-            <i class="bi bi-house-door fs-4"></i>
-          </div>
+          <a href="./home.html">
+            <div
+              class="bg-secondary bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center me-3 d-none d-md-flex"
+              style="width: 45px; height: 45px; cursor: pointer"
+            >
+              <i class="bi bi-house-door fs-4"></i></div
+          ></a>
 
           <form class="d-flex position-relative flex-grow-1" style="max-width: 500px" role="search" id="form-ricerca">
             <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
@@ -101,7 +102,7 @@
           <section class="ms-2 sideBarTextColor">
             <a href="#"><i class="bi bi-three-dots d-inline-block my-2 mb-3 fs-4 sideBarTextColor"></i></a>
             <div class="d-flex flex-column align-items-start gap-3 mb-5 first-leftSideBar small">
-              <a href="" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
+              <a href="./home.html" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house sideBarTextColor" viewBox="0 0 16 16">
                   <path
                     d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"
@@ -141,7 +142,7 @@
               </a>
             </div>
             <hr class="border-1 bg-secondary my-4 me-4" />
-            <div class="flex-fill overflow-auto small pe-2 second-leftSideBar">
+            <div class="flex-fill overflow-auto small pe-2 sideScrollBar second-leftSideBar">
               <p>early stage emily syndrome (sett-ott 2022)</p>
               <p>Be the young</p>
               <p>"..."cit Kimiko(lug-ago 2022)</p>
@@ -216,7 +217,7 @@
           </section>
         </section>
 
-        <main class="col bg-dark min-vh-100 p-4">
+        <main class="col bg-dark min-vh-100 p-4 sideScrollBar second-leftSideBar">
           <div class="d-flex justify-content-between align-items-center mb-4">
             <h3 class="text-white mb-4 fw-bold">Sfoglia tutto</h3>
             <article id="spinner-container" class="text-center flex-grow-1 bg-dark">
