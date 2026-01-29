@@ -17,7 +17,9 @@ const getAlbums = function () {
                  <div class="carousel-item ${isActive}">
             <div class="row align-items-center">
               <div class="col-4">
+              <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
                 <img src="${randomAlbums[i].album.cover_big}" class="d-block w-100 shadow" alt="${randomAlbums[i].album.title}" />
+                </a>
               </div>
               <div class="col-8 text-start text-white">
                 <p class="small mb-1">ALBUM</p>
@@ -27,7 +29,6 @@ const getAlbums = function () {
                 <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
                 <h1 class="display-4 fw-bold text-white">${randomAlbums[i].album.title}</h1>
                 </a>
-                <h1 class="display-4 fw-bold">${randomAlbums[i].album.title}</h1>
                 <p class="fs-5">${randomAlbums[i].artist.name}</p>
                 <p>Ascolta il nuovo album di ${randomAlbums[i].artist.name}!</p>
                
@@ -420,3 +421,11 @@ myArtist();
 
 buttonFunction("playButton");
 buttonFunction("playButtonMobile");
+
+const searchForm = document.getElementById("form-ricerca");
+const searchInput = document.getElementById("input-ricerca");
+
+searchForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  window.location.href = `search.html?value=${searchInput.value}`;
+});
