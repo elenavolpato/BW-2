@@ -1,32 +1,6 @@
 const albumsURL =
   "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"; //6605779
 //////////////
-const audio = document.getElementById("mioAudio");
-const body = document.getElementsByTagName("body");
-// funzione per stoppare e riavviare una canzone dal tasto play/stop
-const btnPlayPause = document.getElementById("btnPlayPause");
-function togglePlay() {
-  if (audio.paused) {
-    audio.play();
-    btnPlayPause.textContent = "Pausa";
-  } else {
-    audio.pause();
-    btnPlayPause.textContent = "Play";
-  }
-}
-
-//funzione che avvia la canzone in base a quale si clicca che si avvierà al click sul div
-const playSong = function (link) {
-  audio.pause();
-  audio.currentTime = 0;
-  audio.load();
-
-  if (audio.paused) {
-    console.log("if 1");
-    audio.innerHTML = ` <source src= '${link}' type="audio/mpeg" />`;
-    audio.play();
-  }
-};
 
 // funzione per la durata
 
@@ -42,8 +16,6 @@ const songDuration = (seconds) => {
 const getYear = function (year) {
   return year.slice(0, 4);
 };
-
-// funzioni per il footer
 
 ///////////////
 
@@ -66,7 +38,7 @@ const getData = function () {
       const releaseDate = album.release_date;
       const year = getYear(releaseDate);
       const tracksArray = album.tracks.data;
-      console.log(cover);
+      console.log(album);
 
       // PER INSERIRE LA COPERTINA PRINCIPALE AL SUO POSTO
       const copertinaPrincipale = document.getElementById(
@@ -81,8 +53,8 @@ const getData = function () {
       const titoloPrincipale = document.getElementById("descrizioneAlbum");
       titoloPrincipale.innerHTML = `  
       <h1>${albumTitle}</h1>   
-     <div class="d-flex"><img src=${artistImg} alt="profilePicture" class="rounded-circle me-2" style="width: 25px; height: 25px"/><a href="./artist.html" class="text-decoration-none text-white"><h6>${artistName}</h6></a>  <h6> </h6></div>
-            <p class="sideBarTextColor">${type} . ${year}</p> `;
+      <div class="d-flex mt-3"><img src=${artistImg} alt="profilePicture" class="rounded-circle me-2" style="width: 25px; height: 25px"/><a href="./artist.html" class="text-decoration-none text-white"><h6>${artistName}</h6></a>  <h6> </h6></div>
+      <p class="sideBarTextColor mt-2">${type} . ${year}</p> `;
 
       // ORA FACCIO TUTTE LE CANZONI NEL ALBUM
       const container = document.getElementById("mainContainer");
@@ -93,11 +65,11 @@ const getData = function () {
         i = i + 1;
         console.log(timing);
         container.innerHTML += ` 
-        <div class="row justify-content-center playSong mb-3" onclick="playSong('${track.preview}');" role="button">
+        <div class="row justify-content-center playSong mb-3" onclick="playSong(${JSON.stringify(track).replace(/"/g, "&quot;")});" role="button">
           <div class="col col-6 col-md-4 text-start flex-fill pe-0">
          
-         <p class=" mb-0 d-flex fw-bold">  ${track.title}</p>
-            <a href="./artist.html" class="text-decoration-none sideBarTextColor">${artistName}</a>
+         <p class="fw-bold mb-0">${i}. ${track.title}</p>
+            <a href="./artist.html" class="text-decoration-none sideBarTextColor ps-0">${artistName}</a>
           </div>
           <!-- 3 puntini mobile -->
           <div class="col col-6 d-md-none text-end flex-shrink-1">
@@ -128,16 +100,121 @@ const getData = function () {
           <div class="col col-md-4 d-none d-md-block text-end">
             <p class="sideBarTextColor">${track.rank}</p>
           </div>
-          <div class="col col-md-4 d-none d-md-block text-end sideBarTextColor">${timing}</div>
+          <div class="col col-md-4 d-none d-md-block text-end sideBarTextColor">${songDurationo(track.duration)}</div>
           <!-- verisione computer -->
         </div>
         `;
       });
-      // FOOTER
     })
     .catch((err) => {
       console.log("errore", err);
     });
+};
+// ================== STATE ==================
+let audio = null;
+let isPlaying = false;
+let playlist = [];
+let currentIndex = -1;
+// ================== UTILS ==================
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+}
+
+function updateProgressBar(progressFilled, currentTime, duration) {
+  const percent = (currentTime / duration) * 100;
+  progressFilled.style.width = percent + "%";
+}
+
+// ================== PLAYER ==================
+function playSong(song) {
+  if (audio) audio.pause();
+
+  audio = new Audio(song.preview);
+  audio.play();
+  isPlaying = true;
+
+  // playlist
+  playlist.push(song);
+  currentIndex = playlist.length - 1;
+
+  // footer
+  document.getElementById("song-title").innerText = song.title;
+  document.getElementById("song-artist1").innerText = song.artist.name;
+  document.getElementById("song-artist2").innerText = song.artist.name;
+  document.getElementById("footerImg").src =
+    song.artist.picture_medium || song.album.cover_medium;
+
+  updatePlayIcons(true);
+
+  const progressFilled = document.querySelector(".progress-filled");
+
+  audio.addEventListener("loadedmetadata", () => {
+    document.getElementById("totalTime").innerText = formatTime(audio.duration);
+  });
+
+  audio.addEventListener("timeupdate", () => {
+    document.getElementById("currentTime").innerText = formatTime(
+      audio.currentTime,
+    );
+    updateProgressBar(progressFilled, audio.currentTime, audio.duration);
+  });
+
+  audio.addEventListener("ended", () => {
+    isPlaying = false;
+    updatePlayIcons(false);
+  });
+}
+
+// ================== PLAY ICONS ==================
+function updatePlayIcons(playing) {
+  const icon = playing
+    ? `<i class="bi bi-pause-circle-fill fs-1 mx-2"></i>`
+    : `<i class="bi bi-play-circle-fill fs-1 mx-2"></i>`;
+
+  const iconMobile = playing
+    ? `<i class="bi bi-pause-fill fs-4"></i>`
+    : `<i class="bi bi-play-fill fs-4"></i>`;
+
+  document.getElementById("playButton").innerHTML = icon;
+  document.getElementById("playButtonMobile").innerHTML = iconMobile;
+}
+// ================== PLAY / PAUSE ==================
+function togglePlay() {
+  if (!audio) return;
+
+  if (isPlaying) {
+    audio.pause();
+    isPlaying = false;
+  } else {
+    audio.play();
+    isPlaying = true;
+  }
+
+  updatePlayIcons(isPlaying);
+}
+
+document.getElementById("playButton")?.addEventListener("click", togglePlay);
+document
+  .getElementById("playButtonMobile")
+  ?.addEventListener("click", togglePlay);
+
+// ================== SKIP ==================
+
+document.getElementById("skipBackward")?.addEventListener("click", () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    playSong(playlist[currentIndex]);
+  }
+});
+
+// ================== ALBUM ==================
+
+const songDurationo = (seconds) => {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs.toString().padStart(2, "0")}`;
 };
 
 getData();

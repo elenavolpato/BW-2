@@ -198,7 +198,7 @@
           </section>
         </div>
 
-        <div class="col bg-dark overflow-auto h-100">
+        <div class="col bg-black.bg-gradient overflow-auto h-100">
           <!-- centro (scroll) -->
           <header class="container-fluid">
             <nav>
@@ -306,11 +306,11 @@
             </nav>
             <!-- container per la parte del header in cui ci andrà l'immagine del album e la descrizione -->
             <div class="container">
-              <div class="row justify-content-center">
+              <div class="row justify-content-center align-items-center">
                 <div
-                  class="col col-12 col-md-4 text-center text-md-start mb-3 ps-0"
+                  class="col col-12 col-md-4 text-center text-md-start mb-3 p-0"
                   id="copertinaPrincipale"></div>
-                <div class="col col-12 col-md-8" id="descrizioneAlbum">
+                <div class="col col-12 col-md-8 p-0" id="descrizioneAlbum">
                   <h4 class="nome-artista">
                     <img src="#" alt="#" /> nome artista
                   </h4>
@@ -324,17 +324,19 @@
             <div class="container" id="mainContainer">
               <div
                 class="d-flex mb-3 mt-2 align-items-center d-none d-md-block">
-                <!-- play schermi lg -->
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="45"
-                  height="45"
-                  fill="currentColor"
-                  class="bi bi-play-circle-fill me-4 text-success"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z" />
-                </svg>
+                <!-- play schermi lg playbtn -->
+                <button class="btn p-0 border-0 sideBarTextColor">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="45"
+                    height="45"
+                    fill="currentColor"
+                    class="bi bi-play-circle-fill me-4 text-success"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z" />
+                  </svg>
+                </button>
                 <!-- svg del cuore -->
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -440,7 +442,10 @@
               </div>
               <div class="row justify-content-center mb-2">
                 <div class="col col-6 col-md-4 d-none d-md-block">
-                  <p class="mb-2 sideBarTextColor">TITOLO</p>
+                  <span class="sideBarTextColor">#</span>
+                  <p class="mb-0 sideBarTextColor d-inline-block ms-2">
+                    TITOLO
+                  </p>
                 </div>
                 <div class="col col-6 col-md-4 d-none d-md-block text-md-end">
                   <p class="mb-2 sideBarTextColor">RIPRODUZIONI</p>
@@ -449,8 +454,8 @@
                   <p class="mb-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
+                      width="20"
+                      height="20"
                       fill="currentColor"
                       class="bi bi-clock sideBarTextColor"
                       viewBox="0 0 16 16">
@@ -462,6 +467,7 @@
                   </p>
                 </div>
               </div>
+              <hr class="d-none d-md-block mt-0" />
             </div>
           </main>
           <footer class="mt-3">
@@ -585,16 +591,6 @@
               <p class="text-secondary">
                 &copy; <span id="year">-</span> Spotify AB
               </p>
-            </div>
-            <div class="container-fluid">
-              <div class="row justify-content-center text-center">
-                <!-- audio -->
-                <audio id="mioAudio"></audio>
-                <!-- controlli personalizzati -->
-                <div>
-                  <button id="btnPlayPause" onclick="togglePlay()">play</button>
-                </div>
-              </div>
             </div>
           </footer>
         </div>
@@ -769,16 +765,19 @@
           <div class="col col-md-2 d-flex align-items-center gap-3">
             <div>
               <img
-                src="./img/like.jpg"
-                alt="test"
+                src="./assets/imgs/create.png"
+                alt="img"
                 style="width: 40px"
                 class="rounded-circle"
                 id="footerImg" />
             </div>
             <div class="d-flex flex-row flex-md-column">
-              <h6 class="mb-0 mb-md-1 me-1 me-md-0">Fat Funny Friend</h6>
-              <span class="small d-none d-md-block">Artista</span>
-              <h6 class="mb-0 d-md-none"><span>by </span>Artista</h6>
+              <h6 class="mb-0 mb-md-1 me-1 me-md-0" id="song-title">Canzone</h6>
+              <span class="small d-none d-md-block" id="song-artist1"
+                >Artista</span
+              >
+              <span class="d-md-none me-1">by</span>
+              <h6 class="mb-0 d-md-none" id="song-artist2">Artista</h6>
             </div>
             <div class="ms-3">
               <button class="btn p-0 border-0 sideBarTextColor">
@@ -801,13 +800,17 @@
               <button class="btn p-0 border-0 text-success">
                 <i class="bi bi-shuffle mx-2"></i>
               </button>
-              <button class="btn p-0 border-0 sideBarTextColor">
+              <button
+                class="btn p-0 border-0 sideBarTextColor"
+                id="skipBackward">
                 <i class="bi bi-skip-backward-fill fs-5 mx-2"></i>
               </button>
-              <button class="btn p-0 border-0 text-light">
+              <button class="btn p-0 border-0 text-light" id="playButton">
                 <i class="bi bi-play-circle-fill fs-1 mx-2"></i>
               </button>
-              <button class="btn p-0 border-0 sideBarTextColor">
+              <button
+                class="btn p-0 border-0 sideBarTextColor"
+                id="skipForward">
                 <i class="bi bi-skip-forward-fill fs-5 mx-2"></i>
               </button>
               <button class="btn p-0 border-0 text-success">
@@ -815,9 +818,26 @@
               </button>
             </div>
             <div class="d-flex justify-content-center align-items-center">
-              <small class="me-2">0:00</small>
-              <input type="range" class="form-range" style="width: 50%" />
-              <small class="ms-2">3:00</small>
+              <small class="me-2" id="currentTime">0:00</small>
+              <div
+                class="progress-container"
+                style="
+                  width: 50%;
+                  height: 4px;
+                  background: #555;
+                  border-radius: 2px;
+                  position: relative;
+                ">
+                <div
+                  class="progress-filled"
+                  style="
+                    width: 0%;
+                    height: 100%;
+                    background: #1db954;
+                    border-radius: 2px;
+                  "></div>
+              </div>
+              <small class="ms-2" id="totalTime">00:00</small>
             </div>
           </div>
           <div
@@ -826,7 +846,11 @@
             <i class="d-none d-md-block bi bi-collection-play"></i>
             <i class="bi bi-pc-display"></i>
             <i class="bi bi-heart d-md-none"></i>
-            <i class="bi bi-play-fill d-md-none fs-4"></i>
+            <button
+              class="btn p-0 border-0 sideBarTextColor d-md-none"
+              id="playButtonMobile">
+              <i class="bi bi-play-fill d-md-none fs-4"></i>
+            </button>
             <i class="d-none d-md-block bi-volume-up"></i>
             <input type="range" class="form-range d-none d-md-block w-25" />
             <i class="d-none d-md-block bi bi-arrows-angle-expand small"></i>
