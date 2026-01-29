@@ -2,7 +2,8 @@ img.user-img {
   width: 40px;
   height: 40px;
   object-fit: cover;
-  display: block;
+  min-width: 40px;
+  min-height: 40px;
 }
 
 header {
@@ -56,4 +57,8 @@ button.hidden {
 
 .player {
   margin-left: -12px !important;
+}
+
+.padding-bottom {
+  padding-bottom: 150px;
 }
