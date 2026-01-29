@@ -7,7 +7,8 @@ img.user-img {
 }
 
 header {
-  background-image: URL("https://placedog.net/800x300");
+  background-image: URL("");
+  background-color: #111111;
   background-size: cover;
   background-repeat: no-repeat;
   height: 400px;

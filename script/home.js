@@ -221,31 +221,32 @@ function renderCarousel(artists) {
   for (let slide = 0; slide < 2; slide++) {
     const isActive = slide === 0 ? "active" : "";
     const startIndex = slide * 4;
+    console.log("here", startIndex);
 
     carouselArtists.innerHTML += `
       <div class="carousel-item ${isActive}">
           <div class="row gx-2 flex-nowrap">
               <div class="col-md-3 g-2">
-              <a href="./artist.html?_id=${artists[startIndex].artist.id}">
+              <a href="./artist.html?_id=${artists[startIndex].artist.id}" class="link-offset-2 link-underline link-underline-opacity-0">
                 <img src="${artists[startIndex].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
                 <h5 class="text-white text-center">${artists[startIndex].artist.name}</h5>
                 </a>
               </div>
             </a>
             <div class="col-md-3 g-2">
-             <a href="./artist.html?_id=${artists[startIndex + 1].artist.id}">
+             <a href="./artist.html?_id=${artists[startIndex + 1].artist.id}" class="link-offset-2 link-underline link-underline-opacity-0">
               <img src="${artists[startIndex + 1].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
               <h5 class="text-white text-center">${artists[startIndex + 1].artist.name}</h5>
               </a>
             </div>
             <div class="col-md-3 g-2">
-             <a href="./artist.html?_id=${artists[startIndex + 2].artist.id}">
+             <a href="./artist.html?_id=${artists[startIndex + 2].artist.id}" class="link-offset-2 link-underline link-underline-opacity-0">
               <img src="${artists[startIndex + 2].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
               <h5 class="text-white text-center">${artists[startIndex + 2].artist.name}</h5>
               </a>
             </div>
             <div class="col-md-3 g-2">
-             <a href="./artist.html?_id=${artists[startIndex + 3].artist.id}">
+             <a href="./artist.html?_id=${artists[startIndex + 3].artist.id}" class="link-offset-2 link-underline link-underline-opacity-0">
               <img src="${artists[startIndex + 3].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
               <h5 class="text-white text-center">${artists[startIndex + 3].artist.name}</h5>
               </a>
