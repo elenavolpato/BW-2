@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Search - Spotify</title>
+    <title>Spotify - Search</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -51,55 +51,172 @@
         object-fit: cover;
       }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <nav class="navbar bg-black border-bottom border-body navbar-expand-sm bg-body-tertiary sticky-top" data-bs-theme="dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="./assets/imgs/logo.svg" alt="logo" width="100" height="50" /></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
-                ><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
-                  <path
-                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4z"
-                  /></svg
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-          </ul>
-          <form class="d-flex" role="search" id="form-ricerca">
-            <input class="form-control me-2" type="search" placeholder="Cerca..." aria-label="Search" id="input-ricerca" />
-            <button class="btn btn-light btn-sm d-block w-25 rounded-pill fw-bold" type="submit">Cerca</button>
+    <nav class="navbar navbar-expand-lg bg-black sticky-top py-2 border-bottom" data-bs-theme="dark">
+      <div class="container-fluid d-flex align-items-center">
+        <a class="navbar-brand" href="#">
+          <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png" alt="logo" width="35" height="35" />
+        </a>
+
+        <div class="d-flex align-items-center flex-grow-1 justify-content-center mx-2">
+          <div
+            class="bg-secondary bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center me-3 d-none d-md-flex"
+            style="width: 45px; height: 45px; cursor: pointer"
+          >
+            <i class="bi bi-house-door fs-4"></i>
+          </div>
+
+          <form class="d-flex position-relative flex-grow-1" style="max-width: 500px" role="search" id="form-ricerca">
+            <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+            <input
+              class="form-control bg-dark border-0 rounded-pill ps-5 py-2 text-white"
+              type="search"
+              placeholder="Cosa vuoi ascoltare?"
+              id="input-ricerca"
+              style="background-color: #242424"
+            />
+            <button class="btn d-none" type="submit">Cerca</button>
           </form>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <div class="nav-item d-none d-lg-block">
+            <a class="nav-link text-secondary fw-bold small" href="#"> <i class="bi bi-arrow-down-circle me-1"></i>Installa app </a>
+          </div>
+          <i class="bi bi-bell text-secondary fs-5 d-none d-sm-block" style="cursor: pointer"></i>
+          <i class="bi bi-people text-secondary fs-5 d-none d-sm-block" style="cursor: pointer"></i>
+          <div class="me-2 flex-shrink-0">
+            <img src="./assets/imgs/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+          </div>
         </div>
       </div>
     </nav>
 
     <div class="container-fluid">
       <div class="row">
-        <section class="col-md-4 col-lg-3 col-xl-2 d-none d-md-block bg-black vh-100 sticky-top p-3">
-          <div class="bg-dark rounded p-4 text-secondary">
-            <h4>La tua libresia</h4>
-            <p class="text-secondary">Crea la tua prima playlist</p>
-            <button class="btn btn-light btn-sm d-block mt-3 w-100 rounded-pill fw-bold">Crea playlist</button>
-          </div>
+        <section class="col d-none col-md-2 d-md-block bg-black pe-0">
+          <section class="ms-2 sideBarTextColor">
+            <a href="#"><i class="bi bi-three-dots d-inline-block my-2 mb-3 fs-4 sideBarTextColor"></i></a>
+            <div class="d-flex flex-column align-items-start gap-3 mb-5 first-leftSideBar small">
+              <a href="" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house sideBarTextColor" viewBox="0 0 16 16">
+                  <path
+                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"
+                  />
+                </svg>
+                Home
+              </a>
+              <a href="./search.html" class="text-decoration-none d-flex align-items-center gap-3 text-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+                  />
+                </svg>
+                Cerca
+              </a>
+              <a href="#" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
+                  <path
+                    d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"
+                  />
+                </svg>
+                La tua libreria
+              </a>
+            </div>
+            <div class="d-flex flex-column align-items-start gap-3 first-leftSideBar small">
+              <a href="#" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
+                <img src="./assets/imgs/create.png" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
+                Crea Playlist
+              </a>
+              <a href="" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
+                <img src="./assets/imgs/like.jpg" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
+                Brani che ti piacciono
+              </a>
+              <a href="" class="text-decoration-none d-flex align-items-center gap-3 sideBarTextColor">
+                <img src="./assets/imgs/saved.png" alt="" style="width: 25px" class="rounded-1 d-none d-lg-block" />
+                I tuoi episodi
+              </a>
+            </div>
+            <hr class="border-1 bg-secondary my-4 me-4" />
+            <div class="flex-fill overflow-auto small pe-2 sideScrollBar second-leftSideBar">
+              <p>early stage emily syndrome (sett-ott 2022)</p>
+              <p>Be the young</p>
+              <p>"..."cit Kimiko(lug-ago 2022)</p>
+              <p>saggio vibes💃📒🩰</p>
+              <p>main character energy (mag-giu 2022)</p>
+              <p>that fucking mood 🔪</p>
+              <p>VEE, CARLOTTA E GIACOMO VANNO A BOSIO</p>
+              <p>An Emily Winchester kind of mood 🔪🖕</p>
+              <p class="d-flex justify-content-between align-items-center">
+                landing page (mar-apr 2022)
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708z"
+                  />
+                  <path
+                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"
+                  />
+                </svg>
+              </p>
+              <p>2021 lol</p>
+              <p class="d-flex justify-content-between align-items-center">
+                cosa cazzo vuol dire questa...
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708z"
+                  />
+                  <path
+                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"
+                  />
+                </svg>
+              </p>
+              <p>honey and glass (nov-dic 2021)</p>
+              <p>(Revenge) Training Arc 🦍</p>
+              <p>Lidia 🤝 Emily</p>
+              <p>minecraft e nintendo switch (sept-oct 2021)</p>
+              <p>silvano d'orba? I hardly know her (lug - ago 2021)</p>
+              <p>Culo 2021</p>
+              <p>Frah Quintale Mix</p>
+              <p>Francesco Guccini Mix</p>
+              <p class="d-flex justify-content-between align-items-center">
+                Geolier - Tutto è possibile
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708z"
+                  />
+                  <path
+                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"
+                  />
+                </svg>
+              </p>
+              <p>Old-School Hip-Hop</p>
+              <p>Harlem 1985</p>
+              <p>Movie Soundtracks</p>
+              <p>B DIFFERENT</p>
+              <p>Rhytim and Poetry</p>
+              <p class="d-flex justify-content-between align-items-center">
+                Kanye West Mix
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708z"
+                  />
+                  <path
+                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"
+                  />
+                </svg>
+              </p>
+            </div>
+          </section>
         </section>
 
-        <main class="col-12 col-md-8 col-lg-9 col-xl-10 bg-dark min-vh-100 p-4">
+        <main class="col bg-dark min-vh-100 p-4 sideScrollBar second-leftSideBar">
           <div class="d-flex justify-content-between align-items-center mb-4">
             <h3 class="text-white mb-4 fw-bold">Sfoglia tutto</h3>
             <article id="spinner-container" class="text-center flex-grow-1 bg-dark">
@@ -368,36 +485,189 @@
               <p class="text-secondary">&copy; <span id="year">-</span> Spotify AB</p>
             </div>
           </footer>
-          <!-- <h4 class="text-light">Risultato più rilevante</h4>
-          <div class="col-12 col-md-6">
-            <div
-              class="custom-card rounded p-4 position-relative overflow-hidden d-flex flex-column justify-content-center shadow"
-              style="background-color: #181818; height: 220px; width: 350px; cursor: pointer"
-            >
-              <div class="mb-3">
-                <img
-                  src="./assets/imgs/main/image-1.jpg"
-                  alt="Artista"
-                  style="width: 100px; height: 100px; object-fit: cover"
-                  class="rounded-circle shadow-lg"
-                />
-              </div>
-
-              <h3 class="text-white fw-bold mb-1">Imagine Dragons</h3>
-              <p class="text-secondary fw-bold">Artista</p>
+        </main>
+        <div class="col d-none col-md-2 d-md-block bg-black sideBarTextColor">
+          <!-- sidebar destra -->
+          <section>
+            <div class="d-flex justify-content-end align-items-center gap-4 mt-2">
+              <button class="btn p-0 border-0 text-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+                </svg>
+              </button>
+              <button class="btn p-0 border-0 text-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-fullscreen" viewBox="0 0 16 16">
+                  <path
+                    d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5M.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5"
+                  />
+                </svg>
+              </button>
+              <button class="btn p-0 border-0 text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                  <path
+                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
+                  />
+                </svg>
+              </button>
             </div>
-            <h3 class="text-light mt-5">Brani</h3>
-            <div id="brani-container" class="d-flex flex-column gap-3 mb-5">
-              <div class="d-flex gap-2">
-                <img src="./assets/imgs/main/image-2.jpg" alt="" class="rounded shadow-lg" style="width: 50px; height: 50px" />
-                <div class="d-flex flex-column">
-                  <h6 class="text-light">Imagine - Remastered 2010</h6>
-                  <p class="text-light">John Lennon</p>
+            <div class="d-md-flex flex-md-column text-md-center flex-lg-row d-flex text-lg-start justify-content-between align-items-center gap-2 mt-1 mb-4">
+              <h6 class="flex-grow-1 m-0 text-light fs-5 ps-2">Attività amici</h6>
+              <div class="d-lg-flex">
+                <button class="btn p-0 border-0 text-secondary"><i class="bi bi-person-plus fs-5"></i></button>
+                <button class="btn p-0 border-0 text-secondary"><i class="bi bi-x fs-3"></i></button>
+              </div>
+            </div>
+            <div class="container small">
+              <!-- ITEM -->
+              <div class="row gap-3">
+                <div class="d-flex mb-3 p-0">
+                  <div class="me-2 flex-shrink-0">
+                    <img src="./assets/imgs/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                  </div>
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold">Cristian Cicale</span>
+                      <span class="small d-none d-lg-block">2 ore</span>
+                    </div>
+                    <div class="small"><span>081</span> • Geolier</div>
+                    <div class="small">◎ Tutto è possibile</div>
+                  </div>
+                </div>
+
+                <div class="d-flex mb-3 p-0">
+                  <div class="me-2 flex-shrink-0">
+                    <img src="./assets/imgs/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                  </div>
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold">Elena Volpato</span>
+                      <span class="small d-none d-lg-block">3 ore</span>
+                    </div>
+                    <div class="small"><span>Levitating</span> • Dua Lipa</div>
+                    <div class="small">◎ Future Nostalgia</div>
+                  </div>
+                </div>
+
+                <div class="d-flex mb-3 p-0">
+                  <div class="me-2 flex-shrink-0">
+                    <img src="./assets/imgs/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                  </div>
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold">Faizan Shahzad Dar</span>
+                      <span class="small d-none d-lg-block">5 ore</span>
+                    </div>
+                    <div class="small"><span>Till I Collapse</span> • Eminem</div>
+                    <div class="small">◎ The Eminem Show</div>
+                  </div>
+                </div>
+
+                <div class="d-flex mb-3 p-0">
+                  <div class="me-2 flex-shrink-0">
+                    <img src="./assets/imgs/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                  </div>
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold">Giulia Crepaldi</span>
+                      <span class="small d-none d-lg-block">4 ore</span>
+                    </div>
+                    <div class="small"><span>Bad Romance</span> • Lady Gaga</div>
+                    <div class="small">◎ The Fame Monster</div>
+                  </div>
+                </div>
+
+                <div class="d-flex mb-3 p-0">
+                  <div class="me-2 flex-shrink-0">
+                    <img src="./assets/imgs/logoUtente.png" class="rounded-circle teamNames" alt="logo" />
+                  </div>
+                  <div class="flex-grow-1 d-flex flex-column justify-content-center gap-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold">Emanuele Piemonte</span>
+                      <span class="small d-none d-lg-block">1 ora</span>
+                    </div>
+                    <div class="small"><span>Demons</span> • Imagine Dragons</div>
+                    <div class="small">◎ Night Visions</div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div> -->
-        </main>
+          </section>
+        </div>
+      </div>
+      <div class="row d-md-block">
+        <div class="position-fixed w-100 firstRow d-flex bg-dark py-3 px-2 text-light justify-content-md-between">
+          <div class="col col-md-2 d-flex align-items-center gap-3">
+            <div>
+              <img src="./assets/imgs/like.jpg" alt="test" style="width: 40px" class="rounded-circle" id="footerImg" />
+            </div>
+            <div class="d-flex flex-row flex-md-column">
+              <h6 class="mb-0 mb-md-1 me-1 me-md-0">Fat Funny Friend</h6>
+              <span class="small d-none d-md-block">Artista</span>
+              <h6 class="mb-0 d-md-none"><span>by </span>Artista</h6>
+            </div>
+            <div class="ms-3">
+              <button class="btn p-0 border-0 sideBarTextColor">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart d-none d-md-block" viewBox="0 0 16 16">
+                  <path
+                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="col-auto d-none d-md-block text-center d-flex flex-column flex-grow-1">
+            <div class="d-flex align-items-center gap-2 justify-content-center">
+              <button class="btn p-0 border-0 text-success"><i class="bi bi-shuffle mx-2"></i></button>
+              <button class="btn p-0 border-0 sideBarTextColor"><i class="bi bi-skip-backward-fill fs-5 mx-2"></i></button>
+              <button class="btn p-0 border-0 text-light"><i class="bi bi-play-circle-fill fs-1 mx-2"></i></button>
+              <button class="btn p-0 border-0 sideBarTextColor"><i class="bi bi-skip-forward-fill fs-5 mx-2"></i></button>
+              <button class="btn p-0 border-0 text-success"><i class="bi bi-repeat mx-2"></i></button>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+              <small class="me-2">0:00</small>
+              <input type="range" class="form-range" style="width: 50%" />
+              <small class="ms-2">3:00</small>
+            </div>
+          </div>
+          <div class="col-2 d-flex justify-content-center align-items-center gap-3 sideBarTextColor">
+            <i class="d-none d-md-block bi bi-music-note-list"></i>
+            <i class="d-none d-md-block bi bi-collection-play"></i>
+            <i class="bi bi-pc-display"></i>
+            <i class="bi bi-heart d-md-none"></i>
+            <i class="bi bi-play-fill d-md-none fs-4"></i>
+            <i class="d-none d-md-block bi-volume-up"></i>
+            <input type="range" class="form-range d-none d-md-block w-25" />
+            <i class="d-none d-md-block bi bi-arrows-angle-expand small"></i>
+          </div>
+        </div>
+      </div>
+      <div class="row d-md-none">
+        <div class="col justify-content-center position-fixed bottom-0 w-100 d-flex py-3 px-2 small mobileFooterFade">
+          <a href="" class="text-decoration-none d-flex flex-column align-items-center gap-1 w-50 sideBarTextColor">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house sideBarTextColor" viewBox="0 0 16 16">
+              <path
+                d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"
+              />
+            </svg>
+            Home
+          </a>
+          <a href="" class="text-decoration-none d-flex flex-column align-items-center gap-1 w-50 sideBarTextColor">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+              />
+            </svg>
+            Cerca
+          </a>
+          <a href="" class="text-decoration-none d-flex flex-column align-items-center gap-1 w-50 sideBarTextColor">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
+              <path
+                d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"
+              />
+            </svg>
+            La tua libreria
+          </a>
+        </div>
       </div>
     </div>
     <script
@@ -406,5 +676,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="./script/search.js"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/lodash@4.17.23/lodash.min.js "></script>
   </body>
 </html>
