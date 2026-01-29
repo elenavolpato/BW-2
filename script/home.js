@@ -17,14 +17,18 @@ const getAlbums = function () {
                  <div class="carousel-item ${isActive}">
             <div class="row align-items-center">
               <div class="col-4">
+              <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
                 <img src="${randomAlbums[i].album.cover_big}" class="d-block w-100 shadow" alt="${randomAlbums[i].album.title}" />
+                </a>
               </div>
               <div class="col-8 text-start text-white">
                 <p class="small mb-1">ALBUM</p>
                 <div class="d-flex mb-3">
                   <div class="ms-auto p-2 opacity-50 small">NASCONDI ANNUNCI</div>
                 </div>
-                <h1 class="display-4 fw-bold">${randomAlbums[i].album.title}</h1>
+                <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
+                <h1 class="display-4 fw-bold text-white">${randomAlbums[i].album.title}</h1>
+                </a>
                 <p class="fs-5">${randomAlbums[i].artist.name}</p>
                 <p>Ascolta il nuovo album di ${randomAlbums[i].artist.name}!</p>
                
@@ -62,6 +66,9 @@ const getAlbums = function () {
 <div class="col-12 text-start">
                       <!--h1-->
                       <h1 class="display-4 fw-bold mt-2">${randomAlbums1[i].album.title}</h1>
+                       <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
+                      <h1 class="display-4 fw-bold mt-2 text-white">${randomAlbums1[i].album.title}</h1>
+                      </a>
                       <p class="fs-5">${randomAlbums1[i].artist.name}</p>
                       <!-- bottoni -->
                       <div class="row">
@@ -133,11 +140,15 @@ const myTrack = function () {
                       <div class="card shadow-sm rounded-0" style="height: 80px">
                         <div class="row g-0 h-100 d-flex flex-nowrap">
                           <div class="col-auto p-0">
+                          <a href="album.html?id=${randomTracks[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
                             <img src="${randomTracks[i].album.cover_small}" style="width: 80px; height: 80px; object-fit: cover" alt="Immagine" />
+                            </a>
                           </div>
                           <div class="col">
                             <div class="card-body p-3 d-flex align-items-center h-100">
-                              <h5 class="card-text mb-0" style="font-size: 0.8rem; font-weight: 500">${randomTracks[i].album.title}</h5>
+                            <a href="album.html?id=${randomTracks[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
+                              <h5 class="card-text mb-0 text-white" style="font-size: 0.8rem; font-weight: 500">${randomTracks[i].album.title}</h5>
+                              </a>
                             </div>
                           </div>
                         </div>
@@ -168,7 +179,7 @@ const myArtist = function () {
 
     Promise.all(fetchPromises)
       .then((artistiPreferiti) => {
-        console.log("ARTISTI PREFERITI:", artistiPreferiti);
+        //console.log("ARTISTI PREFERITI:", artistiPreferiti);
 
         // Fetch per artisti random (gli altri 4)
         return fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=music")
@@ -221,27 +232,38 @@ function renderCarousel(artists) {
   for (let slide = 0; slide < 2; slide++) {
     const isActive = slide === 0 ? "active" : "";
     const startIndex = slide * 4;
+    console.log("here", startIndex);
 
     carouselArtists.innerHTML += `
       <div class="carousel-item ${isActive}">
-        <div class="row gx-2 flex-nowrap">
-          <div class="col-md-3 g-2">
-            <img src="${artists[startIndex].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-            <h5 class="text-white text-center">${artists[startIndex].artist.name}</h5>
+          <div class="row gx-2 flex-nowrap">
+              <div class="col-md-3 g-2">
+              <a href="./artist.html?_id=${artists[startIndex].artist.id}" class="link-offset-2 link-underline link-underline-opacity-0">
+                <img src="${artists[startIndex].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+                <h5 class="text-white text-center">${artists[startIndex].artist.name}</h5>
+                </a>
+              </div>
+            </a>
+            <div class="col-md-3 g-2">
+             <a href="./artist.html?_id=${artists[startIndex + 1].artist.id}" class="link-offset-2 link-underline link-underline-opacity-0">
+              <img src="${artists[startIndex + 1].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+              <h5 class="text-white text-center">${artists[startIndex + 1].artist.name}</h5>
+              </a>
+            </div>
+            <div class="col-md-3 g-2">
+             <a href="./artist.html?_id=${artists[startIndex + 2].artist.id}" class="link-offset-2 link-underline link-underline-opacity-0">
+              <img src="${artists[startIndex + 2].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+              <h5 class="text-white text-center">${artists[startIndex + 2].artist.name}</h5>
+              </a>
+            </div>
+            <div class="col-md-3 g-2">
+             <a href="./artist.html?_id=${artists[startIndex + 3].artist.id}" class="link-offset-2 link-underline link-underline-opacity-0">
+              <img src="${artists[startIndex + 3].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
+              <h5 class="text-white text-center">${artists[startIndex + 3].artist.name}</h5>
+              </a>
+            </div>
           </div>
-          <div class="col-md-3 g-2">
-            <img src="${artists[startIndex + 1].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-            <h5 class="text-white text-center">${artists[startIndex + 1].artist.name}</h5>
-          </div>
-          <div class="col-md-3 g-2">
-            <img src="${artists[startIndex + 2].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-            <h5 class="text-white text-center">${artists[startIndex + 2].artist.name}</h5>
-          </div>
-          <div class="col-md-3 g-2">
-            <img src="${artists[startIndex + 3].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
-            <h5 class="text-white text-center">${artists[startIndex + 3].artist.name}</h5>
-          </div>
-        </div>
+        
       </div>`;
   }
 
@@ -258,12 +280,16 @@ function renderCarousel(artists) {
         <div class="container-fluid px-4">
           <div class="row justify-content-center gx-3">
             <div class="col-6">
+            <a href="./artist.html?_id=${artists[startIndex2].artist.id}">
               <img src="${artists[startIndex2].artist.picture_big}" class="w-100 rounded-circle p-2" alt="${artists[startIndex2].artist.name}" />
               <h5 class="text-white text-center">${artists[startIndex2].artist.name}</h5>
+              </a>
             </div>
             <div class="col-6">
+            <a href="./artist.html?_id=${artists[startIndex2 + 1].artist.id}">
               <img src="${artists[startIndex2 + 1].artist.picture_big}" class="w-100 rounded-circle p-2" alt="${artists[startIndex2 + 1].artist.name}" />
               <h5 class="text-white text-center">${artists[startIndex2 + 1].artist.name}</h5>
+              </a>
             </div>
           </div>
         </div>
@@ -272,3 +298,134 @@ function renderCarousel(artists) {
 }
 
 myArtist();
+
+let audio = null;
+let isPlaying = false;
+let songHistory = [];
+let currentIndex = -1;
+
+function getRandomArtist() {
+  const letters = "abcdefghijklmnopqrstuvwxyz";
+  const randomLetter = letters[Math.floor(Math.random() * letters.length)];
+  const url = `https://striveschool-api.herokuapp.com/api/deezer/search?q=${randomLetter}`;
+
+  return fetch(url)
+    .then((res) => {
+      if (!res.ok) throw new Error("HTTP error " + res.status);
+      return res.json();
+    })
+    .then((data) => {
+      if (!data.data || data.data.length === 0) return getRandomArtist();
+      const randomSong = data.data[Math.floor(Math.random() * data.data.length)];
+      return { artist: randomSong.artist, song: randomSong };
+    })
+    .catch((err) => console.error("ERRORE", err));
+}
+
+function updateProgressBar(progressFilled, currentTime, duration) {
+  const percent = (currentTime / duration) * 100;
+  progressFilled.style.width = percent + "%";
+}
+
+function playSong(songObj, playButton) {
+  const { artist, song } = songObj;
+
+  if (audio) audio.pause();
+  audio = new Audio(song.preview);
+  audio.play();
+  isPlaying = true;
+
+  playButton.innerHTML = `<i class="bi bi-pause-circle-fill fs-1 mx-2"></i>`;
+
+  document.getElementById("song-title").innerText = song.title;
+  document.getElementById("song-artist1").innerText = artist.name;
+  document.getElementById("song-artist2").innerText = artist.name;
+  document.getElementById("footerImg").src = artist.picture_medium || song.album.cover_medium;
+
+  const progressFilled = document.querySelector(".progress-filled");
+  const currentTimeElem = document.getElementById("currentTime");
+  const totalTimeElem = document.getElementById("totalTime");
+
+  audio.addEventListener("loadedmetadata", () => {
+    totalTimeElem.innerText = formatTime(audio.duration);
+  });
+
+  audio.addEventListener("timeupdate", () => {
+    currentTimeElem.innerText = formatTime(audio.currentTime);
+    updateProgressBar(progressFilled, audio.currentTime, audio.duration);
+  });
+
+  audio.addEventListener("ended", () => {
+    isPlaying = false;
+    playButton.innerHTML = `<i class="bi bi-play-circle-fill fs-1 mx-2"></i>`;
+  });
+}
+
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+}
+
+function buttonFunction(buttonId) {
+  const btn = document.getElementById(buttonId);
+  if (!btn) return;
+
+  btn.addEventListener("click", async (event) => {
+    const clickedButton = event.currentTarget;
+
+    if (audio && isPlaying) {
+      audio.pause();
+      isPlaying = false;
+      clickedButton.innerHTML = `<i class="bi bi-play-circle-fill fs-1 mx-2"></i>`;
+      return;
+    }
+
+    if (audio && !isPlaying) {
+      audio.play();
+      isPlaying = true;
+      clickedButton.innerHTML = `<i class="bi bi-pause-circle-fill fs-1 mx-2"></i>`;
+      return;
+    }
+
+    const songObj = await getRandomArtist();
+    if (!songObj) return;
+
+    songHistory.push(songObj);
+    currentIndex = songHistory.length - 1;
+    playSong(songObj, clickedButton);
+  });
+}
+
+document.getElementById("skipForward").addEventListener("click", () => {
+  if (currentIndex + 1 < songHistory.length) {
+    currentIndex++;
+    playSong(songHistory[currentIndex], document.getElementById("playButton"));
+  } else {
+    getRandomArtist().then((songObj) => {
+      songHistory.push(songObj);
+      currentIndex++;
+      playSong(songObj, document.getElementById("playButton"));
+    });
+  }
+});
+
+document.getElementById("skipBackward").addEventListener("click", () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    playSong(songHistory[currentIndex], document.getElementById("playButton"));
+  }
+});
+
+myArtist();
+
+buttonFunction("playButton");
+buttonFunction("playButtonMobile");
+
+const searchForm = document.getElementById("form-ricerca");
+const searchInput = document.getElementById("input-ricerca");
+
+searchForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  window.location.href = `search.html?value=${searchInput.value}`;
+});

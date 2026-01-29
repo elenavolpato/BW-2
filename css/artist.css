@@ -7,7 +7,8 @@ img.user-img {
 }
 
 header {
-  background-image: URL("https://placedog.net/800x300");
+  background-image: URL("");
+  background-color: #111111;
   background-size: cover;
   background-repeat: no-repeat;
   height: 400px;
@@ -34,11 +35,25 @@ main {
   object-fit: cover;
   border-radius: 4px;
   display: block;
+  margin-left: 20px;
 }
 
-.img-bands-liked {
-  position: relative;
-  height: 60px;
+.rank-number {
+  margin-top: 10px;
+}
+
+.icon-hover {
+  display: none;
+}
+.song-list:hover {
+  background-color: rgba(255, 255, 255, 0.147);
+  border-radius: 6px;
+}
+.song-list:hover .icon-hover {
+  display: inline-block !important;
+}
+.song-list:hover .rank-number {
+  display: none !important;
 }
 
 .img-bands-liked img {
