@@ -85,7 +85,7 @@ const getData = function () {
           <div class="col col-6 col-md-4 text-start flex-fill pe-0">
          
          <p class="fw-bold mb-0">${i}. ${track.title}</p>
-            <a href="./artist.html" class="text-decoration-none sideBarTextColor ps-0">${artistName}</a>
+            <a href="./artist.html?_id=${album.artist.id}" class="text-decoration-none sideBarTextColor ps-0">${artistName}</a>
           </div>
           <!-- 3 puntini mobile -->
           <div class="col col-6 d-md-none text-end flex-shrink-1">
