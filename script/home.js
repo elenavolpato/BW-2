@@ -255,7 +255,6 @@ function renderCarousel(artists) {
                 <h5 class="text-white text-center">${artists[startIndex].artist.name}</h5>
                 </a>
               </div>
-            </a>
             <div class="col-md-3 g-2">
              <a href="./artist.html?_id=${artists[startIndex + 1].artist.id}" class="link-offset-2 link-underline link-underline-opacity-0">
               <img src="${artists[startIndex + 1].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
