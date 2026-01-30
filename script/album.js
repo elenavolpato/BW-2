@@ -66,7 +66,9 @@ const getData = function () {
       titoloPrincipale.innerHTML = `  
       <h1>${albumTitle}</h1>   
       <div class="d-flex mt-3"><img src=${artistImg} alt="profilePicture" class="rounded-circle me-2" style="width: 25px; height: 25px"/><a href="./artist.html" class="text-decoration-none text-white"><h6>${artistName}</h6></a>  <h6> </h6></div>
-      <p class="sideBarTextColor mt-2">${type} . ${year}</p> `;
+      <p class="sideBarTextColor mt-2">${type} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dot" viewBox="0 0 16 16">
+  <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+</svg> ${year}</p> `;
 
       // ORA FACCIO TUTTE LE CANZONI NEL ALBUM
       const container = document.getElementById("mainContainer");
@@ -110,7 +112,7 @@ const getData = function () {
           <!-- 3 puntini mobile finish -->
           <!-- versione computer -->
           <div class="col col-md-4 d-none d-md-block text-end">
-            <p class="sideBarTextColor">${track.rank}</p>
+            <p class="sideBarTextColor">${track.rank.toLocaleString("de-DE")}</p>
           </div>
           <div class="col col-md-4 d-none d-md-block text-end sideBarTextColor">${songDurationo(track.duration)}</div>
           <!-- verisione computer -->
