@@ -92,7 +92,7 @@ const getData = function (parolaCercata) {
        `;
         // }  <-- attenzione   ===>   ELSE IF SOPRA - FILTRO PER NON RIPETERE FOTO ARTISTA   <===
       }
-
+      console.log(songs[i].album.id);
       const albumContainer = document.getElementById("album-artisti-container");
       albumContainer.innerHTML = `
         <h4 class="text-light my-3">Album</h4>`;

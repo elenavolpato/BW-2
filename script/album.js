@@ -52,7 +52,7 @@ const getData = function () {
       const releaseDate = album.release_date;
       const year = getYear(releaseDate);
       const tracksArray = album.tracks.data;
-      console.log(album);
+      console.log();
 
       // PER INSERIRE LA COPERTINA PRINCIPALE AL SUO POSTO
       const copertinaPrincipale = document.getElementById(
@@ -67,7 +67,7 @@ const getData = function () {
       const titoloPrincipale = document.getElementById("descrizioneAlbum");
       titoloPrincipale.innerHTML = `  
       <h1>${albumTitle}</h1>   
-      <div class="d-flex mt-3"><img src=${artistImg} alt="profilePicture" class="rounded-circle me-2" style="width: 25px; height: 25px"/><a href="./artist.html" class="text-decoration-none text-white"><h6>${artistName}</h6></a>  <h6> </h6></div>
+      <div class="d-flex mt-3"><img src=${artistImg} alt="profilePicture" class="rounded-circle me-2" style="width: 25px; height: 25px"/><a href="./artist.html?_id=${album.artist.id}" class="text-decoration-none text-white"><h6>${artistName}</h6></a>  <h6> </h6></div>
       <p class="sideBarTextColor mt-2">${type} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dot" viewBox="0 0 16 16">
   <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
 </svg> ${year}</p> `;
