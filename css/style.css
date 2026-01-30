@@ -175,6 +175,18 @@ input[type="range"].form-range:focus {
   box-sizing: border-box;
 }
 
+#volumeControl::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#volumeControl:hover::-webkit-slider-thumb {
+  background-color: #1db954;
+}
+
 @media (min-width: 768px) {
   .firstRow {
     bottom: 0;

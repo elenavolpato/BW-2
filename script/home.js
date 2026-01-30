@@ -315,6 +315,7 @@ let audio = null;
 let isPlaying = false;
 let songHistory = [];
 let currentIndex = -1;
+let currentAudio = null;
 
 function getRandomArtist() {
   const letters = "abcdefghijklmnopqrstuvwxyz";
@@ -344,6 +345,10 @@ function playSong(songObj, playButton) {
 
   if (audio) audio.pause();
   audio = new Audio(song.preview);
+  const slider = document.getElementById("volumeControl");
+  if (slider) {
+    audio.volume = slider.value / 100;
+  }
   audio.play();
   isPlaying = true;
 
@@ -463,6 +468,21 @@ function playSelectedSong(songPreview, artistName, albumCover, title) {
     updatePlayButton(playButton, true);
     console.log(playButton);
   }
+}
+
+// Volume
+const volumeControl = document.getElementById("volumeControl");
+
+if (volumeControl) {
+  volumeControl.addEventListener("input", (event) => {
+    const vol = event.target.value / 100;
+    console.log("Volume slider:", vol);
+
+    // Usa currentAudio perché è quello che usi nella funzione playSong!
+    if (audio) {
+      audio.volume = vol;
+    }
+  });
 }
 
 function updatePlayButton(button, playing) {

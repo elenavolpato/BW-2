@@ -139,7 +139,7 @@ if (searchedWord != undefined) {
 // songs.[0].artist.title-short
 // songs.[0].artist.name
 
-let currentAudio = null;
+let audio = null;
 let canzoniAttuali = [];
 let indiceCanzoneAttuale = 0;
 
@@ -149,12 +149,16 @@ function playSong(i) {
   indiceCanzoneAttuale = i;
   const song = canzoniAttuali[i];
 
-  if (currentAudio) {
-    currentAudio.pause();
+  if (audio) {
+    audio.pause();
   }
 
-  currentAudio = new Audio(song.preview);
-  currentAudio.play();
+  audio = new Audio(song.preview);
+  const slider = document.getElementById("volumeControl");
+  if (slider) {
+    audio.volume = slider.value / 100;
+  }
+  audio.play();
 
   document.getElementById("soundbarTitolo").innerText = song.title;
   document.getElementById("soundbarArtista").innerText = song.artist.name;
@@ -165,21 +169,21 @@ function playSong(i) {
   playIcon.classList.remove("bi-play-circle-fill");
   playIcon.classList.add("bi-pause-circle-fill");
 
-  currentAudio.addEventListener("timeupdate", function () {
+  audio.addEventListener("timeupdate", function () {
     const progressFilled = document.querySelector(".progress-filled");
     const currentTimeEl = document.getElementById("currentTime");
     const totalTimeEl = document.getElementById("totalTime");
 
-    let percentage = (currentAudio.currentTime / currentAudio.duration) * 100;
+    let percentage = (audio.currentTime / audio.duration) * 100;
     progressFilled.style.width = percentage + "%";
 
-    let curMins = Math.floor(currentAudio.currentTime / 60);
-    let curSecs = Math.floor(currentAudio.currentTime % 60);
+    let curMins = Math.floor(audio.currentTime / 60);
+    let curSecs = Math.floor(audio.currentTime % 60);
     if (curSecs < 10) curSecs = "0" + curSecs;
     currentTimeEl.innerText = curMins + ":" + curSecs;
 
-    let totMins = Math.floor(currentAudio.duration / 60);
-    let totSecs = Math.floor(currentAudio.duration % 60);
+    let totMins = Math.floor(audio.duration / 60);
+    let totSecs = Math.floor(audio.duration % 60);
     if (totSecs < 10) totSecs = "0" + totSecs;
     if (!isNaN(totMins)) {
       totalTimeEl.innerText = totMins + ":" + totSecs;
@@ -188,11 +192,11 @@ function playSong(i) {
 
   // Tasti play/pausa
   playIcon.onclick = function () {
-    if (currentAudio.paused) {
-      currentAudio.play();
+    if (audio.paused) {
+      audio.play();
       playIcon.classList.replace("bi-play-circle-fill", "bi-pause-circle-fill");
     } else {
-      currentAudio.pause();
+      audio.pause();
       playIcon.classList.replace("bi-pause-circle-fill", "bi-play-circle-fill");
     }
   };
@@ -212,3 +216,17 @@ document.getElementById("prevBtn").onclick = function () {
     playSong(indiceCanzoneAttuale - 1);
   }
 };
+
+// Volume
+const volumeControl = document.getElementById("volumeControl");
+
+if (volumeControl) {
+  volumeControl.addEventListener("input", (event) => {
+    const vol = event.target.value / 100;
+    console.log("Volume slider:", vol);
+
+    if (audio) {
+      audio.volume = vol;
+    }
+  });
+}
