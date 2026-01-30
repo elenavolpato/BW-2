@@ -4,9 +4,7 @@ const allTheParameters = new URLSearchParams(url);
 const searchedWord = allTheParameters.get("value");
 
 const getData = function (parolaCercata) {
-  fetch(
-    `https://striveschool-api.herokuapp.com/api/deezer/search?q=${parolaCercata}`,
-  )
+  fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${parolaCercata}`)
     .then((res) => {
       console.log("response", res);
       if (res.ok) {
@@ -27,8 +25,6 @@ const getData = function (parolaCercata) {
 
       const primaFotoArtista = songs[0].artist.picture_medium;
       const nomeArtista = songs[0].artist.name;
-      console.log("top result", primaFotoArtista);
-      console.log("nome artista", nomeArtista);
       artistaTarget.innerHTML = `
       <h4 class="text-light mb-3">Risultato più rilevante</h4>
       <div class="custom-card rounded p-4 d-flex flex-column shadow" id="card-artista"
@@ -69,13 +65,11 @@ const getData = function (parolaCercata) {
       artistiContainer.innerHTML = `
         <h4 class="text-light my-3">Artisti</h4>`;
       for (let i = 1; i < primiSei.length; i++) {
-        console.log("CICLO I", i);
         const fotoartista = songs[i].artist.picture;
         const nomeArtista = songs[i].artist.name;
         const album = songs[i].album.cover;
         const nomeAlbum = songs[i].album.title;
-        console.log("FOTO ARTISTA", fotoartista);
-        console.log("Album", album);
+
         // const primaFotoArtista = songs[0].artist.picture;
         // if (fotoartista === primaFotoArtista) {
         //   null;
@@ -92,7 +86,6 @@ const getData = function (parolaCercata) {
        `;
         // }  <-- attenzione   ===>   ELSE IF SOPRA - FILTRO PER NON RIPETERE FOTO ARTISTA   <===
       }
-      console.log(songs[i].album.id);
       const albumContainer = document.getElementById("album-artisti-container");
       albumContainer.innerHTML = `
         <h4 class="text-light my-3">Album</h4>`;
@@ -102,21 +95,22 @@ const getData = function (parolaCercata) {
         const nomeAlbum = songs[i].album.title;
 
         albumContainer.innerHTML += `
-          
             <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 
                         ${i === 2 ? "d-none d-sm-block" : ""} 
                         ${i === 4 ? "d-none d-lg-block" : ""} 
                           ${i >= 4 ? "d-none d-xl-block" : ""}">
-              <a href="./album.html?id=${songs[i].album.id}">
+              <a href="./album.html?id=${songs[i].album.id}" class="text-decoration-none">
                 <img src="${album}" alt="" style="width: 180px; height: 180px; object-fit: cover" class="rounded shadow">
-                <h6 class="text-light mt-2 mb-0">${nomeAlbum}</h6>
+                <h6 class="text-light mt-2 mb-0 text-truncate">${nomeAlbum}</h6>
                 <p class="text-secondary small">${nomeArtista}</p>
               </a>
             </div>
           
         `;
       }
+      console.log("pupu", albumContainer);
     })
+
     .catch((err) => {
       console.log("errore", err);
       const spinner = document.getElementById("spinner-container");
@@ -132,7 +126,6 @@ formRicerca.addEventListener("submit", function (event) {
   const parolaCercata = inputRicerca.value;
   getData(parolaCercata);
 });
-console.log("script caricato");
 getData("");
 
 if (searchedWord != undefined) {
