@@ -1,7 +1,7 @@
 const url = location.search;
 const allTheParameters = new URLSearchParams(url);
 
-const albumID = allTheParameters.get("_id");
+const albumID = allTheParameters.get("id");
 console.log("qui", albumID);
 
 const albumsURL = `https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`;
@@ -55,7 +55,9 @@ const getData = function () {
       console.log(album);
 
       // PER INSERIRE LA COPERTINA PRINCIPALE AL SUO POSTO
-      const copertinaPrincipale = document.getElementById("copertinaPrincipale");
+      const copertinaPrincipale = document.getElementById(
+        "copertinaPrincipale",
+      );
       copertinaPrincipale.innerHTML = `
       <img src=${cover} alt="image" class="img-fluid"/>
     
@@ -157,7 +159,8 @@ function playSong(song) {
   document.getElementById("song-title").innerText = song.title;
   document.getElementById("song-artist1").innerText = song.artist.name;
   document.getElementById("song-artist2").innerText = song.artist.name;
-  document.getElementById("footerImg").src = song.artist.picture_medium || song.album.cover_medium;
+  document.getElementById("footerImg").src =
+    song.artist.picture_medium || song.album.cover_medium;
 
   updatePlayIcons(true);
 
@@ -168,7 +171,9 @@ function playSong(song) {
   });
 
   audio.addEventListener("timeupdate", () => {
-    document.getElementById("currentTime").innerText = formatTime(audio.currentTime);
+    document.getElementById("currentTime").innerText = formatTime(
+      audio.currentTime,
+    );
     updateProgressBar(progressFilled, audio.currentTime, audio.duration);
   });
 
@@ -180,9 +185,13 @@ function playSong(song) {
 
 // ================== PLAY ICONS ==================
 function updatePlayIcons(playing) {
-  const icon = playing ? `<i class="bi bi-pause-circle-fill fs-1 mx-2"></i>` : `<i class="bi bi-play-circle-fill fs-1 mx-2"></i>`;
+  const icon = playing
+    ? `<i class="bi bi-pause-circle-fill fs-1 mx-2"></i>`
+    : `<i class="bi bi-play-circle-fill fs-1 mx-2"></i>`;
 
-  const iconMobile = playing ? `<i class="bi bi-pause-fill fs-4"></i>` : `<i class="bi bi-play-fill fs-4"></i>`;
+  const iconMobile = playing
+    ? `<i class="bi bi-pause-fill fs-4"></i>`
+    : `<i class="bi bi-play-fill fs-4"></i>`;
 
   document.getElementById("playButton").innerHTML = icon;
   document.getElementById("playButtonMobile").innerHTML = iconMobile;
@@ -203,7 +212,9 @@ function togglePlay() {
 }
 
 document.getElementById("playButton")?.addEventListener("click", togglePlay);
-document.getElementById("playButtonMobile")?.addEventListener("click", togglePlay);
+document
+  .getElementById("playButtonMobile")
+  ?.addEventListener("click", togglePlay);
 
 // ================== SKIP ==================
 

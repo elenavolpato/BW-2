@@ -10,7 +10,9 @@ const getAlbums = function () {
       const crdAlbum = document.getElementById("cardAlbum");
       crdAlbum.innerHTML = ""; // Puliamo per evitare duplicati
 
-      const randomAlbums = data.data.sort(() => Math.random() - 0.5).slice(0, 8);
+      const randomAlbums = data.data
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 8);
       for (let i = 0; i < randomAlbums.length; i++) {
         const isActive = i === 0 ? "active" : "";
         crdAlbum.innerHTML += `
@@ -47,7 +49,9 @@ const getAlbums = function () {
         const crdAlbumSm = document.getElementById("cardAlbumSmartphone");
         crdAlbumSm.innerHTML = ""; // Puliamo per evitare duplicati
 
-        const randomAlbums1 = data.data.sort(() => Math.random() - 0.5).slice(0, 8);
+        const randomAlbums1 = data.data
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 8);
         for (let i = 0; i < randomAlbums1.length; i++) {
           const isActive = i === 0 ? "active" : "";
           crdAlbumSm.innerHTML += `
@@ -132,7 +136,9 @@ const myTrack = function () {
     .then((data) => {
       const rowCrd = document.getElementById("rowCard");
 
-      const randomTracks = data.data.sort(() => Math.random() - 0.5).slice(0, 5);
+      const randomTracks = data.data
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 5);
       for (let i = 0; i < randomTracks.length; i++) {
         rowCrd.innerHTML += `
                     <div class="col-6 col-md-4">
@@ -169,7 +175,9 @@ const myArtist = function () {
     const artistiDaFetchare = selectedArtists.slice(0, 4);
 
     for (let i = 0; i < artistiDaFetchare.length; i++) {
-      const singolaFetch = fetch(`https://striveschool-api.herokuapp.com/api/deezer/artist/${artistiDaFetchare[i]}`).then((response) => {
+      const singolaFetch = fetch(
+        `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistiDaFetchare[i]}`,
+      ).then((response) => {
         if (response.ok) return response.json();
         throw new Error("Errore nella response");
       });
@@ -181,7 +189,9 @@ const myArtist = function () {
         //console.log("ARTISTI PREFERITI:", artistiPreferiti);
 
         // Fetch per artisti random (gli altri 4)
-        return fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=music")
+        return fetch(
+          "https://striveschool-api.herokuapp.com/api/deezer/search?q=music",
+        )
           .then((response) => {
             if (response.ok) return response.json();
             throw new Error("Errore nella fetch random");
@@ -189,15 +199,20 @@ const myArtist = function () {
           .then((dataRandom) => {
             const artistiRandom = dataRandom.data.slice(0, 4);
 
-            const artistiPreferentiFormattati = artistiPreferiti.map((artist) => ({
-              artist: {
-                id: artist.id,
-                name: artist.name,
-                picture_big: artist.picture_big,
-              },
-            }));
+            const artistiPreferentiFormattati = artistiPreferiti.map(
+              (artist) => ({
+                artist: {
+                  id: artist.id,
+                  name: artist.name,
+                  picture_big: artist.picture_big,
+                },
+              }),
+            );
 
-            const tuttiGli8Artisti = [...artistiPreferentiFormattati, ...artistiRandom];
+            const tuttiGli8Artisti = [
+              ...artistiPreferentiFormattati,
+              ...artistiRandom,
+            ];
             console.log("TUTTI GLI 8 ARTISTI:", tuttiGli8Artisti);
             renderCarousel(tuttiGli8Artisti);
           });
@@ -212,7 +227,9 @@ const myArtist = function () {
         throw new Error("la response ha un problema");
       })
       .then((data) => {
-        const randomArtists = data.data.sort(() => Math.random() - 0.5).slice(0, 8);
+        const randomArtists = data.data
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 8);
         renderCarousel(randomArtists);
       })
       .catch((Error) => console.log("ERRORE NELLA FETCH", Error));
@@ -267,7 +284,8 @@ function renderCarousel(artists) {
   }
 
   // SMARTPHONE CAROUSEL
-  const carouselArtistsSmarphone = document.getElementById("carouselSmartphone");
+  const carouselArtistsSmarphone =
+    document.getElementById("carouselSmartphone");
   carouselArtistsSmarphone.innerHTML = "";
 
   // Creiamo 4 slide, ognuna con 2 artisti
@@ -315,7 +333,8 @@ function getRandomArtist() {
     })
     .then((data) => {
       if (!data.data || data.data.length === 0) return getRandomArtist();
-      const randomSong = data.data[Math.floor(Math.random() * data.data.length)];
+      const randomSong =
+        data.data[Math.floor(Math.random() * data.data.length)];
       return { artist: randomSong.artist, song: randomSong };
     })
     .catch((err) => console.error("ERRORE", err));
@@ -339,7 +358,8 @@ function playSong(songObj, playButton) {
   document.getElementById("song-title").innerText = song.title;
   document.getElementById("song-artist1").innerText = artist.name;
   document.getElementById("song-artist2").innerText = artist.name;
-  document.getElementById("footerImg").src = artist.picture_medium || song.album.cover_medium;
+  document.getElementById("footerImg").src =
+    artist.picture_medium || song.album.cover_medium;
 
   const progressFilled = document.querySelector(".progress-filled");
   const currentTimeElem = document.getElementById("currentTime");

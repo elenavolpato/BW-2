@@ -4,7 +4,9 @@ const allTheParameters = new URLSearchParams(url);
 const searchedWord = allTheParameters.get("value");
 
 const getData = function (parolaCercata) {
-  fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${parolaCercata}`)
+  fetch(
+    `https://striveschool-api.herokuapp.com/api/deezer/search?q=${parolaCercata}`,
+  )
     .then((res) => {
       console.log("response", res);
       if (res.ok) {
@@ -105,7 +107,7 @@ const getData = function (parolaCercata) {
                         ${i === 2 ? "d-none d-sm-block" : ""} 
                         ${i === 4 ? "d-none d-lg-block" : ""} 
                           ${i >= 4 ? "d-none d-xl-block" : ""}">
-              <a href="./album.html?_id=${songs[i].album.id}">
+              <a href="./album.html?id=${songs[i].album.id}">
                 <img src="${album}" alt="" style="width: 180px; height: 180px; object-fit: cover" class="rounded shadow">
                 <h6 class="text-light mt-2 mb-0">${nomeAlbum}</h6>
                 <p class="text-secondary small">${nomeArtista}</p>
