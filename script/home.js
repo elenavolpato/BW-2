@@ -63,7 +63,9 @@ const getAlbums = function () {
                  <div class="carousel-item ${isActive}">
             <div class="row">
               <div class="col-12">
-                <img src="${randomAlbums1[i].album.cover_big}" class="d-block w-100 shadow" alt="${randomAlbums1[i].album.title}" />
+              <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
+                <img src="${randomAlbums1[i].album.cover_big}" class="d-block w-100 mb-2 shadow" alt="${randomAlbums1[i].album.title}" />
+                </a>
               <div class="position-absolute top-0 end-0">
                         <span class="badge rounded-pill bg-primary">
                           ALBUM
@@ -74,7 +76,7 @@ const getAlbums = function () {
 
 <div class="col-12 text-start">
                       <!--h1-->
-                       <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
+                       <a href="album.html?id=${randomAlbums1[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
                       <h1 class="display-4 fw-bold mt-2 text-white">${randomAlbums1[i].album.title}</h1>
                       </a>
                       <p class="fs-5">${randomAlbums1[i].artist.name}</p>
