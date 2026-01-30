@@ -26,7 +26,6 @@
       }
       section {
         top: 8% !important;
-        z-index: 10 !important;
       }
 
       footer a li:hover {
@@ -228,7 +227,7 @@
           <!-- slider con immagine singola-->
           <div class="row">
             <div id="carouselExampleFade" class="carousel slide bg-black p-2 d-none d-md-block">
-              <div id="cardAlbum" class="carousel-inner">
+              <div id="cardAlbum" class="carousel-inner mb-5">
                 <div class="carousel-item active container">
                   <!--SCHEDA SINGOLA CAROUSEL-->
                   <div class="row align-items-center">
@@ -266,7 +265,7 @@
 
             <!--slider solo smarphone -->
             <div id="carouselUniqueSmartphone" class="carousel slide carousel-fade bg-black p-2 d-block d-md-none">
-              <div id="cardAlbumSmartphone" class="carousel-inner">
+              <div id="cardAlbumSmartphone" class="carousel-inner mb-5">
                 <div class="carousel-item active container">
                   <!--SCHEDA SINGOLA CAROUSEL-->
                   <div class="row">
@@ -325,7 +324,7 @@
             <div class="container-fluid">
               <div class="row g-3">
                 <!--carosello 2 card mobile-->
-                <div class="container-fluid mt-4">
+                <div class="container-fluid mt-4 carousel-mobile">
                   <div id="rowCard" class="row g-3">
                     <div class="col-6 col-md-4">
                       <div class="card shadow-sm rounded-2" style="height: 80px">
@@ -362,7 +361,7 @@
                 <!-- CAROUSEL ARTISTI -->
                 <section class="my-5 d-none d-md-block">
                   <div id="prev1" class="carousel slide ms-4" data-bs-ride="false">
-                    <div id="carouselDesktop" class="carousel-inner">
+                    <div id="carouselDesktop" class="carousel-inner mb-5">
                       <!-- Vuoto - verrà riempito da JavaScript -->
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#prev1" data-bs-slide="prev">
@@ -377,7 +376,7 @@
                 <!-- CAROUSEL ARTISTI SMARTPHONE -->
                 <section class="my-5 d-block d-md-none">
                   <div id="prev2" class="carousel slide" data-bs-ride="false">
-                    <div id="carouselSmartphone" class="carousel-inner">
+                    <div id="carouselSmartphone" class="carousel-inner mb-5">
                       <!-- Vuoto - verrà riempito da JavaScript -->
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#prev2" data-bs-slide="prev">
@@ -513,7 +512,7 @@
             <div>
               <img src="./assets/imgs/create.png" alt="img" style="width: 40px" class="rounded-circle ms-2" id="footerImg" />
             </div>
-            <div class="d-flex flex-row flex-md-column">
+            <div class="d-flex flex-row flex-md-column align-items-baseline">
               <h6 class="mb-0 mb-md-1 me-1 me-md-0" id="song-title">Canzone</h6>
               <span class="small d-none d-md-block" id="song-artist1">Artista</span>
               <span class="d-md-none me-1">by</span>
@@ -557,33 +556,33 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="row d-md-none">
-      <div class="col justify-content-center position-fixed bottom-0 w-100 d-flex py-3 px-2 small mobileFooterFade">
-        <a href="" class="text-decoration-none d-flex flex-column align-items-center gap-1 w-50 sideBarTextColor">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house sideBarTextColor" viewBox="0 0 16 16">
-            <path
-              d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"
-            />
-          </svg>
-          Home
-        </a>
-        <a href="" class="text-decoration-none d-flex flex-column align-items-center gap-1 w-50 sideBarTextColor">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-            <path
-              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
-            />
-          </svg>
-          Cerca
-        </a>
-        <a href="" class="text-decoration-none d-flex flex-column align-items-center gap-1 w-50 sideBarTextColor">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
-            <path
-              d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"
-            />
-          </svg>
-          La tua libreria
-        </a>
+      <div class="row d-md-none">
+        <div class="col justify-content-center position-fixed bottom-0 w-100 d-flex py-3 px-2 small mobileFooterFade">
+          <a href="" class="text-decoration-none d-flex flex-column align-items-center gap-1 w-50 sideBarTextColor">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house sideBarTextColor" viewBox="0 0 16 16">
+              <path
+                d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"
+              />
+            </svg>
+            Home
+          </a>
+          <a href="" class="text-decoration-none d-flex flex-column align-items-center gap-1 w-50 sideBarTextColor">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+              />
+            </svg>
+            Cerca
+          </a>
+          <a href="" class="text-decoration-none d-flex flex-column align-items-center gap-1 w-50 sideBarTextColor">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-collection" viewBox="0 0 16 16">
+              <path
+                d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"
+              />
+            </svg>
+            La tua libreria
+          </a>
+        </div>
       </div>
     </div>
 

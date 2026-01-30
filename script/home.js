@@ -74,7 +74,7 @@ const getAlbums = function () {
 
 <div class="col-12 text-start">
                       <!--h1-->
-                       <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
+                       <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 text-decoration-none">
                       <h1 class="display-4 fw-bold mt-2 text-white">${randomAlbums1[i].album.title}</h1>
                       </a>
                       <p class="fs-5">${randomAlbums1[i].artist.name}</p>
@@ -150,7 +150,7 @@ const myTrack = function () {
                       <div class="card shadow-sm rounded-2" style="height: 80px">
                         <div class="row g-0 h-100 d-flex flex-nowrap">
                           <div class="col-auto p-0">
-                          <a href="album.html?id=${randomTracks[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
+                          <a href="album.html?id=${randomTracks[i].album.id}" class="link-offset-2 text-decoration-none">
                             <img src="${randomTracks[i].album.cover_small}" style="width: 80px; height: 80px; object-fit: cover" alt="Immagine" />
                             </a>
                           </div>
@@ -290,13 +290,13 @@ function renderCarousel(artists) {
         <div class="container-fluid px-4">
           <div class="row justify-content-center gx-3">
             <div class="col-6">
-            <a href="./artist.html?_id=${artists[startIndex2].artist.id}">
+            <a href="./artist.html?_id=${artists[startIndex2].artist.id}" class="text-decoration-none">
               <img src="${artists[startIndex2].artist.picture_big}" class="w-100 rounded-circle p-2" alt="${artists[startIndex2].artist.name}" />
               <h5 class="text-white text-center">${artists[startIndex2].artist.name}</h5>
               </a>
             </div>
             <div class="col-6">
-            <a href="./artist.html?_id=${artists[startIndex2 + 1].artist.id}">
+            <a href="./artist.html?_id=${artists[startIndex2 + 1].artist.id}" class="text-decoration-none">
               <img src="${artists[startIndex2 + 1].artist.picture_big}" class="w-100 rounded-circle p-2" alt="${artists[startIndex2 + 1].artist.name}" />
               <h5 class="text-white text-center">${artists[startIndex2 + 1].artist.name}</h5>
               </a>
