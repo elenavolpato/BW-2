@@ -53,9 +53,7 @@ const getData = function () {
       console.log(album);
 
       // PER INSERIRE LA COPERTINA PRINCIPALE AL SUO POSTO
-      const copertinaPrincipale = document.getElementById(
-        "copertinaPrincipale",
-      );
+      const copertinaPrincipale = document.getElementById("copertinaPrincipale");
       copertinaPrincipale.innerHTML = `
       <img src=${cover} alt="image" class="img-fluid"/>
     
@@ -110,7 +108,7 @@ const getData = function () {
           <!-- 3 puntini mobile finish -->
           <!-- versione computer -->
           <div class="col col-md-4 d-none d-md-block text-end">
-            <p class="sideBarTextColor">${track.rank}</p>
+            <p class="sideBarTextColor">${track.rank.toLocaleString("de-DE")}</p>
           </div>
           <div class="col col-md-4 d-none d-md-block text-end sideBarTextColor">${songDurationo(track.duration)}</div>
           <!-- verisione computer -->
@@ -155,8 +153,7 @@ function playSong(song) {
   document.getElementById("song-title").innerText = song.title;
   document.getElementById("song-artist1").innerText = song.artist.name;
   document.getElementById("song-artist2").innerText = song.artist.name;
-  document.getElementById("footerImg").src =
-    song.artist.picture_medium || song.album.cover_medium;
+  document.getElementById("footerImg").src = song.artist.picture_medium || song.album.cover_medium;
 
   updatePlayIcons(true);
 
@@ -167,9 +164,7 @@ function playSong(song) {
   });
 
   audio.addEventListener("timeupdate", () => {
-    document.getElementById("currentTime").innerText = formatTime(
-      audio.currentTime,
-    );
+    document.getElementById("currentTime").innerText = formatTime(audio.currentTime);
     updateProgressBar(progressFilled, audio.currentTime, audio.duration);
   });
 
@@ -181,13 +176,9 @@ function playSong(song) {
 
 // ================== PLAY ICONS ==================
 function updatePlayIcons(playing) {
-  const icon = playing
-    ? `<i class="bi bi-pause-circle-fill fs-1 mx-2"></i>`
-    : `<i class="bi bi-play-circle-fill fs-1 mx-2"></i>`;
+  const icon = playing ? `<i class="bi bi-pause-circle-fill fs-1 mx-2"></i>` : `<i class="bi bi-play-circle-fill fs-1 mx-2"></i>`;
 
-  const iconMobile = playing
-    ? `<i class="bi bi-pause-fill fs-4"></i>`
-    : `<i class="bi bi-play-fill fs-4"></i>`;
+  const iconMobile = playing ? `<i class="bi bi-pause-fill fs-4"></i>` : `<i class="bi bi-play-fill fs-4"></i>`;
 
   document.getElementById("playButton").innerHTML = icon;
   document.getElementById("playButtonMobile").innerHTML = iconMobile;
@@ -208,9 +199,7 @@ function togglePlay() {
 }
 
 document.getElementById("playButton")?.addEventListener("click", togglePlay);
-document
-  .getElementById("playButtonMobile")
-  ?.addEventListener("click", togglePlay);
+document.getElementById("playButtonMobile")?.addEventListener("click", togglePlay);
 
 // ================== SKIP ==================
 
