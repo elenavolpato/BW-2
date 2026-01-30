@@ -164,11 +164,13 @@ input[type="range"].form-range:focus {
 .mobileFooterFade {
   background: #111111;
   pointer-events: none;
+  background: black;
+  z-index: 10000 !important;
 }
 
 .firstRow {
   bottom: 82px;
-  z-index: 1000;
+  z-index: 10000 !important;
 }
 
 .mobileBox {
@@ -184,3 +186,7 @@ input[type="range"].form-range:focus {
     border-radius: 0 !important;
   }
 } /*# sourceMappingURL=style.css.map */
+
+#carouselSmartphone {
+  z-index: -1 !important;
+}

@@ -79,9 +79,11 @@ const getData = function (parolaCercata) {
                         ${i === 2 ? "d-none d-sm-block" : ""} 
                         ${i === 4 ? "d-none d-lg-block" : ""} 
                         ${i >= 4 ? "d-none d-xl-block" : ""}">
-        <img src="${fotoartista}" alt="" style="width: 180px; height: 180px; object-fit: cover" class="rounded-circle shadow">
-        <h6 class="text-light mt-2 mb-0">${nomeArtista}</h6>
-        <p class="text-secondary small">Artista</p>
+          <a href="./artist.html?id=${songs[i].artist.id}" class="text-decoration-none">
+            <img src="${fotoartista}" alt="" style="width: 180px; height: 180px; object-fit: cover" class="rounded-circle shadow">
+            <h6 class="text-light mt-2 mb-0">${nomeArtista}</h6>
+            <p class="text-secondary small">Artista</p>
+          </a>
         </div>
        `;
         // }  <-- attenzione   ===>   ELSE IF SOPRA - FILTRO PER NON RIPETERE FOTO ARTISTA   <===
@@ -108,7 +110,6 @@ const getData = function (parolaCercata) {
           
         `;
       }
-      console.log("pupu", albumContainer);
     })
 
     .catch((err) => {
