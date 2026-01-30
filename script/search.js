@@ -100,14 +100,18 @@ const getData = function (parolaCercata) {
         const nomeAlbum = songs[i].album.title;
 
         albumContainer.innerHTML += `
-        <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 
-                    ${i === 2 ? "d-none d-sm-block" : ""} 
-                    ${i === 4 ? "d-none d-lg-block" : ""} 
-                    ${i >= 4 ? "d-none d-xl-block" : ""}">
-        <img src="${album}" alt="" style="width: 180px; height: 180px; object-fit: cover" class="rounded shadow">
-        <h6 class="text-light mt-2 mb-0">${nomeAlbum}</h6>
-        <p class="text-secondary small">${nomeArtista}</p>
+          
+            <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 
+                        ${i === 2 ? "d-none d-sm-block" : ""} 
+                        ${i === 4 ? "d-none d-lg-block" : ""} 
+                          ${i >= 4 ? "d-none d-xl-block" : ""}">
+              <a href="./album.html?_id=${songs[i].album.id}">
+                <img src="${album}" alt="" style="width: 180px; height: 180px; object-fit: cover" class="rounded shadow">
+                <h6 class="text-light mt-2 mb-0">${nomeAlbum}</h6>
+                <p class="text-secondary small">${nomeArtista}</p>
+              </a>
             </div>
+          
         `;
       }
     })

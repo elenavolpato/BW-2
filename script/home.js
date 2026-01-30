@@ -65,7 +65,6 @@ const getAlbums = function () {
 
 <div class="col-12 text-start">
                       <!--h1-->
-                      <h1 class="display-4 fw-bold mt-2">${randomAlbums1[i].album.title}</h1>
                        <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
                       <h1 class="display-4 fw-bold mt-2 text-white">${randomAlbums1[i].album.title}</h1>
                       </a>

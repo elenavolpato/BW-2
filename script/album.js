@@ -1,6 +1,8 @@
 const url = location.search;
 const allTheParameters = new URLSearchParams(url);
-const albumID = allTheParameters.get("id");
+
+const albumID = allTheParameters.get("_id");
+console.log("qui", albumID);
 
 const albumsURL = `https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`;
 
