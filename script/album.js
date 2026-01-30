@@ -77,7 +77,7 @@ const getData = function () {
         i = i + 1;
         console.log(timing);
         container.innerHTML += ` 
-        <div class="row justify-content-center playSong mb-3" onclick="playSong(${JSON.stringify(track).replace(/"/g, "&quot;")});" role="button">
+        <div class="row justify-content-center playSong mb-3 box-hover py-2" onclick="playSong(${JSON.stringify(track).replace(/"/g, "&quot;")});" role="button">
           <div class="col col-6 col-md-4 text-start flex-fill pe-0">
          
          <p class="fw-bold mb-0">${i}. ${track.title}</p>
