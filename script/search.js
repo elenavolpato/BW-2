@@ -18,6 +18,7 @@ const getData = function (parolaCercata) {
       const spinner = document.getElementById("spinner-container");
       spinner.classList.add("d-none");
       const songs = obj.data;
+      // canzoniAttuali = songs;
       const artistaTarget = document.getElementById("artista-target");
       const braniTarget = document.getElementById("brani-container");
       row.innerHTML = "";
@@ -42,12 +43,12 @@ const getData = function (parolaCercata) {
       console.log("ID ARTISTA", songs);
       braniTarget.innerHTML = "";
       const primiQuattro = songs.slice(0, 4);
+      canzoniAttuali = primiQuattro;
+      braniTarget.innerHTML = `<h4 class="text-light mb-1 mt-5">Brani</h4>`;
 
-      braniTarget.innerHTML = `
-        <h4 class="text-light mb-1 mt-5">Brani</h4>`;
-      primiQuattro.forEach((song) => {
+      primiQuattro.forEach((song, i) => {
         braniTarget.innerHTML += `
-        <div class="d-flex align-items-center justify-content-between p-2 rounded">
+        <div class="d-flex align-items-center justify-content-between p-2 rounded song-row" style="cursor: pointer;" onclick="playSong(${i})">
           <div class="d-flex gap-3 align-items-center">
             <img src="${song.album.cover_small}" alt="" class="rounded" style="width: 45px; height: 45px" />
             <div class="d-flex flex-column">
@@ -78,15 +79,14 @@ const getData = function (parolaCercata) {
         //   null;
         // } else {
         artistiContainer.innerHTML += `
-           <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 
+        <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 
                         ${i === 2 ? "d-none d-sm-block" : ""} 
                         ${i === 4 ? "d-none d-lg-block" : ""} 
                         ${i >= 4 ? "d-none d-xl-block" : ""}">
-               <img src="${fotoartista}" alt="" style="width: 180px; height: 180px; object-fit: cover" 
-                 class="rounded-circle shadow">
-               <h6 class="text-light mt-2 mb-0">${nomeArtista}</h6>
-               <p class="text-secondary small">Artista</p>
-            </div>
+        <img src="${fotoartista}" alt="" style="width: 180px; height: 180px; object-fit: cover" class="rounded-circle shadow">
+        <h6 class="text-light mt-2 mb-0">${nomeArtista}</h6>
+        <p class="text-secondary small">Artista</p>
+        </div>
        `;
         // }  <-- attenzione   ===>   ELSE IF SOPRA - FILTRO PER NON RIPETERE FOTO ARTISTA   <===
       }
@@ -101,13 +101,12 @@ const getData = function (parolaCercata) {
 
         albumContainer.innerHTML += `
         <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 
-                        ${i === 2 ? "d-none d-sm-block" : ""} 
-                        ${i === 4 ? "d-none d-lg-block" : ""} 
-                        ${i >= 4 ? "d-none d-xl-block" : ""}">
-        <img src="${album}" alt="" style="width: 180px; height: 180px; object-fit: cover"
-                 class="rounded shadow">
-               <h6 class="text-light mt-2 mb-0">${nomeAlbum}</h6>
-               <p class="text-secondary small">${nomeArtista}</p>
+                    ${i === 2 ? "d-none d-sm-block" : ""} 
+                    ${i === 4 ? "d-none d-lg-block" : ""} 
+                    ${i >= 4 ? "d-none d-xl-block" : ""}">
+        <img src="${album}" alt="" style="width: 180px; height: 180px; object-fit: cover" class="rounded shadow">
+        <h6 class="text-light mt-2 mb-0">${nomeAlbum}</h6>
+        <p class="text-secondary small">${nomeArtista}</p>
             </div>
         `;
       }
@@ -139,3 +138,77 @@ if (searchedWord != undefined) {
 // songs.[0].album.cover
 // songs.[0].artist.title-short
 // songs.[0].artist.name
+
+let currentAudio = null;
+let canzoniAttuali = [];
+let indiceCanzoneAttuale = 0;
+
+function playSong(i) {
+  if (i < 0 || i >= canzoniAttuali.length) return;
+
+  indiceCanzoneAttuale = i;
+  const song = canzoniAttuali[i];
+
+  if (currentAudio) {
+    currentAudio.pause();
+  }
+
+  currentAudio = new Audio(song.preview);
+  currentAudio.play();
+
+  document.getElementById("soundbarTitolo").innerText = song.title;
+  document.getElementById("soundbarArtista").innerText = song.artist.name;
+  document.getElementById("footerImg").src = song.album.cover_medium;
+
+  const playIcon = document.getElementById("footerArtist");
+
+  playIcon.classList.remove("bi-play-circle-fill");
+  playIcon.classList.add("bi-pause-circle-fill");
+
+  currentAudio.addEventListener("timeupdate", function () {
+    const progressFilled = document.querySelector(".progress-filled");
+    const currentTimeEl = document.getElementById("currentTime");
+    const totalTimeEl = document.getElementById("totalTime");
+
+    let percentage = (currentAudio.currentTime / currentAudio.duration) * 100;
+    progressFilled.style.width = percentage + "%";
+
+    let curMins = Math.floor(currentAudio.currentTime / 60);
+    let curSecs = Math.floor(currentAudio.currentTime % 60);
+    if (curSecs < 10) curSecs = "0" + curSecs;
+    currentTimeEl.innerText = curMins + ":" + curSecs;
+
+    let totMins = Math.floor(currentAudio.duration / 60);
+    let totSecs = Math.floor(currentAudio.duration % 60);
+    if (totSecs < 10) totSecs = "0" + totSecs;
+    if (!isNaN(totMins)) {
+      totalTimeEl.innerText = totMins + ":" + totSecs;
+    }
+  });
+
+  // Tasti play/pausa
+  playIcon.onclick = function () {
+    if (currentAudio.paused) {
+      currentAudio.play();
+      playIcon.classList.replace("bi-play-circle-fill", "bi-pause-circle-fill");
+    } else {
+      currentAudio.pause();
+      playIcon.classList.replace("bi-pause-circle-fill", "bi-play-circle-fill");
+    }
+  };
+}
+
+// Bottoni Avanti e Indierto
+document.getElementById("nextBtn").onclick = function () {
+  if (indiceCanzoneAttuale < canzoniAttuali.length - 1) {
+    playSong(indiceCanzoneAttuale + 1);
+  } else {
+    playSong(0);
+  }
+};
+
+document.getElementById("prevBtn").onclick = function () {
+  if (indiceCanzoneAttuale > 0) {
+    playSong(indiceCanzoneAttuale - 1);
+  }
+};
