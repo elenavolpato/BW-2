@@ -22,7 +22,13 @@ const songDuration = (seconds) => {
 const getYear = function (year) {
   return year.slice(0, 4);
 };
-
+/// per ricerca
+const searchForm = document.getElementById("form-ricerca");
+const searchInput = document.getElementById("input-ricerca");
+searchForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  window.location.href = `search.html?value=${searchInput.value}`;
+});
 ///////////////
 
 const getData = function () {
@@ -47,7 +53,9 @@ const getData = function () {
       console.log(album);
 
       // PER INSERIRE LA COPERTINA PRINCIPALE AL SUO POSTO
-      const copertinaPrincipale = document.getElementById("copertinaPrincipale");
+      const copertinaPrincipale = document.getElementById(
+        "copertinaPrincipale",
+      );
       copertinaPrincipale.innerHTML = `
       <img src=${cover} alt="image" class="img-fluid"/>
     

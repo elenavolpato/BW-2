@@ -9,12 +9,75 @@
       rel="stylesheet"
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous" />
+    <style>
+      nav {
+        z-index: 1000 !important;
+      }
+    </style>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
+    <nav
+      class="navbar navbar-expand-lg bg-black sticky-top py-2 border-bottom"
+      data-bs-theme="dark">
+      <div class="container-fluid d-flex align-items-center">
+        <a class="navbar-brand" href="#">
+          <img
+            src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png"
+            alt="logo"
+            width="35"
+            height="35" />
+        </a>
+
+        <div
+          class="d-flex align-items-center flex-grow-1 justify-content-center mx-2">
+          <div
+            class="bg-secondary bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center me-3 d-none d-md-flex"
+            style="width: 45px; height: 45px; cursor: pointer">
+            <i class="bi bi-house-door fs-4"></i>
+          </div>
+
+          <form
+            class="d-flex position-relative flex-grow-1"
+            style="max-width: 500px"
+            role="search"
+            id="form-ricerca">
+            <i
+              class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+            <input
+              class="form-control bg-dark border-0 rounded-pill ps-5 py-2 text-white"
+              type="search"
+              placeholder="Cosa vuoi ascoltare?"
+              id="input-ricerca"
+              style="background-color: #242424" />
+            <button class="btn d-none" type="submit">Cerca</button>
+          </form>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <div class="nav-item d-none d-lg-block">
+            <a class="nav-link text-secondary fw-bold small" href="#">
+              <i class="bi bi-arrow-down-circle me-1"></i>Installa app
+            </a>
+          </div>
+          <i
+            class="bi bi-bell text-secondary fs-5 d-none d-sm-block"
+            style="cursor: pointer"></i>
+          <i
+            class="bi bi-people text-secondary fs-5 d-none d-sm-block"
+            style="cursor: pointer"></i>
+          <div class="me-2 flex-shrink-0">
+            <img
+              src="./assets/imgs/logoUtente.png"
+              class="rounded-circle teamNames"
+              alt="logo" />
+          </div>
+        </div>
+      </div>
+    </nav>
     <div class="container-fluid">
       <div class="row vh-100">
         <div class="col d-none col-md-2 d-md-block bg-black pe-0">
@@ -201,7 +264,8 @@
         <div class="col bg-black.bg-gradient overflow-auto h-100">
           <!-- centro (scroll) -->
           <header class="container-fluid">
-            <nav>
+            <!-- container per la parte del header in cui ci andrà l'immagine del album e la descrizione -->
+            <div class="container">
               <div class="container ps-1 py-2 pe-0">
                 <!-- div per mobile -->
                 <div class="row justify-content-between d-md-none">
@@ -219,10 +283,9 @@
                     </svg>
                   </div>
                 </div>
-                <!-- FRECCE + USER IN ALTO -->
+
                 <div
                   class="row d-none d-md-flex align-items-center justify-content-between p-0">
-                  <!-- FRECCE A SINISTRA -->
                   <div class="col-auto p-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -247,7 +310,7 @@
                     </svg>
                   </div>
 
-                  <!-- USER A DESTRA -->
+                  <!-- USER -->
                   <div class="col-auto dropdown p-0">
                     <button
                       class="btn btn-dark dropdown-toggle rounded-pill"
@@ -303,9 +366,6 @@
 
                 <!-- div per mobile finish -->
               </div>
-            </nav>
-            <!-- container per la parte del header in cui ci andrà l'immagine del album e la descrizione -->
-            <div class="container">
               <div class="row justify-content-center align-items-center">
                 <div
                   class="col col-12 col-md-4 text-center text-md-start mb-3 p-0"
@@ -914,5 +974,6 @@
       crossorigin="anonymous"></script>
     <script src="./script/index.js"></script>
     <script src="./script/album.js"></script>
+    <script src="./script/search.js"></script>
   </body>
 </html>
