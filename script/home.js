@@ -140,12 +140,14 @@ const myTrack = function () {
     })
     .then((data) => {
       const rowCrd = document.getElementById("rowCard");
-
-      const randomTracks = data.data.sort(() => Math.random() - 0.5).slice(0, 5);
+      const albums = data.data;
+      const uniqueTrack = _.uniqBy(albums, (item) => item.album.id);
+      const randomTracks = uniqueTrack.splice(0, 5);
+      //const randomTracks = data.data.sort(() => Math.random() - 0.5).slice(0, 5);
       for (let i = 0; i < randomTracks.length; i++) {
         rowCrd.innerHTML += `
                     <div class="col-6 col-md-4">
-                      <div class="card shadow-sm rounded-0" style="height: 80px">
+                      <div class="card shadow-sm rounded-2" style="height: 80px">
                         <div class="row g-0 h-100 d-flex flex-nowrap">
                           <div class="col-auto p-0">
                           <a href="album.html?id=${randomTracks[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
