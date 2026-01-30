@@ -1,7 +1,7 @@
-//when integrated with home page use this to replace the artist ID
 const url = location.search;
 const allTheParameters = new URLSearchParams(url);
 const artistID = allTheParameters.get("_id");
+console.log(artistID);
 
 const artistURL = `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistID}`;
 let numberOfSongs = 5;
@@ -80,7 +80,6 @@ const renderSongList = () => {
       mostPlayedSongs.innerHTML =
         songsHTML + (numberOfSongs <= 5 ? `<button class="btn text-white-50 my-3  fw-bold text-start" id="see-more">VISUALIZA ALTRO</button>` : "");
 
-      console.log(document.querySelectorAll(".song-list"));
       document.querySelectorAll(".song-list").forEach((songDiv) => {
         songDiv.addEventListener("click", function () {
           console.log("clicked");
@@ -113,7 +112,6 @@ function playSelectedSong(songPreview, artistName, albumCover, title) {
     footerImg.src = albumCover || song.album.cover_medium;
 
     updatePlayButton(playButton, true);
-    console.log(playButton);
   }
 }
 

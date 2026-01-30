@@ -22,10 +22,6 @@ const getAlbums = function () {
                 </a>
               </div>
               <div class="col-8 text-start text-white">
-                <p class="small mb-1">ALBUM</p>
-                <div class="d-flex mb-3">
-                  <div class="ms-auto p-2 opacity-50 small">NASCONDI ANNUNCI</div>
-                </div>
                 <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
                 <h1 class="display-4 fw-bold text-white">${randomAlbums[i].album.title}</h1>
                 </a>
@@ -33,15 +29,28 @@ const getAlbums = function () {
                 <p>Ascolta il nuovo album di ${randomAlbums[i].artist.name}!</p>
                
                 <div class="d-flex gap-2 mt-4 mb-2">
-                  <button type="button" class="btn btn-success rounded-pill px-4 py-2 fw-bold text-black">Play</button>
+                  <button type="button" class="btn btn-success rounded-pill px-4 py-2 fw-bold text-black spotify-green-bg" 
+                    id="play-selected-song-btn"
+                    data-preview="${randomAlbums[i].preview}"
+                    data-artist="${randomAlbums[i].artist.name}"
+                    data-cover="${randomAlbums[i].album.cover}"
+                    data-title="${randomAlbums[i].title}"
+                  >Play</button>
                   <button type="button" class="btn btn-outline-light rounded-pill px-4 py-2 fw-bold">Salva</button>
-                  <a class="btn text-white" href="#input-ricerca" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-</svg></a >
+                  <a class="btn text-white" href="#input-ricerca" role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>
           </div>`;
+
+        document.getElementById("play-selected-song-btn").addEventListener("click", function () {
+          console.log("clicked");
+          playSelectedSong(this.dataset.preview, this.dataset.artist, this.dataset.cover, this.dataset.title);
+        });
 
         //Creazione sezioni da smartphone
         const crdAlbumSm = document.getElementById("cardAlbumSmartphone");
@@ -54,7 +63,9 @@ const getAlbums = function () {
                  <div class="carousel-item ${isActive}">
             <div class="row">
               <div class="col-12">
-                <img src="${randomAlbums1[i].album.cover_big}" class="d-block w-100 shadow" alt="${randomAlbums1[i].album.title}" />
+              <a href="album.html?id=${randomAlbums1[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
+                <img src="${randomAlbums1[i].album.cover_big}" class="d-block w-100 mb-2 shadow" alt="${randomAlbums1[i].album.title}" />
+                </a>
               <div class="position-absolute top-0 end-0">
                         <span class="badge rounded-pill bg-primary">
                           ALBUM
@@ -65,8 +76,7 @@ const getAlbums = function () {
 
 <div class="col-12 text-start">
                       <!--h1-->
-                      <h1 class="display-4 fw-bold mt-2">${randomAlbums1[i].album.title}</h1>
-                       <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
+                       <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 text-decoration-none">
                       <h1 class="display-4 fw-bold mt-2 text-white">${randomAlbums1[i].album.title}</h1>
                       </a>
                       <p class="fs-5">${randomAlbums1[i].artist.name}</p>
@@ -132,15 +142,17 @@ const myTrack = function () {
     })
     .then((data) => {
       const rowCrd = document.getElementById("rowCard");
-
-      const randomTracks = data.data.sort(() => Math.random() - 0.5).slice(0, 5);
+      const albums = data.data;
+      const uniqueTrack = _.uniqBy(albums, (item) => item.album.id);
+      const randomTracks = uniqueTrack.splice(0, 5);
+      //const randomTracks = data.data.sort(() => Math.random() - 0.5).slice(0, 5);
       for (let i = 0; i < randomTracks.length; i++) {
         rowCrd.innerHTML += `
                     <div class="col-6 col-md-4">
-                      <div class="card shadow-sm rounded-0" style="height: 80px">
+                      <div class="card shadow-sm rounded-2" style="height: 80px">
                         <div class="row g-0 h-100 d-flex flex-nowrap">
                           <div class="col-auto p-0">
-                          <a href="album.html?id=${randomTracks[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
+                          <a href="album.html?id=${randomTracks[i].album.id}" class="link-offset-2 text-decoration-none">
                             <img src="${randomTracks[i].album.cover_small}" style="width: 80px; height: 80px; object-fit: cover" alt="Immagine" />
                             </a>
                           </div>
@@ -243,7 +255,6 @@ function renderCarousel(artists) {
                 <h5 class="text-white text-center">${artists[startIndex].artist.name}</h5>
                 </a>
               </div>
-            </a>
             <div class="col-md-3 g-2">
              <a href="./artist.html?_id=${artists[startIndex + 1].artist.id}" class="link-offset-2 link-underline link-underline-opacity-0">
               <img src="${artists[startIndex + 1].artist.picture_big}" class="w-100 card-img-top rounded-circle p-3" />
@@ -280,13 +291,13 @@ function renderCarousel(artists) {
         <div class="container-fluid px-4">
           <div class="row justify-content-center gx-3">
             <div class="col-6">
-            <a href="./artist.html?_id=${artists[startIndex2].artist.id}">
+            <a href="./artist.html?_id=${artists[startIndex2].artist.id}" class="text-decoration-none">
               <img src="${artists[startIndex2].artist.picture_big}" class="w-100 rounded-circle p-2" alt="${artists[startIndex2].artist.name}" />
               <h5 class="text-white text-center">${artists[startIndex2].artist.name}</h5>
               </a>
             </div>
             <div class="col-6">
-            <a href="./artist.html?_id=${artists[startIndex2 + 1].artist.id}">
+            <a href="./artist.html?_id=${artists[startIndex2 + 1].artist.id}" class="text-decoration-none">
               <img src="${artists[startIndex2 + 1].artist.picture_big}" class="w-100 rounded-circle p-2" alt="${artists[startIndex2 + 1].artist.name}" />
               <h5 class="text-white text-center">${artists[startIndex2 + 1].artist.name}</h5>
               </a>
@@ -429,3 +440,29 @@ searchForm.addEventListener("submit", function (e) {
   e.preventDefault();
   window.location.href = `search.html?value=${searchInput.value}`;
 });
+
+const songTitle = document.getElementById("song-title");
+const songArtist1 = document.getElementById("song-artist1");
+const songArtist2 = document.getElementById("song-artist2");
+const footerImg = document.getElementById("footerImg");
+
+function playSelectedSong(songPreview, artistName, albumCover, title) {
+  if (audio === null) {
+    audio = new Audio(songPreview);
+    audio.play();
+    isPlaying = true;
+
+    songTitle.innerText = title;
+    songArtist1.innerText = artistName;
+    songArtist2.innerText = artistName;
+    footerImg.src = albumCover || song.album.cover_medium;
+
+    updatePlayButton(playButton, true);
+    console.log(playButton);
+  }
+}
+
+function updatePlayButton(button, playing) {
+  const icon = playing ? `<i class="bi bi-pause-circle-fill fs-1 mx-2"></i>` : `<i class="bi bi-play-circle-fill fs-1 mx-2"></i>`;
+  button.innerHTML = icon;
+}

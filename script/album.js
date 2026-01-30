@@ -1,12 +1,7 @@
 const url = location.search;
 const allTheParameters = new URLSearchParams(url);
 const albumID = allTheParameters.get("id");
-
 const albumsURL = `https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`;
-
-/*const albumsURL =
-  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062";*/ //6605779
-//////////////
 
 // funzione per la durata
 
@@ -42,6 +37,8 @@ const getData = function () {
     })
     .then((album) => {
       //VARIABILI
+
+      console.log("album", album);
       const cover = album.cover_medium;
       const albumTitle = album.title;
       const artistName = album.artist.name;
@@ -50,12 +47,10 @@ const getData = function () {
       const releaseDate = album.release_date;
       const year = getYear(releaseDate);
       const tracksArray = album.tracks.data;
-      console.log(album);
+      console.log(album.artist.id);
 
       // PER INSERIRE LA COPERTINA PRINCIPALE AL SUO POSTO
-      const copertinaPrincipale = document.getElementById(
-        "copertinaPrincipale",
-      );
+      const copertinaPrincipale = document.getElementById("copertinaPrincipale");
       copertinaPrincipale.innerHTML = `
       <img src=${cover} alt="image" class="img-fluid"/>
     
@@ -65,7 +60,7 @@ const getData = function () {
       const titoloPrincipale = document.getElementById("descrizioneAlbum");
       titoloPrincipale.innerHTML = `  
       <h1>${albumTitle}</h1>   
-      <div class="d-flex mt-3"><img src=${artistImg} alt="profilePicture" class="rounded-circle me-2" style="width: 25px; height: 25px"/><a href="./artist.html" class="text-decoration-none text-white"><h6>${artistName}</h6></a>  <h6> </h6></div>
+      <div class="d-flex mt-3"><img src=${artistImg} alt="profilePicture" class="rounded-circle me-2" style="width: 25px; height: 25px"/><a href="./artist.html?_id=${album.artist.id}" class="text-decoration-none text-white"><h6>${artistName}</h6></a>  <h6> </h6></div>
       <p class="sideBarTextColor mt-2">${type} . ${year}</p> `;
 
       // ORA FACCIO TUTTE LE CANZONI NEL ALBUM
@@ -77,11 +72,11 @@ const getData = function () {
         i = i + 1;
         console.log(timing);
         container.innerHTML += ` 
-        <div class="row justify-content-center playSong mb-3" onclick="playSong(${JSON.stringify(track).replace(/"/g, "&quot;")});" role="button">
+        <div class="row justify-content-center playSong mb-3 box-hover py-2" onclick="playSong(${JSON.stringify(track).replace(/"/g, "&quot;")});" role="button">
           <div class="col col-6 col-md-4 text-start flex-fill pe-0">
          
          <p class="fw-bold mb-0">${i}. ${track.title}</p>
-            <a href="./artist.html" class="text-decoration-none sideBarTextColor ps-0">${artistName}</a>
+            <a href="./artist.html?_id=${album.artist.id}" class="text-decoration-none sideBarTextColor ps-0">${artistName}</a>
           </div>
           <!-- 3 puntini mobile -->
           <div class="col col-6 d-md-none text-end flex-shrink-1">
@@ -110,7 +105,7 @@ const getData = function () {
           <!-- 3 puntini mobile finish -->
           <!-- versione computer -->
           <div class="col col-md-4 d-none d-md-block text-end">
-            <p class="sideBarTextColor">${track.rank}</p>
+            <p class="sideBarTextColor">${track.rank.toLocaleString("de-DE")}</p>
           </div>
           <div class="col col-md-4 d-none d-md-block text-end sideBarTextColor">${songDurationo(track.duration)}</div>
           <!-- verisione computer -->
@@ -155,8 +150,7 @@ function playSong(song) {
   document.getElementById("song-title").innerText = song.title;
   document.getElementById("song-artist1").innerText = song.artist.name;
   document.getElementById("song-artist2").innerText = song.artist.name;
-  document.getElementById("footerImg").src =
-    song.artist.picture_medium || song.album.cover_medium;
+  document.getElementById("footerImg").src = song.artist.picture_medium || song.album.cover_medium;
 
   updatePlayIcons(true);
 
@@ -167,9 +161,7 @@ function playSong(song) {
   });
 
   audio.addEventListener("timeupdate", () => {
-    document.getElementById("currentTime").innerText = formatTime(
-      audio.currentTime,
-    );
+    document.getElementById("currentTime").innerText = formatTime(audio.currentTime);
     updateProgressBar(progressFilled, audio.currentTime, audio.duration);
   });
 
@@ -181,13 +173,9 @@ function playSong(song) {
 
 // ================== PLAY ICONS ==================
 function updatePlayIcons(playing) {
-  const icon = playing
-    ? `<i class="bi bi-pause-circle-fill fs-1 mx-2"></i>`
-    : `<i class="bi bi-play-circle-fill fs-1 mx-2"></i>`;
+  const icon = playing ? `<i class="bi bi-pause-circle-fill fs-1 mx-2"></i>` : `<i class="bi bi-play-circle-fill fs-1 mx-2"></i>`;
 
-  const iconMobile = playing
-    ? `<i class="bi bi-pause-fill fs-4"></i>`
-    : `<i class="bi bi-play-fill fs-4"></i>`;
+  const iconMobile = playing ? `<i class="bi bi-pause-fill fs-4"></i>` : `<i class="bi bi-play-fill fs-4"></i>`;
 
   document.getElementById("playButton").innerHTML = icon;
   document.getElementById("playButtonMobile").innerHTML = iconMobile;
@@ -208,9 +196,7 @@ function togglePlay() {
 }
 
 document.getElementById("playButton")?.addEventListener("click", togglePlay);
-document
-  .getElementById("playButtonMobile")
-  ?.addEventListener("click", togglePlay);
+document.getElementById("playButtonMobile")?.addEventListener("click", togglePlay);
 
 // ================== SKIP ==================
 
