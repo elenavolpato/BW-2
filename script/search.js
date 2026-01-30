@@ -65,7 +65,7 @@ const getData = function (parolaCercata) {
       artistiContainer.innerHTML = `
         <h4 class="text-light my-3">Artisti</h4>`;
       for (let i = 1; i < primiSei.length; i++) {
-        const fotoartista = primiSei[i].artist.picture;
+        const fotoartista = primiSei[i].artist.picture_big;
         const nomeArtista = primiSei[i].artist.name;
         const album = songs[i].album.cover;
         const nomeAlbum = songs[i].album.title;
@@ -93,7 +93,7 @@ const getData = function (parolaCercata) {
         <h4 class="text-light my-3">Album</h4>`;
       for (let i = 1; i < primiSei.length; i++) {
         const nomeArtista = songs[i].artist.name;
-        const album = songs[i].album.cover;
+        const album = songs[i].album.cover_big;
         const nomeAlbum = songs[i].album.title;
 
         albumContainer.innerHTML += `
