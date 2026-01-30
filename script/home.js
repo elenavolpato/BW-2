@@ -10,9 +10,7 @@ const getAlbums = function () {
       const crdAlbum = document.getElementById("cardAlbum");
       crdAlbum.innerHTML = ""; // Puliamo per evitare duplicati
 
-      const randomAlbums = data.data
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 8);
+      const randomAlbums = data.data.sort(() => Math.random() - 0.5).slice(0, 8);
       for (let i = 0; i < randomAlbums.length; i++) {
         const isActive = i === 0 ? "active" : "";
         crdAlbum.innerHTML += `
@@ -24,10 +22,6 @@ const getAlbums = function () {
                 </a>
               </div>
               <div class="col-8 text-start text-white">
-                <p class="small mb-1">ALBUM</p>
-                <div class="d-flex mb-3">
-                  <div class="ms-auto p-2 opacity-50 small">NASCONDI ANNUNCI</div>
-                </div>
                 <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 link-underline link-underline-opacity-0">
                 <h1 class="display-4 fw-bold text-white">${randomAlbums[i].album.title}</h1>
                 </a>
@@ -35,23 +29,34 @@ const getAlbums = function () {
                 <p>Ascolta il nuovo album di ${randomAlbums[i].artist.name}!</p>
                
                 <div class="d-flex gap-2 mt-4 mb-2">
-                  <button type="button" class="btn btn-success rounded-pill px-4 py-2 fw-bold text-black">Play</button>
+                  <button type="button" class="btn btn-success rounded-pill px-4 py-2 fw-bold text-black spotify-green-bg" 
+                    id="play-selected-song-btn"
+                    data-preview="${randomAlbums[i].preview}"
+                    data-artist="${randomAlbums[i].artist.name}"
+                    data-cover="${randomAlbums[i].album.cover}"
+                    data-title="${randomAlbums[i].title}"
+                  >Play</button>
                   <button type="button" class="btn btn-outline-light rounded-pill px-4 py-2 fw-bold">Salva</button>
-                  <a class="btn text-white" href="#input-ricerca" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-</svg></a >
+                  <a class="btn text-white" href="#input-ricerca" role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>
           </div>`;
 
+        document.getElementById("play-selected-song-btn").addEventListener("click", function () {
+          console.log("clicked");
+          playSelectedSong(this.dataset.preview, this.dataset.artist, this.dataset.cover, this.dataset.title);
+        });
+
         //Creazione sezioni da smartphone
         const crdAlbumSm = document.getElementById("cardAlbumSmartphone");
         crdAlbumSm.innerHTML = ""; // Puliamo per evitare duplicati
 
-        const randomAlbums1 = data.data
-          .sort(() => Math.random() - 0.5)
-          .slice(0, 8);
+        const randomAlbums1 = data.data.sort(() => Math.random() - 0.5).slice(0, 8);
         for (let i = 0; i < randomAlbums1.length; i++) {
           const isActive = i === 0 ? "active" : "";
           crdAlbumSm.innerHTML += `
@@ -136,9 +141,7 @@ const myTrack = function () {
     .then((data) => {
       const rowCrd = document.getElementById("rowCard");
 
-      const randomTracks = data.data
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 5);
+      const randomTracks = data.data.sort(() => Math.random() - 0.5).slice(0, 5);
       for (let i = 0; i < randomTracks.length; i++) {
         rowCrd.innerHTML += `
                     <div class="col-6 col-md-4">
@@ -175,9 +178,7 @@ const myArtist = function () {
     const artistiDaFetchare = selectedArtists.slice(0, 4);
 
     for (let i = 0; i < artistiDaFetchare.length; i++) {
-      const singolaFetch = fetch(
-        `https://striveschool-api.herokuapp.com/api/deezer/artist/${artistiDaFetchare[i]}`,
-      ).then((response) => {
+      const singolaFetch = fetch(`https://striveschool-api.herokuapp.com/api/deezer/artist/${artistiDaFetchare[i]}`).then((response) => {
         if (response.ok) return response.json();
         throw new Error("Errore nella response");
       });
@@ -189,9 +190,7 @@ const myArtist = function () {
         //console.log("ARTISTI PREFERITI:", artistiPreferiti);
 
         // Fetch per artisti random (gli altri 4)
-        return fetch(
-          "https://striveschool-api.herokuapp.com/api/deezer/search?q=music",
-        )
+        return fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=music")
           .then((response) => {
             if (response.ok) return response.json();
             throw new Error("Errore nella fetch random");
@@ -199,20 +198,15 @@ const myArtist = function () {
           .then((dataRandom) => {
             const artistiRandom = dataRandom.data.slice(0, 4);
 
-            const artistiPreferentiFormattati = artistiPreferiti.map(
-              (artist) => ({
-                artist: {
-                  id: artist.id,
-                  name: artist.name,
-                  picture_big: artist.picture_big,
-                },
-              }),
-            );
+            const artistiPreferentiFormattati = artistiPreferiti.map((artist) => ({
+              artist: {
+                id: artist.id,
+                name: artist.name,
+                picture_big: artist.picture_big,
+              },
+            }));
 
-            const tuttiGli8Artisti = [
-              ...artistiPreferentiFormattati,
-              ...artistiRandom,
-            ];
+            const tuttiGli8Artisti = [...artistiPreferentiFormattati, ...artistiRandom];
             console.log("TUTTI GLI 8 ARTISTI:", tuttiGli8Artisti);
             renderCarousel(tuttiGli8Artisti);
           });
@@ -227,9 +221,7 @@ const myArtist = function () {
         throw new Error("la response ha un problema");
       })
       .then((data) => {
-        const randomArtists = data.data
-          .sort(() => Math.random() - 0.5)
-          .slice(0, 8);
+        const randomArtists = data.data.sort(() => Math.random() - 0.5).slice(0, 8);
         renderCarousel(randomArtists);
       })
       .catch((Error) => console.log("ERRORE NELLA FETCH", Error));
@@ -284,8 +276,7 @@ function renderCarousel(artists) {
   }
 
   // SMARTPHONE CAROUSEL
-  const carouselArtistsSmarphone =
-    document.getElementById("carouselSmartphone");
+  const carouselArtistsSmarphone = document.getElementById("carouselSmartphone");
   carouselArtistsSmarphone.innerHTML = "";
 
   // Creiamo 4 slide, ognuna con 2 artisti
@@ -333,8 +324,7 @@ function getRandomArtist() {
     })
     .then((data) => {
       if (!data.data || data.data.length === 0) return getRandomArtist();
-      const randomSong =
-        data.data[Math.floor(Math.random() * data.data.length)];
+      const randomSong = data.data[Math.floor(Math.random() * data.data.length)];
       return { artist: randomSong.artist, song: randomSong };
     })
     .catch((err) => console.error("ERRORE", err));
@@ -358,8 +348,7 @@ function playSong(songObj, playButton) {
   document.getElementById("song-title").innerText = song.title;
   document.getElementById("song-artist1").innerText = artist.name;
   document.getElementById("song-artist2").innerText = artist.name;
-  document.getElementById("footerImg").src =
-    artist.picture_medium || song.album.cover_medium;
+  document.getElementById("footerImg").src = artist.picture_medium || song.album.cover_medium;
 
   const progressFilled = document.querySelector(".progress-filled");
   const currentTimeElem = document.getElementById("currentTime");
@@ -448,3 +437,29 @@ searchForm.addEventListener("submit", function (e) {
   e.preventDefault();
   window.location.href = `search.html?value=${searchInput.value}`;
 });
+
+const songTitle = document.getElementById("song-title");
+const songArtist1 = document.getElementById("song-artist1");
+const songArtist2 = document.getElementById("song-artist2");
+const footerImg = document.getElementById("footerImg");
+
+function playSelectedSong(songPreview, artistName, albumCover, title) {
+  if (audio === null) {
+    audio = new Audio(songPreview);
+    audio.play();
+    isPlaying = true;
+
+    songTitle.innerText = title;
+    songArtist1.innerText = artistName;
+    songArtist2.innerText = artistName;
+    footerImg.src = albumCover || song.album.cover_medium;
+
+    updatePlayButton(playButton, true);
+    console.log(playButton);
+  }
+}
+
+function updatePlayButton(button, playing) {
+  const icon = playing ? `<i class="bi bi-pause-circle-fill fs-1 mx-2"></i>` : `<i class="bi bi-play-circle-fill fs-1 mx-2"></i>`;
+  button.innerHTML = icon;
+}

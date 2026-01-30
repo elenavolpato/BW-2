@@ -1,4 +1,3 @@
-//when integrated with home page use this to replace the artist ID
 const url = location.search;
 const allTheParameters = new URLSearchParams(url);
 const artistID = allTheParameters.get("_id");
