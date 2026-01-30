@@ -162,7 +162,6 @@ input[type="range"].form-range:focus {
 
 .mobileFooterFade {
   background: #111111;
-  pointer-events: none;
   background: black;
   z-index: 10000 !important;
 }
