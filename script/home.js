@@ -29,8 +29,7 @@ const getAlbums = function () {
                 <p>Ascolta il nuovo album di ${randomAlbums[i].artist.name}!</p>
                
                 <div class="d-flex gap-2 mt-4 mb-2">
-                  <button type="button" class="btn btn-success rounded-pill px-4 py-2 fw-bold text-black spotify-green-bg" 
-                    id="play-selected-song-btn"
+                  <button type="button" class=" play-selected-song-btn btn btn-success rounded-pill px-4 py-2 fw-bold text-black spotify-green-bg" 
                     data-preview="${randomAlbums[i].preview}"
                     data-artist="${randomAlbums[i].artist.name}"
                     data-cover="${randomAlbums[i].album.cover}"
@@ -47,10 +46,12 @@ const getAlbums = function () {
             </div>
           </div>`;
 
-        document.getElementById("play-selected-song-btn").addEventListener("click", function () {
-          console.log("clicked");
-          playSelectedSong(this.dataset.preview, this.dataset.artist, this.dataset.cover, this.dataset.title);
-        });
+        document.querySelectorAll(".play-selected-song-btn").forEach((playBtn) =>
+          playBtn.addEventListener("click", function () {
+            console.log("clicked");
+            playSelectedSong(this.dataset.preview, this.dataset.artist, this.dataset.cover, this.dataset.title);
+          }),
+        );
 
         //Creazione sezioni da smartphone
         const crdAlbumSm = document.getElementById("cardAlbumSmartphone");
@@ -74,7 +75,7 @@ const getAlbums = function () {
                       </div>
                     </div>
 
-<div class="col-12 text-start">
+                    <div class="col-12 text-start">
                       <!--h1-->
                        <a href="album.html?id=${randomAlbums[i].album.id}" class="link-offset-2 text-decoration-none">
                       <h1 class="display-4 fw-bold mt-2 text-white">${randomAlbums1[i].album.title}</h1>
@@ -447,7 +448,9 @@ const songArtist2 = document.getElementById("song-artist2");
 const footerImg = document.getElementById("footerImg");
 
 function playSelectedSong(songPreview, artistName, albumCover, title) {
-  if (audio === null) {
+  let currentSong = "";
+  if (audio === null || currentSong != songPreview || audio.play === false) {
+    currentSong = songPreview;
     audio = new Audio(songPreview);
     audio.play();
     isPlaying = true;
