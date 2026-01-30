@@ -186,7 +186,3 @@ input[type="range"].form-range:focus {
     border-radius: 0 !important;
   }
 } /*# sourceMappingURL=style.css.map */
-
-#carouselSmartphone {
-  z-index: -1 !important;
-}
